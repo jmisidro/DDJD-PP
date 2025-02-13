@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfcsp4dv0h0ng"]
+
+[ext_resource type="Script" path="res://scenes/main_character.gd" id="1_e6jhr"]
+[ext_resource type="Texture2D" uid="uid://c2ubmudbprkwc" path="res://assets/characters/1/Jump.png" id="1_rfr8h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wum1"]
+size = Vector2(67, 139)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_e6jhr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(50.5001, 67.2189)
+scale = Vector2(3.15624, 4.14257)
+texture = ExtResource("1_rfr8h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(50.5, 69.5)
+shape = SubResource("RectangleShape2D_7wum1")
