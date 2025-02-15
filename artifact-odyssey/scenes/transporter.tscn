@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://0qnx5djcex0c"]
+
+[ext_resource type="Texture2D" uid="uid://d4iq110c27qwb" path="res://assets/animated_objects/Transporter.png" id="1_t2708"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbe75"]
+atlas = ExtResource("1_t2708")
+region = Rect2(0, 0, 96, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2gmd"]
+atlas = ExtResource("1_t2708")
+region = Rect2(96, 0, 96, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rtc5"]
+atlas = ExtResource("1_t2708")
+region = Rect2(192, 0, 96, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arxgw"]
+atlas = ExtResource("1_t2708")
+region = Rect2(288, 0, 96, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdnal"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbe75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2gmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rtc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arxgw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Transporter" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_hdnal")
+autoplay = "default"
+frame_progress = 0.593704

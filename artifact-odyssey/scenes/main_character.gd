@@ -26,11 +26,12 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	# The last parameter of the move_toward function, changes the drag that exists when a player moves, higher value, immediately stops the player
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, 10)
+		velocity.x = move_toward(velocity.x, 0, 25)
 
 	move_and_slide()
 
