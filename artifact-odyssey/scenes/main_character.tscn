@@ -204,11 +204,13 @@ script = ExtResource("1_e6jhr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-1, -17)
+position = Vector2(51, 66)
 scale = Vector2(3.15624, 4.14257)
 sprite_frames = SubResource("SpriteFrames_o8x87")
 animation = &"idle"
 autoplay = "idle"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(52, 84)
 shape = SubResource("RectangleShape2D_7wum1")

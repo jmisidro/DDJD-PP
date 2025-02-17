@@ -415,23 +415,24 @@ sources/6 = SubResource("TileSetAtlasSource_jdcod")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
-offset_left = -2879.0
-offset_top = -1311.0
-offset_right = -814.0
-offset_bottom = -174.0
+offset_left = -2878.0
+offset_top = -1364.0
+offset_right = -813.0
+offset_bottom = -227.0
 scale = Vector2(5, 5)
 texture = ExtResource("1_mekfi")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_stgxn")]
-position = Vector2(134, 272)
+position = Vector2(63, 183)
+scale = Vector2(0.995051, 1.00778)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 1)
 
 [node name="RoboDob" parent="." instance=ExtResource("3_etafc")]
-position = Vector2(235, 1)
+position = Vector2(512, 320)
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)
