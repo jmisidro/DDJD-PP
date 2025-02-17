@@ -431,6 +431,7 @@ position = Vector2(134, 272)
 position = Vector2(0, 1)
 
 [node name="RoboDob" parent="." instance=ExtResource("3_etafc")]
+position = Vector2(235, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)

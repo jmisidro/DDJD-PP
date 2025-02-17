@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://6rrmsn2puf2"]
+[gd_scene load_steps=18 format=3 uid="uid://6rrmsn2puf2"]
 
 [ext_resource type="Texture2D" uid="uid://csrujaccwyljg" path="res://assets/enemies/robodob/idle.png" id="1_n383c"]
+[ext_resource type="Script" path="res://scenes/robo_dob.gd" id="1_nk0uo"]
 [ext_resource type="Texture2D" uid="uid://co65t2tj2u4vr" path="res://assets/enemies/robodob/running.png" id="2_deyyn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vn3g5"]
@@ -93,19 +94,34 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gw333"]
+size = Vector2(98, 61)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1quh"]
-size = Vector2(106, 63)
+size = Vector2(638, 63)
 
 [node name="RoboDob" type="CharacterBody2D"]
+script = ExtResource("1_nk0uo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(884, 403)
+position = Vector2(620, 403)
 scale = Vector2(2.64453, 2.64453)
 sprite_frames = SubResource("SpriteFrames_cbl2x")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(861, 415.5)
+position = Vector2(596, 415.5)
+shape = SubResource("RectangleShape2D_gw333")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(595, 415.5)
 shape = SubResource("RectangleShape2D_e1quh")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
