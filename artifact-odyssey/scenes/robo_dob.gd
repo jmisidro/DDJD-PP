@@ -20,12 +20,6 @@ func _ready() -> void:
 
 # Physics update
 func _physics_process(delta: float) -> void:
-	# Flip RayCast2D based on direction
-	if direction == 1:
-		$RayCast2D.cast_to.x = 50 # Right
-	else:
-		$RayCast2D.cast_to.x = -50 # Left
-	
 	if is_chasing and player:
 		# Chase the player
 		var to_player = player.position - position
