@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=19 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Texture2D" uid="uid://cs2r4bj8c6w44" path="res://assets/backgrounds/BG.png" id="1_mekfi"]
 [ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="1_stgxn"]
+[ext_resource type="PackedScene" uid="uid://6rrmsn2puf2" path="res://scenes/robo_dob.tscn" id="3_etafc"]
 [ext_resource type="Texture2D" uid="uid://2m03xfqmbtqt" path="res://assets/tilesets/tilesetIndustrial.png" id="3_uf3rk"]
 [ext_resource type="Texture2D" uid="uid://byrtcgk6uo58j" path="res://assets/tilesets/Tileset_basic.png" id="4_uu1k8"]
 [ext_resource type="Texture2D" uid="uid://bd148fsk76gj1" path="res://assets/objects/Box7.png" id="5_oo0cj"]
@@ -423,11 +424,13 @@ texture = ExtResource("1_mekfi")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_stgxn")]
+[node name="Player" parent="." instance=ExtResource("1_stgxn")]
 position = Vector2(134, 272)
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 1)
+
+[node name="RoboDob" parent="." instance=ExtResource("3_etafc")]
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)
@@ -440,6 +443,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Money" parent="MoneyPickUps" instance=ExtResource("9_nvoe1")]
+texture_filter = 1
 position = Vector2(416, 292)
 scale = Vector2(4, 4)
 
