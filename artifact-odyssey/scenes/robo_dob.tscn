@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://6rrmsn2puf2"]
+[gd_scene load_steps=22 format=3 uid="uid://6rrmsn2puf2"]
 
 [ext_resource type="Texture2D" uid="uid://csrujaccwyljg" path="res://assets/enemies/robodob/idle.png" id="1_n383c"]
 [ext_resource type="Script" path="res://scenes/robo_dob.gd" id="1_nk0uo"]
@@ -48,6 +48,22 @@ region = Rect2(0, 64, 64, 64)
 atlas = ExtResource("2_deyyn")
 region = Rect2(64, 64, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk8h5"]
+atlas = ExtResource("2_deyyn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4x54"]
+atlas = ExtResource("2_deyyn")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig78c"]
+atlas = ExtResource("2_deyyn")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v5ah"]
+atlas = ExtResource("2_deyyn")
+region = Rect2(64, 64, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_cbl2x"]
 animations = [{
 "frames": [{
@@ -92,6 +108,23 @@ animations = [{
 "loop": true,
 "name": &"running",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk8h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4x54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig78c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v5ah")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw333"]
@@ -108,8 +141,9 @@ texture_filter = 1
 position = Vector2(620, 403)
 scale = Vector2(2.64453, 2.64453)
 sprite_frames = SubResource("SpriteFrames_cbl2x")
-animation = &"idle"
-autoplay = "idle"
+animation = &"walking"
+autoplay = "walking"
+frame_progress = 0.0603635
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(596, 415.5)

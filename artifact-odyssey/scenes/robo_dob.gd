@@ -52,5 +52,5 @@ func _on_Area2D_body_entered(body):
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
 		is_chasing = false
-		animated_sprite_2d.animation = "idle"
+		animated_sprite_2d.animation = "walking"
 		player = null
