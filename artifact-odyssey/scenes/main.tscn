@@ -1,22 +1,25 @@
-[gd_scene load_steps=26 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=29 format=3 uid="uid://drvwhohxdlrrw"]
 
-[ext_resource type="Texture2D" uid="uid://cs2r4bj8c6w44" path="res://assets/backgrounds/BG.png" id="1_mekfi"]
-[ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="1_stgxn"]
-[ext_resource type="PackedScene" uid="uid://6rrmsn2puf2" path="res://scenes/robo_dob.tscn" id="3_etafc"]
-[ext_resource type="Texture2D" uid="uid://2m03xfqmbtqt" path="res://assets/tilesets/tilesetIndustrial.png" id="3_uf3rk"]
-[ext_resource type="Texture2D" uid="uid://byrtcgk6uo58j" path="res://assets/tilesets/Tileset_basic.png" id="4_uu1k8"]
-[ext_resource type="Texture2D" uid="uid://bd148fsk76gj1" path="res://assets/objects/Box7.png" id="5_oo0cj"]
-[ext_resource type="Texture2D" uid="uid://c7486unt1mrxp" path="res://assets/objects/Ladder1.png" id="6_og5rl"]
-[ext_resource type="Texture2D" uid="uid://bvjiwfa75ul4w" path="res://assets/objects/Ladder2.png" id="7_yddop"]
-[ext_resource type="Texture2D" uid="uid://cikw8gs7ofprg" path="res://assets/objects/Ladder3.png" id="8_uhpqu"]
-[ext_resource type="PackedScene" uid="uid://durreva13rhwh" path="res://scenes/money.tscn" id="9_nvoe1"]
-[ext_resource type="PackedScene" uid="uid://0qnx5djcex0c" path="res://scenes/transporter.tscn" id="10_ycltl"]
-[ext_resource type="PackedScene" uid="uid://c0f7y6icxprbe" path="res://scenes/platform.tscn" id="12_b0us8"]
-[ext_resource type="PackedScene" uid="uid://ck5yn5eb4q3ik" path="res://scenes/moving_platform.tscn" id="13_unqe4"]
-[ext_resource type="PackedScene" uid="uid://bpalentg7042k" path="res://scenes/killzone.tscn" id="14_bbyvd"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
+[ext_resource type="Texture2D" uid="uid://cs2r4bj8c6w44" path="res://assets/backgrounds/BG.png" id="2_47brt"]
+[ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="3_125kt"]
+[ext_resource type="Texture2D" uid="uid://butqv88echrd3" path="res://assets/animated_objects/Money.png" id="4_qjovh"]
+[ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="5_3ihga"]
+[ext_resource type="PackedScene" uid="uid://6rrmsn2puf2" path="res://scenes/robo_dob.tscn" id="5_a18kk"]
+[ext_resource type="Texture2D" uid="uid://2m03xfqmbtqt" path="res://assets/tilesets/tilesetIndustrial.png" id="6_58qq1"]
+[ext_resource type="Texture2D" uid="uid://byrtcgk6uo58j" path="res://assets/tilesets/Tileset_basic.png" id="7_blpfc"]
+[ext_resource type="Texture2D" uid="uid://bd148fsk76gj1" path="res://assets/objects/Box7.png" id="8_amjld"]
+[ext_resource type="Texture2D" uid="uid://c7486unt1mrxp" path="res://assets/objects/Ladder1.png" id="9_1l004"]
+[ext_resource type="Texture2D" uid="uid://bvjiwfa75ul4w" path="res://assets/objects/Ladder2.png" id="10_2u1jx"]
+[ext_resource type="Texture2D" uid="uid://cikw8gs7ofprg" path="res://assets/objects/Ladder3.png" id="11_njvqg"]
+[ext_resource type="PackedScene" uid="uid://durreva13rhwh" path="res://scenes/money.tscn" id="12_3k8n4"]
+[ext_resource type="PackedScene" uid="uid://0qnx5djcex0c" path="res://scenes/transporter.tscn" id="13_ujmwp"]
+[ext_resource type="PackedScene" uid="uid://c0f7y6icxprbe" path="res://scenes/platform.tscn" id="14_i8cjr"]
+[ext_resource type="PackedScene" uid="uid://ck5yn5eb4q3ik" path="res://scenes/moving_platform.tscn" id="15_tbjmr"]
+[ext_resource type="PackedScene" uid="uid://bpalentg7042k" path="res://scenes/killzone.tscn" id="16_5e0s5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3cq3"]
-texture = ExtResource("3_uf3rk")
+texture = ExtResource("6_58qq1")
 use_texture_padding = false
 0:0/size_in_atlas = Vector2i(2, 2)
 0:0/0 = 0
@@ -272,7 +275,7 @@ use_texture_padding = false
 2:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ew0se"]
-texture = ExtResource("4_uu1k8")
+texture = ExtResource("7_blpfc")
 0:0/next_alternative_id = 3
 0:0/0 = 0
 1:0/0 = 0
@@ -385,22 +388,22 @@ texture = ExtResource("4_uu1k8")
 14:10/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r3s28"]
-texture = ExtResource("5_oo0cj")
+texture = ExtResource("8_amjld")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jbglw"]
-texture = ExtResource("6_og5rl")
+texture = ExtResource("9_1l004")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lr3sw"]
-texture = ExtResource("7_yddop")
+texture = ExtResource("10_2u1jx")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jdcod"]
-texture = ExtResource("8_uhpqu")
+texture = ExtResource("11_njvqg")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
@@ -413,6 +416,21 @@ sources/2 = SubResource("TileSetAtlasSource_r3s28")
 sources/4 = SubResource("TileSetAtlasSource_jbglw")
 sources/5 = SubResource("TileSetAtlasSource_lr3sw")
 sources/6 = SubResource("TileSetAtlasSource_jdcod")
+
+[sub_resource type="Animation" id="Animation_gikfg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2032, 460)]
+}
 
 [sub_resource type="Animation" id="Animation_8bm2j"]
 resource_name = "move"
@@ -431,21 +449,6 @@ tracks/0/keys = {
 "values": [Vector2(2048, 464), Vector2(2624, 464)]
 }
 
-[sub_resource type="Animation" id="Animation_gikfg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2032, 460)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8dxkj"]
 _data = {
 "RESET": SubResource("Animation_gikfg"),
@@ -454,7 +457,11 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qo240"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_itb6s")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -463,11 +470,11 @@ offset_top = -1339.0
 offset_right = -640.0
 offset_bottom = -202.0
 scale = Vector2(5, 5)
-texture = ExtResource("1_mekfi")
+texture = ExtResource("2_47brt")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Player" parent="." instance=ExtResource("1_stgxn")]
+[node name="Player" parent="." instance=ExtResource("3_125kt")]
 z_index = 1
 position = Vector2(63, 183)
 scale = Vector2(0.995051, 1.00778)
@@ -478,7 +485,24 @@ position = Vector2(0, 1)
 limit_bottom = 10000
 limit_smoothed = true
 
-[node name="RoboDob" parent="." instance=ExtResource("3_etafc")]
+[node name="Sprite2D" type="Sprite2D" parent="Player/Camera2D"]
+position = Vector2(541.681, -284.792)
+scale = Vector2(3.3, 3.3)
+texture = ExtResource("4_qjovh")
+region_enabled = true
+region_rect = Rect2(2.88028, 3.97281, 17.094, 16.3508)
+
+[node name="moneyLabel" type="Label" parent="Player/Camera2D"]
+offset_left = 303.502
+offset_top = -306.622
+offset_right = 509.502
+offset_bottom = -254.622
+theme_override_fonts/font = ExtResource("5_3ihga")
+theme_override_font_sizes/font_size = 48
+text = "0X"
+horizontal_alignment = 2
+
+[node name="RoboDob" parent="." instance=ExtResource("5_a18kk")]
 position = Vector2(512, 320)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -491,37 +515,37 @@ layer_0/tile_data = PackedInt32Array(393216, 262144, 14, 393217, 262144, 14, 393
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Money" parent="MoneyPickUps" instance=ExtResource("9_nvoe1")]
+[node name="Money" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
 position = Vector2(416, 292)
 scale = Vector2(4, 4)
 
-[node name="Money2" parent="MoneyPickUps" instance=ExtResource("9_nvoe1")]
+[node name="Money2" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
 position = Vector2(1762, 98)
 scale = Vector2(4, 4)
 
-[node name="Money3" parent="MoneyPickUps" instance=ExtResource("9_nvoe1")]
+[node name="Money3" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
 position = Vector2(1376, 410)
 scale = Vector2(4, 4)
 
-[node name="Money4" parent="MoneyPickUps" instance=ExtResource("9_nvoe1")]
+[node name="Money4" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
 position = Vector2(1583, 98)
 scale = Vector2(4, 4)
 
-[node name="Money5" parent="MoneyPickUps" instance=ExtResource("9_nvoe1")]
+[node name="Money5" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
 position = Vector2(1119, 96)
 scale = Vector2(4, 4)
 
-[node name="Money6" parent="MoneyPickUps" instance=ExtResource("9_nvoe1")]
+[node name="Money6" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
 position = Vector2(743, 166)
 scale = Vector2(4, 4)
 
-[node name="Transporter" parent="." instance=ExtResource("10_ycltl")]
+[node name="Transporter" parent="." instance=ExtResource("13_ujmwp")]
 position = Vector2(1888, 143)
 scale = Vector2(2, 2)
 
@@ -529,46 +553,46 @@ scale = Vector2(2, 2)
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Platform" parent="PlatformGroup1" instance=ExtResource("12_b0us8")]
+[node name="Platform" parent="PlatformGroup1" instance=ExtResource("14_i8cjr")]
 position = Vector2(1185, -12)
 
-[node name="Platform2" parent="PlatformGroup1" instance=ExtResource("12_b0us8")]
+[node name="Platform2" parent="PlatformGroup1" instance=ExtResource("14_i8cjr")]
 position = Vector2(1313, -12)
 
-[node name="Platform3" parent="PlatformGroup1" instance=ExtResource("12_b0us8")]
+[node name="Platform3" parent="PlatformGroup1" instance=ExtResource("14_i8cjr")]
 position = Vector2(1249, -12)
 
 [node name="PlatformGroup2" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Platform4" parent="PlatformGroup2" instance=ExtResource("12_b0us8")]
+[node name="Platform4" parent="PlatformGroup2" instance=ExtResource("14_i8cjr")]
 position = Vector2(1185, -140)
 
-[node name="Platform5" parent="PlatformGroup2" instance=ExtResource("12_b0us8")]
+[node name="Platform5" parent="PlatformGroup2" instance=ExtResource("14_i8cjr")]
 position = Vector2(1313, -140)
 
-[node name="Platform6" parent="PlatformGroup2" instance=ExtResource("12_b0us8")]
+[node name="Platform6" parent="PlatformGroup2" instance=ExtResource("14_i8cjr")]
 position = Vector2(1249, -140)
 
 [node name="PlatformGroup3" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Platform7" parent="PlatformGroup3" instance=ExtResource("12_b0us8")]
+[node name="Platform7" parent="PlatformGroup3" instance=ExtResource("14_i8cjr")]
 position = Vector2(1185, -266)
 
-[node name="Platform8" parent="PlatformGroup3" instance=ExtResource("12_b0us8")]
+[node name="Platform8" parent="PlatformGroup3" instance=ExtResource("14_i8cjr")]
 position = Vector2(1313, -266)
 
-[node name="Platform9" parent="PlatformGroup3" instance=ExtResource("12_b0us8")]
+[node name="Platform9" parent="PlatformGroup3" instance=ExtResource("14_i8cjr")]
 position = Vector2(1249, -266)
 
 [node name="MovingPlatforms" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="MovingPlatform" parent="MovingPlatforms" instance=ExtResource("13_unqe4")]
+[node name="MovingPlatform" parent="MovingPlatforms" instance=ExtResource("15_tbjmr")]
 position = Vector2(2032, 460)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatforms/MovingPlatform"]
@@ -577,7 +601,7 @@ libraries = {
 }
 autoplay = "move"
 
-[node name="Killzone" parent="." instance=ExtResource("14_bbyvd")]
+[node name="Killzone" parent="." instance=ExtResource("16_5e0s5")]
 position = Vector2(1265, 769)
 rotation = 3.14159
 

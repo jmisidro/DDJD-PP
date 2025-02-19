@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://durreva13rhwh"]
+[gd_scene load_steps=11 format=3 uid="uid://durreva13rhwh"]
 
 [ext_resource type="Texture2D" uid="uid://butqv88echrd3" path="res://assets/animated_objects/Money.png" id="1_co6wo"]
+[ext_resource type="Script" path="res://scripts/money.gd" id="1_pp3mi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uksys"]
 atlas = ExtResource("1_co6wo")
@@ -56,6 +57,8 @@ animations = [{
 radius = 6.0
 
 [node name="Money" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_pp3mi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_11kit")
@@ -64,3 +67,5 @@ frame_progress = 0.72124
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g85lp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
