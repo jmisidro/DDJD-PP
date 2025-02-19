@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck5yn5eb4q3ik"]
+
+[ext_resource type="Texture2D" uid="uid://2m03xfqmbtqt" path="res://assets/tilesets/tilesetIndustrial.png" id="1_nfdxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npaec"]
+size = Vector2(64, 16)
+
+[node name="MovingPlatform" type="AnimatableBody2D"]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nfdxf")
+region_enabled = true
+region_rect = Rect2(224.061, 256.207, 64.214, 15.6076)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_npaec")
+one_way_collision = true
