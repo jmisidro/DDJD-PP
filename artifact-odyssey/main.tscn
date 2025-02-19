@@ -477,11 +477,11 @@ position = Vector2(743, 166)
 scale = Vector2(4, 4)
 
 [node name="Transporter" parent="." instance=ExtResource("10_ycltl")]
-position = Vector2(2270, 144)
+position = Vector2(1888, 143)
 scale = Vector2(2, 2)
 
 [node name="Transporter2" parent="." instance=ExtResource("10_ycltl")]
-position = Vector2(2270, 400)
+position = Vector2(1888, 176)
 scale = Vector2(2, 2)
 
 [node name="PlatformGroup1" type="Label" parent="."]
