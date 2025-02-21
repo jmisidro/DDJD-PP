@@ -1,0 +1,164 @@
+[gd_scene load_steps=18 format=3 uid="uid://ch5cjyndugxdb"]
+
+[ext_resource type="Script" path="res://scenes/robo_dog.gd" id="1_0a1w1"]
+[ext_resource type="Texture2D" uid="uid://csrujaccwyljg" path="res://assets/enemies/robodob/idle.png" id="1_uipac"]
+[ext_resource type="Texture2D" uid="uid://co65t2tj2u4vr" path="res://assets/enemies/robodob/running.png" id="2_0njjx"]
+[ext_resource type="PackedScene" uid="uid://bpalentg7042k" path="res://scenes/killzone.tscn" id="3_w0mx5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n53fk"]
+atlas = ExtResource("1_uipac")
+region = Rect2(4, 24, 39, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mydtm"]
+atlas = ExtResource("1_uipac")
+region = Rect2(68, 24, 39, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy4du"]
+atlas = ExtResource("1_uipac")
+region = Rect2(132, 24, 39, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmu1n"]
+atlas = ExtResource("1_uipac")
+region = Rect2(4, 86, 39, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m43ci"]
+atlas = ExtResource("1_uipac")
+region = Rect2(68, 86, 39, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n8r4"]
+atlas = ExtResource("1_uipac")
+region = Rect2(132, 86, 39, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr4hq"]
+atlas = ExtResource("1_uipac")
+region = Rect2(4, 148, 39, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsrem"]
+atlas = ExtResource("2_0njjx")
+region = Rect2(5, 23, 43, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajn7w"]
+atlas = ExtResource("2_0njjx")
+region = Rect2(66, 23, 43, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glno0"]
+atlas = ExtResource("2_0njjx")
+region = Rect2(5, 89, 43, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5i3k"]
+atlas = ExtResource("2_0njjx")
+region = Rect2(66, 89, 43, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csmhe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n53fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mydtm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy4du")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmu1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m43ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n8r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr4hq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsrem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajn7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glno0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5i3k")
+}],
+"loop": true,
+"name": &"running",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsrem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajn7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glno0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5i3k")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hejg0"]
+size = Vector2(42.6667, 21)
+
+[node name="robo_dog" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_0a1w1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(21.6667, 10.3333)
+sprite_frames = SubResource("SpriteFrames_csmhe")
+animation = &"idle"
+autoplay = "walking"
+frame_progress = 0.578617
+
+[node name="Killzone" parent="." instance=ExtResource("3_w0mx5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(21.3333, 10.5)
+shape = SubResource("RectangleShape2D_hejg0")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(17, 10.5)
+target_position = Vector2(-17, 9.53674e-07)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(17, 10.5)
+target_position = Vector2(26, 0.166667)
+
+[node name="RayCastLeftPlayer" type="RayCast2D" parent="."]
+position = Vector2(17, 10.5)
+scale = Vector2(12, 100)
+target_position = Vector2(-17, 9.53674e-07)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="RayCastRightPlayer" type="RayCast2D" parent="."]
+position = Vector2(17, 10.5)
+scale = Vector2(12, 100)
+target_position = Vector2(17, 0)
+collision_mask = 2
+
+[node name="RayCastRightBottom" type="RayCast2D" parent="."]
+position = Vector2(41, 8.5)
+scale = Vector2(1, 2)
+target_position = Vector2(0, 14)
+
+[node name="RayCastLeftBottom" type="RayCast2D" parent="."]
+position = Vector2(2, 8.5)
+scale = Vector2(1, 2)
+target_position = Vector2(0, 14)
