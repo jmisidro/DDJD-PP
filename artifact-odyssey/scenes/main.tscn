@@ -459,7 +459,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_uu5i4"]
 resource_name = "MovingUpDown"
-length = 3.0
+length = 4.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -468,7 +468,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(2623, 400), Vector2(2623, -304)]
@@ -505,9 +505,9 @@ script = ExtResource("1_itb6s")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
-offset_left = -2705.0
+offset_left = -2720.0
 offset_top = -1339.0
-offset_right = -640.0
+offset_right = -655.0
 offset_bottom = -202.0
 scale = Vector2(5, 5)
 texture = ExtResource("2_47brt")
@@ -624,6 +624,136 @@ scale = Vector2(4, 4)
 [node name="Money10" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
 position = Vector2(680, -353)
+scale = Vector2(4, 4)
+
+[node name="Money11" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(1957, -351)
+scale = Vector2(4, 4)
+
+[node name="Money12" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2024, -352)
+scale = Vector2(4, 4)
+
+[node name="Money13" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2089, -352)
+scale = Vector2(4, 4)
+
+[node name="Money14" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2148, -350)
+scale = Vector2(4, 4)
+
+[node name="Money15" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2209, -350)
+scale = Vector2(4, 4)
+
+[node name="Money16" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2271, -350)
+scale = Vector2(4, 4)
+
+[node name="Money17" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2337, -349)
+scale = Vector2(4, 4)
+
+[node name="Money18" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2399, -351)
+scale = Vector2(4, 4)
+
+[node name="Money19" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2729, -350)
+scale = Vector2(4, 4)
+
+[node name="Money20" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2796, -351)
+scale = Vector2(4, 4)
+
+[node name="Money21" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2861, -351)
+scale = Vector2(4, 4)
+
+[node name="Money22" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2920, -349)
+scale = Vector2(4, 4)
+
+[node name="Money23" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(2981, -349)
+scale = Vector2(4, 4)
+
+[node name="Money24" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3043, -349)
+scale = Vector2(4, 4)
+
+[node name="Money25" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3109, -348)
+scale = Vector2(4, 4)
+
+[node name="Money26" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3171, -350)
+scale = Vector2(4, 4)
+
+[node name="Money27" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3242, -352)
+scale = Vector2(4, 4)
+
+[node name="Money28" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3309, -353)
+scale = Vector2(4, 4)
+
+[node name="Money29" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3374, -353)
+scale = Vector2(4, 4)
+
+[node name="Money30" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3433, -351)
+scale = Vector2(4, 4)
+
+[node name="Money31" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3494, -351)
+scale = Vector2(4, 4)
+
+[node name="Money32" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3556, -351)
+scale = Vector2(4, 4)
+
+[node name="Money33" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3622, -350)
+scale = Vector2(4, 4)
+
+[node name="Money34" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3684, -352)
+scale = Vector2(4, 4)
+
+[node name="Money35" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3748, -349)
+scale = Vector2(4, 4)
+
+[node name="Money36" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3814, -349)
 scale = Vector2(4, 4)
 
 [node name="Money6" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
