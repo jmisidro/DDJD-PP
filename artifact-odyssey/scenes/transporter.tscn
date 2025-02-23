@@ -1,45 +1,54 @@
-[gd_scene load_steps=7 format=3 uid="uid://0qnx5djcex0c"]
+[gd_scene load_steps=8 format=3 uid="uid://rhol8v26sw35"]
 
 [ext_resource type="Texture2D" uid="uid://d4iq110c27qwb" path="res://assets/animated_objects/Transporter.png" id="1_t2708"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gbe75"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fyx8"]
 atlas = ExtResource("1_t2708")
-region = Rect2(0, 0, 96, 16)
+region = Rect2(0, 0, 96, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2gmd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kapav"]
 atlas = ExtResource("1_t2708")
-region = Rect2(96, 0, 96, 16)
+region = Rect2(96, 0, 96, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7rtc5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_00jd7"]
 atlas = ExtResource("1_t2708")
-region = Rect2(192, 0, 96, 16)
+region = Rect2(192, 0, 96, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_arxgw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfb4c"]
 atlas = ExtResource("1_t2708")
-region = Rect2(288, 0, 96, 16)
+region = Rect2(288, 0, 96, 17)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hdnal"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_k46yb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gbe75")
+"texture": SubResource("AtlasTexture_2fyx8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k2gmd")
+"texture": SubResource("AtlasTexture_kapav")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7rtc5")
+"texture": SubResource("AtlasTexture_00jd7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_arxgw")
+"texture": SubResource("AtlasTexture_xfb4c")
 }],
 "loop": true,
 "name": &"default",
 "speed": 10.0
 }]
 
-[node name="Transporter" type="AnimatedSprite2D"]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_hdnal")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbuef"]
+size = Vector2(96, 15)
+
+[node name="Transporter" type="AnimatableBody2D"]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k46yb")
 autoplay = "default"
-frame_progress = 0.593704
+frame_progress = 0.421769
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_pbuef")
