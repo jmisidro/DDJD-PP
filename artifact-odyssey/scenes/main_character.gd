@@ -4,7 +4,23 @@ extends CharacterBody2D
 const SPEED = 400.0
 const JUMP_VELOCITY = -900.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@export var MAX_HEALTH := 10
+@export var LIVES := 1
+var health: float
 
+func _ready() -> void:
+	health = MAX_HEALTH
+
+func damage(dmg: int):
+	health -= dmg
+	
+	if health <= 0:
+		LIVES -= 1
+		print("lost a life, remaining: ", LIVES)
+		
+	if LIVES <= 0:
+		print("You died. :(")
+		get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity and Animations

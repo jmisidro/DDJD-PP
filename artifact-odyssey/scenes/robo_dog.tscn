@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/robo_dog.gd" id="1_0a1w1"]
 [ext_resource type="Texture2D" uid="uid://csrujaccwyljg" path="res://assets/enemies/robodob/idle.png" id="1_uipac"]
 [ext_resource type="Texture2D" uid="uid://co65t2tj2u4vr" path="res://assets/enemies/robodob/running.png" id="2_0njjx"]
-[ext_resource type="PackedScene" uid="uid://bpalentg7042k" path="res://scenes/killzone.tscn" id="3_w0mx5"]
+[ext_resource type="PackedScene" uid="uid://bpalentg7042k" path="res://scenes/attack.tscn" id="3_w0mx5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n53fk"]
 atlas = ExtResource("1_uipac")
@@ -126,9 +126,9 @@ animation = &"idle"
 autoplay = "walking"
 frame_progress = 0.578617
 
-[node name="Killzone" parent="." instance=ExtResource("3_w0mx5")]
+[node name="Attack" parent="." instance=ExtResource("3_w0mx5")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 position = Vector2(21.3333, 10.5)
 shape = SubResource("RectangleShape2D_hejg0")
 

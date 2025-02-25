@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=34 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="Texture2D" uid="uid://cs2r4bj8c6w44" path="res://assets/backgrounds/BG.png" id="2_47brt"]
@@ -15,8 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://rhol8v26sw35" path="res://scenes/transporter.tscn" id="13_ujmwp"]
 [ext_resource type="PackedScene" uid="uid://c0f7y6icxprbe" path="res://scenes/platform.tscn" id="14_i8cjr"]
 [ext_resource type="PackedScene" uid="uid://ck5yn5eb4q3ik" path="res://scenes/moving_platform.tscn" id="15_tbjmr"]
-[ext_resource type="PackedScene" uid="uid://bpalentg7042k" path="res://scenes/killzone.tscn" id="16_5e0s5"]
+[ext_resource type="PackedScene" uid="uid://bpalentg7042k" path="res://scenes/attack.tscn" id="16_5e0s5"]
 [ext_resource type="PackedScene" uid="uid://dome1ejnl53s5" path="res://scenes/slime.tscn" id="18_jmigi"]
+[ext_resource type="Script" path="res://killzone.gd" id="18_mtery"]
 [ext_resource type="PackedScene" uid="uid://ch5cjyndugxdb" path="res://scenes/robo_dog.tscn" id="19_sseh7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3cq3"]
@@ -825,6 +826,7 @@ autoplay = "MovingUpDown"
 [node name="Killzone" parent="." instance=ExtResource("16_5e0s5")]
 position = Vector2(1265, 769)
 rotation = 3.14159
+script = ExtResource("18_mtery")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 rotation = 3.14159
