@@ -6,6 +6,7 @@ extends Node2D
 @export var color: String = "blue"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var game_manager: Node = get_node("/root/Game/GameManager")
+@onready var area_label: Label = $AreaLabel
 
 signal chest_opened
 
@@ -13,6 +14,9 @@ var is_open: bool = false
 var player_near: bool = false
 
 func _ready() -> void:
+	area_label.text = "Press E to open the chest! Cost: " + str(cost)
+	area_label.visible = false
+	
 	if color == "red":
 		animated_sprite_2d.animation = "red"
 	elif color == "green":
@@ -32,7 +36,7 @@ func open():
 		print("Not enough money!")
 		return
 	
-	# Update the player's money	
+	# Update the player's moneya	
 	game_manager.remove_money(cost)
 	
 	if animated_sprite_2d.animation == "blue":
@@ -57,8 +61,10 @@ func _process(delta):
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		player_near = true
+		area_label.visible = true  # Show text
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		player_near = false
+		area_label.visible = false  # Show text

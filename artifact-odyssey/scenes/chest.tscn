@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://5fxiji5t7bdu"]
+[gd_scene load_steps=12 format=3 uid="uid://5fxiji5t7bdu"]
 
 [ext_resource type="Script" path="res://scripts/chest.gd" id="1_epn1v"]
 [ext_resource type="Texture2D" uid="uid://i3qoiv0uacrp" path="res://assets/objects/chests.png" id="1_tvema"]
+[ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="3_wb1tj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmche"]
 atlas = ExtResource("1_tvema")
@@ -107,6 +108,24 @@ frame_progress = 1.0
 texture_filter = 1
 position = Vector2(50, 65)
 shape = SubResource("CircleShape2D_cspq5")
+
+[node name="AreaLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -570.0
+offset_top = 170.0
+offset_right = 570.0
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_wb1tj")
+theme_override_font_sizes/font_size = 24
+text = "Press E to open the chest!\""
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
