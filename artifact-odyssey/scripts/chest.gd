@@ -2,8 +2,8 @@ extends Node2D
 
 @export var is_locked: bool = false
 @export var cost: int = 5
-@export var has_treasure: bool = true
 @export var color: String = "blue"
+@export var treasure: Node2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var game_manager: Node = get_node("/root/Game/GameManager")
 @onready var area_label: Label = $AreaLabel
@@ -14,6 +14,8 @@ var is_open: bool = false
 var player_near: bool = false
 
 func _ready() -> void:
+	treasure.visible = false
+	
 	area_label.text = "Press E to open the chest! Cost: " + str(cost)
 	area_label.visible = false
 	
@@ -50,8 +52,15 @@ func open():
 		
 	is_open = true
 	emit_signal("chest_opened")
-	if has_treasure:
-		print("You found a treasure!")
+	print("You found a treasure!")
+	if (treasure):
+		pop_treasure()
+		
+func pop_treasure():
+	treasure.visible = true
+	var tween = get_tree().create_tween()  # Create a tween for animation
+	tween.tween_property(treasure, "position", treasure.position + Vector2(0, -50), 0.5).set_trans(Tween.TRANS_BOUNCE)
+
 
 func _process(delta):
 	if player_near and Input.is_action_just_pressed("interact"):
