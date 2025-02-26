@@ -5,6 +5,7 @@ extends Node2D
 @export var has_treasure: bool = true
 @export var color: String = "blue"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var game_manager: Node = get_node("/root/Game/GameManager")
 
 signal chest_opened
 
@@ -26,6 +27,13 @@ func open():
 	if is_locked:
 		print("The chest is locked!")
 		return
+		
+	if game_manager.money < cost:
+		print("Not enough money!")
+		return
+	
+	# Update the player's money	
+	game_manager.remove_money(cost)
 	
 	if animated_sprite_2d.animation == "blue":
 		animated_sprite_2d.animation = "blue_open"
