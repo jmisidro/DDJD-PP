@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=36 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="Texture2D" uid="uid://cs2r4bj8c6w44" path="res://assets/backgrounds/BG.png" id="2_47brt"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://killzone.gd" id="18_mtery"]
 [ext_resource type="PackedScene" uid="uid://ch5cjyndugxdb" path="res://scenes/robo_dog.tscn" id="19_sseh7"]
 [ext_resource type="PackedScene" uid="uid://bnp3rxl8qykgo" path="res://scenes/portal.tscn" id="20_sdjds"]
+[ext_resource type="PackedScene" uid="uid://5fxiji5t7bdu" path="res://scenes/chest.tscn" id="21_82vw8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3cq3"]
 texture = ExtResource("6_58qq1")
@@ -625,7 +626,7 @@ scale = Vector2(4, 4)
 
 [node name="Money10" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
-position = Vector2(680, -353)
+position = Vector2(721, -357)
 scale = Vector2(4, 4)
 
 [node name="Money11" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
@@ -837,10 +838,14 @@ shape = SubResource("WorldBoundaryShape2D_qo240")
 position = Vector2(1888, 145)
 
 [node name="Portal" parent="." node_paths=PackedStringArray("target_portal") instance=ExtResource("20_sdjds")]
-position = Vector2(204, 210)
+position = Vector2(571, -428)
 collision_mask = 2
 target_portal = NodePath("../Portal2")
 
 [node name="Portal2" parent="." instance=ExtResource("20_sdjds")]
 position = Vector2(1797, -685)
+collision_mask = 2
+
+[node name="Chest" parent="." instance=ExtResource("21_82vw8")]
+position = Vector2(3530, 300)
 collision_mask = 2

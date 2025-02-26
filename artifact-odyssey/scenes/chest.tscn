@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://5fxiji5t7bdu"]
+
+[ext_resource type="Script" path="res://scripts/chest.gd" id="1_epn1v"]
+[ext_resource type="Texture2D" uid="uid://i3qoiv0uacrp" path="res://assets/objects/chests.png" id="1_tvema"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmche"]
+atlas = ExtResource("1_tvema")
+region = Rect2(0, 0, 236, 235)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8luv8"]
+atlas = ExtResource("1_tvema")
+region = Rect2(236, 0, 236, 235)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbtqa"]
+atlas = ExtResource("1_tvema")
+region = Rect2(0, 470, 236, 235)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nirh"]
+atlas = ExtResource("1_tvema")
+region = Rect2(236, 470, 236, 235)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqp1p"]
+atlas = ExtResource("1_tvema")
+region = Rect2(0, 235, 236, 235)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unspf"]
+atlas = ExtResource("1_tvema")
+region = Rect2(236, 235, 236, 235)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8elro"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmche")
+}],
+"loop": false,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmche")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8luv8")
+}],
+"loop": false,
+"name": &"blue_open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbtqa")
+}],
+"loop": false,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbtqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nirh")
+}],
+"loop": false,
+"name": &"green_open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqp1p")
+}],
+"loop": false,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqp1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unspf")
+}],
+"loop": false,
+"name": &"red_open",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cspq5"]
+radius = 52.0
+
+[node name="Chest" type="Area2D"]
+script = ExtResource("1_epn1v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(55.9836, 56.0706)
+scale = Vector2(0.459525, 0.458974)
+sprite_frames = SubResource("SpriteFrames_8elro")
+animation = &"blue_open"
+autoplay = "blue"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+position = Vector2(50, 65)
+shape = SubResource("CircleShape2D_cspq5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
