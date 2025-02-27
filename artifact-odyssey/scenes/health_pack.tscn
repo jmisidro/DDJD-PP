@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkpxw2a3immem"]
+
+[ext_resource type="Texture2D" uid="uid://c00agx5e0opxj" path="res://assets/objects/Collectables_Pack.png" id="1_2abgw"]
+[ext_resource type="Script" path="res://health_pack.gd" id="1_jadus"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu0h2"]
+atlas = ExtResource("1_2abgw")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8exit"]
+atlas = ExtResource("1_2abgw")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nlubg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu0h2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8exit")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4aik"]
+size = Vector2(14, 13)
+
+[node name="HealthPack" type="Area2D"]
+z_index = -1
+scale = Vector2(4, 4)
+collision_mask = 2
+script = ExtResource("1_jadus")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nlubg")
+autoplay = "default"
+frame_progress = 0.887029
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_i4aik")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=37 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="Texture2D" uid="uid://cs2r4bj8c6w44" path="res://assets/backgrounds/BG.png" id="2_47brt"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://ch5cjyndugxdb" path="res://scenes/robo_dog.tscn" id="19_sseh7"]
 [ext_resource type="PackedScene" uid="uid://bnp3rxl8qykgo" path="res://scenes/portal.tscn" id="20_sdjds"]
 [ext_resource type="PackedScene" uid="uid://5fxiji5t7bdu" path="res://scenes/chest.tscn" id="21_82vw8"]
+[ext_resource type="PackedScene" uid="uid://dkpxw2a3immem" path="res://scenes/health_pack.tscn" id="22_8i82o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3cq3"]
 texture = ExtResource("6_58qq1")
@@ -507,6 +508,7 @@ unique_name_in_owner = true
 script = ExtResource("1_itb6s")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -3
 texture_filter = 1
 offset_left = -2720.0
 offset_top = -1339.0
@@ -855,3 +857,12 @@ scale = Vector2(4, 4)
 position = Vector2(3530, 300)
 collision_mask = 2
 treasure = NodePath("../Treasure")
+
+[node name="HealthPack" parent="." instance=ExtResource("22_8i82o")]
+position = Vector2(1824, 420)
+
+[node name="HealthPack2" parent="." instance=ExtResource("22_8i82o")]
+position = Vector2(1502, -349)
+
+[node name="HealthPack3" parent="." instance=ExtResource("22_8i82o")]
+position = Vector2(-162, 292)
