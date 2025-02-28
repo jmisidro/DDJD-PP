@@ -14,7 +14,9 @@ var is_open: bool = false
 var player_near: bool = false
 
 func _ready() -> void:
-	treasure.visible = false
+	# Start treasure at 0 scale (invisible)
+	if treasure:
+		treasure.scale = Vector2(0, 0)
 	
 	area_label.text = "Press E to open the chest! Cost: " + str(cost)
 	area_label.visible = false
@@ -38,9 +40,10 @@ func open():
 		print("Not enough money!")
 		return
 	
-	# Update the player's moneya	
+	# Deduct money
 	game_manager.remove_money(cost)
 	
+	# Change chest animation
 	if animated_sprite_2d.animation == "blue":
 		animated_sprite_2d.animation = "blue_open"
 	elif animated_sprite_2d.animation == "green":
@@ -53,12 +56,15 @@ func open():
 	is_open = true
 	emit_signal("chest_opened")
 	print("You found a treasure!")
-	if (treasure):
+	
+	if treasure:
 		pop_treasure()
 		
 func pop_treasure():
-	treasure.visible = true
 	var tween = get_tree().create_tween()  # Create a tween for animation
+	tween.set_parallel()  # Ensure both animations happen at the same time
+	# Scale from 0 to 1 (makes it grow)
+	tween.tween_property(treasure, "scale", Vector2(4, 4), 0.5).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(treasure, "position", treasure.position + Vector2(0, -50), 0.5).set_trans(Tween.TRANS_BOUNCE)
 
 
@@ -66,14 +72,12 @@ func _process(delta):
 	if player_near and Input.is_action_just_pressed("interact"):
 		open()
 		
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		player_near = true
-		area_label.visible = true  # Show text
-
+		area_label.visible = true  
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		player_near = false
-		area_label.visible = false  # Show text
+		area_label.visible = false  

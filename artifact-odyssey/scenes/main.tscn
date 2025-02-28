@@ -848,15 +848,15 @@ target_portal = NodePath("../Portal2")
 position = Vector2(1797, -685)
 collision_mask = 2
 
-[node name="Treasure" parent="." instance=ExtResource("12_3k8n4")]
-texture_filter = 1
-position = Vector2(3592, 263)
-scale = Vector2(4, 4)
-
 [node name="Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
 position = Vector2(3530, 300)
 collision_mask = 2
 treasure = NodePath("../Treasure")
+
+[node name="Treasure" parent="." instance=ExtResource("12_3k8n4")]
+texture_filter = 1
+position = Vector2(3592, 263)
+scale = Vector2(4, 4)
 
 [node name="HealthPack" parent="." instance=ExtResource("22_8i82o")]
 position = Vector2(1824, 420)
