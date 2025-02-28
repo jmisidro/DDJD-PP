@@ -49,7 +49,7 @@ func start_dash(direction):
 	dash_timer.start()
 	
 	# Play dash animation if you have one
-	#animated_sprite_2d.play("dash")
+	animated_sprite_2d.animation = "dashing"
 	
 	can_dash = false
 
