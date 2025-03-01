@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=43 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="Texture2D" uid="uid://cs2r4bj8c6w44" path="res://assets/backgrounds/BG.png" id="2_47brt"]
 [ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="3_125kt"]
 [ext_resource type="Texture2D" uid="uid://butqv88echrd3" path="res://assets/animated_objects/Money.png" id="4_qjovh"]
 [ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="5_3ihga"]
+[ext_resource type="Texture2D" uid="uid://u7tnebgfochm" path="res://assets/objects/heart/heart_b.png" id="6_2lf3s"]
 [ext_resource type="Texture2D" uid="uid://2m03xfqmbtqt" path="res://assets/tilesets/tilesetIndustrial.png" id="6_58qq1"]
 [ext_resource type="Texture2D" uid="uid://byrtcgk6uo58j" path="res://assets/tilesets/Tileset_basic.png" id="7_blpfc"]
 [ext_resource type="Texture2D" uid="uid://bd148fsk76gj1" path="res://assets/objects/Box7.png" id="8_amjld"]
@@ -22,6 +23,42 @@
 [ext_resource type="PackedScene" uid="uid://bnp3rxl8qykgo" path="res://scenes/portal.tscn" id="20_sdjds"]
 [ext_resource type="PackedScene" uid="uid://5fxiji5t7bdu" path="res://scenes/chest.tscn" id="21_82vw8"]
 [ext_resource type="PackedScene" uid="uid://dkpxw2a3immem" path="res://scenes/health_pack.tscn" id="22_8i82o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybuhl"]
+atlas = ExtResource("6_2lf3s")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk5tb"]
+atlas = ExtResource("6_2lf3s")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3h1o"]
+atlas = ExtResource("6_2lf3s")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28j1v"]
+atlas = ExtResource("6_2lf3s")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2bmo3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybuhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk5tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3h1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28j1v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3cq3"]
 texture = ExtResource("6_58qq1")
@@ -530,22 +567,39 @@ position = Vector2(0, 1)
 limit_bottom = 10000
 limit_smoothed = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Player/Camera2D"]
-position = Vector2(541.681, -284.792)
+[node name="money2D" type="Sprite2D" parent="Player/Camera2D"]
+position = Vector2(535.651, -221.286)
 scale = Vector2(3.3, 3.3)
 texture = ExtResource("4_qjovh")
 region_enabled = true
 region_rect = Rect2(2.88028, 3.97281, 17.094, 16.3508)
 
 [node name="moneyLabel" type="Label" parent="Player/Camera2D"]
-offset_left = 303.502
-offset_top = -306.622
-offset_right = 509.502
-offset_bottom = -254.622
+offset_left = 286.417
+offset_top = -243.116
+offset_right = 492.417
+offset_bottom = -191.116
 theme_override_fonts/font = ExtResource("5_3ihga")
 theme_override_font_sizes/font_size = 48
 text = "0X"
 horizontal_alignment = 2
+
+[node name="healthLabel" type="Label" parent="Player/Camera2D"]
+offset_left = 269.333
+offset_top = -306.622
+offset_right = 497.333
+offset_bottom = -254.622
+theme_override_fonts/font = ExtResource("5_3ihga")
+theme_override_font_sizes/font_size = 48
+text = "20/20"
+horizontal_alignment = 2
+
+[node name="health2D" type="AnimatedSprite2D" parent="Player/Camera2D"]
+position = Vector2(534.646, -286.777)
+scale = Vector2(3.3, 3.3)
+sprite_frames = SubResource("SpriteFrames_2bmo3")
+autoplay = "default"
+frame_progress = 0.710728
 
 [node name="Monters" type="Label" parent="."]
 offset_right = 40.0
@@ -866,3 +920,5 @@ position = Vector2(1502, -349)
 
 [node name="HealthPack3" parent="." instance=ExtResource("22_8i82o")]
 position = Vector2(-162, 292)
+
+[connection signal="draw" from="Player/Camera2D" to="GameManager" method="_on_camera_2d_draw"]
