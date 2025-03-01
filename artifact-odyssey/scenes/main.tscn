@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=44 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="Texture2D" uid="uid://cs2r4bj8c6w44" path="res://assets/backgrounds/BG.png" id="2_47brt"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bnp3rxl8qykgo" path="res://scenes/portal.tscn" id="20_sdjds"]
 [ext_resource type="PackedScene" uid="uid://5fxiji5t7bdu" path="res://scenes/chest.tscn" id="21_82vw8"]
 [ext_resource type="PackedScene" uid="uid://dkpxw2a3immem" path="res://scenes/health_pack.tscn" id="22_8i82o"]
+[ext_resource type="PackedScene" uid="uid://b4phxfw5vogex" path="res://scenes/treasure.tscn" id="24_fxtbh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybuhl"]
 atlas = ExtResource("6_2lf3s")
@@ -907,9 +908,8 @@ position = Vector2(3530, 300)
 collision_mask = 2
 treasure = NodePath("../Treasure")
 
-[node name="Treasure" parent="." instance=ExtResource("12_3k8n4")]
-texture_filter = 1
-position = Vector2(3592, 263)
+[node name="Treasure" parent="." instance=ExtResource("24_fxtbh")]
+position = Vector2(3592, 239)
 scale = Vector2(4, 4)
 
 [node name="HealthPack" parent="." instance=ExtResource("22_8i82o")]
@@ -922,3 +922,4 @@ position = Vector2(1502, -349)
 position = Vector2(-162, 292)
 
 [connection signal="draw" from="Player/Camera2D" to="GameManager" method="_on_camera_2d_draw"]
+[connection signal="body_entered" from="Treasure" to="Treasure" method="_on_body_entered"]

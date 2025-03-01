@@ -8,6 +8,11 @@ extends Node
 
 var money = 0
 var sprite_width = 80
+var artifacts = 0
+
+func add_artifact():
+	artifacts += 1
+	print("Collected an Artifact! Total: ", artifacts)
 
 func add_money(qty):
 	money += qty
@@ -36,3 +41,5 @@ func _process(delta):
 		health_2d.speed_scale =  2.0
 	if (player.health <= 5):
 		health_2d.speed_scale =  4.0
+		
+	# TODO: End game when the player has caught all the artifacts
