@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=49 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="3_125kt"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dkpxw2a3immem" path="res://scenes/health_pack.tscn" id="22_8i82o"]
 [ext_resource type="PackedScene" uid="uid://b4phxfw5vogex" path="res://scenes/treasure.tscn" id="24_fxtbh"]
 [ext_resource type="PackedScene" uid="uid://dg5maphhwju1k" path="res://scenes/dash.tscn" id="25_jioo5"]
+[ext_resource type="PackedScene" uid="uid://b15rrpwa5ox00" path="res://scenes/double_jump.tscn" id="26_8vqjt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybuhl"]
 atlas = ExtResource("6_2lf3s")
@@ -1231,6 +1232,17 @@ treasure = NodePath("../Dash")
 
 [node name="Dash" parent="." instance=ExtResource("25_jioo5")]
 position = Vector2(-1292, 893)
+collision_mask = 2
+
+[node name="Double_Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
+position = Vector2(-1341, 1572)
+collision_mask = 2
+cost = 10
+treasure = NodePath("../DoubleJump")
+
+[node name="DoubleJump" parent="." instance=ExtResource("26_8vqjt")]
+position = Vector2(-1286, 1529)
+scale = Vector2(4, 4)
 collision_mask = 2
 
 [connection signal="draw" from="Player/Camera2D" to="GameManager" method="_on_camera_2d_draw"]

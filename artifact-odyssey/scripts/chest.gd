@@ -15,13 +15,13 @@ var player_near: bool = false
 var treasure_collision : CollisionShape2D
 
 func _ready() -> void:
-	# Start treasure at 0 scale (invisible)
+	# Start treasure at 0 scale (invisible)a 
 	if treasure:
 		treasure.scale = Vector2(0, 0)
 		treasure_collision = treasure.get_node_or_null("CollisionShape2D")
 
 		if treasure_collision:
-			treasure_collision.disabled = false
+			treasure_collision.disabled = true
 		else:
 			print("Error: CollisionShape2D not found in treasure!")
 	
