@@ -128,6 +128,7 @@ autoplay = "walking"
 frame_progress = 0.578617
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_jdmri")]
+MAX_HEALTH = 20
 
 [node name="EnemyComponent" parent="." node_paths=PackedStringArray("health_component") groups=["enemy"] instance=ExtResource("5_tugy4")]
 collision_layer = 4
