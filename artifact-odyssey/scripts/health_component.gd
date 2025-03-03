@@ -11,4 +11,5 @@ func damage(dmg: int):
 	health -= dmg
 	
 	if health <= 0:
+		print("Enemy Killed!")
 		get_parent().queue_free()

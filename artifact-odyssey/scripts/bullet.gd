@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed: int = 700
-@export var damage: int = 5
+@export var damage: int = 10
 
 var direction: Vector2
 
@@ -11,13 +11,17 @@ func _ready() -> void:
 
 func set_direction(bulletDirection):
 	direction = bulletDirection
-	rotation_degrees = rad_to_deg(global_position.angle_to_point(global_position + direction))
+	rotation = direction.angle()  # Correctly rotates the bullet
 
 func _physics_process(delta):
 	global_position += direction * speed * delta
 
-func _on_body_entered(body):
-	print(body)
+	
+func _on_body_entered(body: Node2D) -> void:
 	queue_free()
-	if body.is_in_group("enemy"):
-		print("hit enemy")
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy"):
+		area.damage(damage)
+	queue_free()
