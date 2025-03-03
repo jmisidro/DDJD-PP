@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=65 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="3_125kt"]
@@ -27,6 +27,9 @@
 [ext_resource type="PackedScene" uid="uid://dg5maphhwju1k" path="res://scenes/dash.tscn" id="25_jioo5"]
 [ext_resource type="PackedScene" uid="uid://b15rrpwa5ox00" path="res://scenes/double_jump.tscn" id="26_8vqjt"]
 [ext_resource type="PackedScene" uid="uid://cjwp6gi7xhotw" path="res://scenes/spike.tscn" id="27_6j2fu"]
+[ext_resource type="PackedScene" uid="uid://gbcqqbaejkd7" path="res://scenes/artifact.tscn" id="28_w6hn1"]
+[ext_resource type="Texture2D" uid="uid://dda7vbpvoo536" path="res://assets/artifacts/Icon14_05.png" id="29_11wd5"]
+[ext_resource type="Texture2D" uid="uid://44x422in774i" path="res://assets/artifacts/Icon14_08.png" id="29_e1ao0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybuhl"]
 atlas = ExtResource("6_2lf3s")
@@ -1107,7 +1110,7 @@ scale = Vector2(4, 4)
 
 [node name="Money39" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
-position = Vector2(-411, -93)
+position = Vector2(-481, -94)
 scale = Vector2(4, 4)
 
 [node name="Money43" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
@@ -1157,17 +1160,17 @@ scale = Vector2(4, 4)
 
 [node name="Money40" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
-position = Vector2(-289, -93)
+position = Vector2(-353, -93)
 scale = Vector2(4, 4)
 
 [node name="Money41" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
-position = Vector2(-160, -93)
+position = Vector2(-223, -93)
 scale = Vector2(4, 4)
 
 [node name="Money42" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
-position = Vector2(-31, -93)
+position = Vector2(-94, -93)
 scale = Vector2(4, 4)
 
 [node name="Money37" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
@@ -1340,16 +1343,6 @@ texture_filter = 1
 position = Vector2(3684, -352)
 scale = Vector2(4, 4)
 
-[node name="Money35" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
-texture_filter = 1
-position = Vector2(3748, -349)
-scale = Vector2(4, 4)
-
-[node name="Money36" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
-texture_filter = 1
-position = Vector2(3814, -349)
-scale = Vector2(4, 4)
-
 [node name="Money6" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
 position = Vector2(743, 166)
@@ -1500,16 +1493,6 @@ target_portal = NodePath("../Portal2")
 position = Vector2(1797, -685)
 collision_mask = 2
 
-[node name="Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
-position = Vector2(3530, 300)
-collision_mask = 2
-color = "red"
-treasure = NodePath("../Treasure")
-
-[node name="Treasure" parent="." instance=ExtResource("24_fxtbh")]
-position = Vector2(3592, 239)
-scale = Vector2(4, 4)
-
 [node name="Dash_Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
 position = Vector2(-1343, 920)
 collision_mask = 2
@@ -1587,5 +1570,27 @@ scale = Vector2(3.12195, 3.53144)
 position = Vector2(-1728, 297.946)
 scale = Vector2(3.12195, 4.87683)
 
+[node name="Artifacts" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Artifact" parent="Artifacts" instance=ExtResource("28_w6hn1")]
+position = Vector2(30, -97)
+artifact_texture = ExtResource("29_11wd5")
+
+[node name="Artifact2" parent="Artifacts" instance=ExtResource("28_w6hn1")]
+position = Vector2(3775, -356)
+artifact_texture = ExtResource("29_e1ao0")
+
+[node name="Chest" parent="Artifacts" node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
+position = Vector2(3530, 300)
+collision_mask = 2
+color = "red"
+treasure = NodePath("../Treasure")
+
+[node name="Treasure" parent="Artifacts" instance=ExtResource("24_fxtbh")]
+position = Vector2(3592, 239)
+scale = Vector2(4, 4)
+
 [connection signal="draw" from="Player/Camera2D" to="GameManager" method="_on_camera_2d_draw"]
-[connection signal="body_entered" from="Treasure" to="Treasure" method="_on_body_entered"]
+[connection signal="body_entered" from="Artifacts/Treasure" to="Artifacts/Treasure" method="_on_body_entered"]
