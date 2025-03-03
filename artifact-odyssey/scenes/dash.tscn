@@ -1,20 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4phxfw5vogex"]
+[gd_scene load_steps=8 format=3 uid="uid://dg5maphhwju1k"]
 
-[ext_resource type="Texture2D" uid="uid://cri1pq21h157h" path="res://assets/artifacts/Icon14_03.png" id="1_nltpw"]
-[ext_resource type="AudioStream" uid="uid://c2tgqyrjirhim" path="res://assets/sounds/artifact.mp3" id="2_wxdmq"]
+[ext_resource type="Script" path="res://scripts/dash.gd" id="1_vbr23"]
+[ext_resource type="Texture2D" uid="uid://puxxnt3pighd" path="res://assets/powerups/dash.png" id="2_g4rmq"]
+[ext_resource type="AudioStream" uid="uid://c2tgqyrjirhim" path="res://assets/sounds/artifact.mp3" id="2_tbmfy"]
 
-[sub_resource type="GDScript" id="GDScript_535ka"]
-script/source = "extends Area2D
-
-@onready var game_manager = %GameManager
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-
-func _on_body_entered(body):
-	game_manager.add_artifact()
-	animation_player.play(\"pickArtifact\")
-"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_jm0fv"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rpcp"]
 radius = 6.0
 
 [sub_resource type="Animation" id="Animation_dq5jf"]
@@ -116,22 +106,25 @@ _data = {
 "pickArtifact": SubResource("Animation_rpoop")
 }
 
-[node name="Treasure" type="Area2D"]
-collision_mask = 2
-script = SubResource("GDScript_535ka")
+[node name="Dash" type="Area2D"]
+position = Vector2(3592, 239)
+scale = Vector2(4, 4)
+script = ExtResource("1_vbr23")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_nltpw")
+texture = ExtResource("2_g4rmq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_jm0fv")
+shape = SubResource("CircleShape2D_8rpcp")
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-2, 0)
-stream = ExtResource("2_wxdmq")
+stream = ExtResource("2_tbmfy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wcyo1")
 }
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

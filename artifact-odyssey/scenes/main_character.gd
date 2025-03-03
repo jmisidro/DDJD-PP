@@ -15,7 +15,7 @@ var dash_timer: Timer
 var cooldown_timer: Timer
 var invincibility_timer: Timer
 var is_dashing: bool = false
-var can_dash: bool = true
+var can_dash: bool = false
 var dash_direction: int = 0
 var can_double_jump: bool = true
 var jump_count: int = 0
@@ -61,6 +61,14 @@ func start_invincibility():
 
 func _end_invincibility():
 	is_invincible = false
+	
+func grant_double_jump_ability():
+	can_double_jump = true
+	print("Player now has the ability do Double Jump!")
+	
+func grant_dash_ability():
+	can_dash = true
+	print("Player now has the ability do Dash!")
 
 func start_dash(direction):
 	if direction == 0:

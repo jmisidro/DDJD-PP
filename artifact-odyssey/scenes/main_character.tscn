@@ -302,7 +302,7 @@ texture_filter = 1
 position = Vector2(51, 66)
 scale = Vector2(3.15624, 4.14257)
 sprite_frames = SubResource("SpriteFrames_o8x87")
-animation = &"dashing"
+animation = &"idle"
 autoplay = "idle"
 flip_h = true
 
