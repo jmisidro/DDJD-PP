@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @export var MAX_HEALTH : int = 10
 @export var SPEED: float = 400.0
 @export var DASH_SPEED: float = 1000.0
@@ -9,12 +8,15 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 const JUMP_VELOCITY = -900.0
+const MAX_JUMPS = 2
 var health: float
 var is_dashing: bool = false
 var can_dash: bool = true
 var dash_timer: Timer
 var cooldown_timer: Timer
 var dash_direction: int = 0
+var can_double_jump: bool = true
+var jump_count: int = 0
 
 func _ready() -> void:
 	health = MAX_HEALTH
@@ -74,10 +76,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite_2d.animation = "idle"
 		
-
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or (can_double_jump and jump_count < MAX_JUMPS)):
 		velocity.y = JUMP_VELOCITY
+		jump_count += 1
+
+	# Reset jump count when landing
+	if is_on_floor():
+		jump_count = 1
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
