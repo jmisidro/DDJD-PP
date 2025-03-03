@@ -1,20 +1,26 @@
 extends CharacterBody2D
 
-
 @export var MAX_HEALTH : int = 10
 @export var SPEED: float = 400.0
 @export var DASH_SPEED: float = 1000.0
 @export var DASH_DURATION: float = 0.2
 @export var DASH_COOLDOWN: float = 1.5
+@export var INVINCIBILITY_DURATION: float = 6.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 const JUMP_VELOCITY = -900.0
+const MAX_JUMPS = 2
 var health: float
-var is_dashing: bool = false
-var can_dash: bool = true
 var dash_timer: Timer
 var cooldown_timer: Timer
+var invincibility_timer: Timer
+var is_dashing: bool = false
+var can_dash: bool = true
 var dash_direction: int = 0
+var can_double_jump: bool = true
+var jump_count: int = 0
+var is_invincible: bool = false
+var godmode: bool = false
 
 func _ready() -> void:
 	health = MAX_HEALTH
@@ -31,14 +37,30 @@ func _ready() -> void:
 	cooldown_timer.one_shot = true
 	cooldown_timer.timeout.connect(_reset_dash)
 	add_child(cooldown_timer)
+	
+	# Initialize Invincibility Timer
+	invincibility_timer = Timer.new()
+	invincibility_timer.wait_time = INVINCIBILITY_DURATION
+	invincibility_timer.one_shot = true
+	invincibility_timer.timeout.connect(_end_invincibility)
+	add_child(invincibility_timer)
 
 func damage(dmg: int):
+	if is_invincible or godmode:
+		return
+	
 	health -= dmg
 	
 	if health <= 0:
 		print("You died. :(")
 		get_tree().reload_current_scene()
-		
+
+func start_invincibility():
+	is_invincible = true
+	invincibility_timer.start()
+
+func _end_invincibility():
+	is_invincible = false
 
 func start_dash(direction):
 	if direction == 0:
@@ -60,7 +82,6 @@ func _end_dash():
 func _reset_dash():
 	can_dash = true  # Allow dashing again
 
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity and Animations
 	if not is_on_floor():
@@ -74,10 +95,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite_2d.animation = "idle"
 		
-
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or (can_double_jump and jump_count < MAX_JUMPS)):
 		velocity.y = JUMP_VELOCITY
+		jump_count += 1
+
+	# Reset jump count when landing
+	if is_on_floor():
+		jump_count = 1
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
