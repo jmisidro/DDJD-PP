@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var DASH_COOLDOWN: float = 1.5
 @export var INVINCIBILITY_DURATION: float = 6.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var gun: Node2D = $Gun
 
 const JUMP_VELOCITY = -900.0
 const MAX_JUMPS = 2
@@ -21,10 +22,11 @@ var can_double_jump: bool = false
 var jump_count: int = 0
 var is_invincible: bool = false
 var godmode: bool = false
+var has_gun: bool = true
 
 func _ready() -> void:
 	health = MAX_HEALTH
-	
+		
 	# Initialize Dash Timers
 	dash_timer = Timer.new()
 	dash_timer.wait_time = DASH_DURATION
@@ -91,6 +93,10 @@ func _reset_dash():
 	can_dash = true  # Allow dashing again
 
 func _physics_process(delta: float) -> void:
+	# Gun
+	if Input.is_action_pressed("attack") and has_gun:
+		gun.shoot()
+	
 	# Add the gravity and Animations
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -129,6 +135,22 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, 25)
 
 	move_and_slide()
+	
 
 	var isLeft = velocity.x < 0 
 	animated_sprite_2d.flip_h = isLeft
+
+	if (!has_gun):
+		return
+
+	if (isLeft):
+		$Gun.isLeft = true
+		$Gun.get_node("SpriteLeft").visible = true
+		$Gun.get_node("SpriteRight").visible = false
+		gun.setup_direction(Vector2(-1,0))
+	else:
+		$Gun.isLeft = false
+		$Gun.get_node("SpriteLeft").visible = false
+		$Gun.get_node("SpriteRight").visible = true
+		gun.setup_direction(Vector2(1,0))
+		

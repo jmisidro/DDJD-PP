@@ -903,13 +903,13 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="robo_dog3" parent="Monters/robo_dogs" instance=ExtResource("19_sseh7")]
+[node name="robo_dog3" parent="Monters/robo_dogs" groups=["enemy"] instance=ExtResource("19_sseh7")]
 position = Vector2(897, -381)
 
-[node name="robo_dog4" parent="Monters/robo_dogs" instance=ExtResource("19_sseh7")]
+[node name="robo_dog4" parent="Monters/robo_dogs" groups=["enemy"] instance=ExtResource("19_sseh7")]
 position = Vector2(916, 385)
 
-[node name="robo_dog5" parent="Monters/robo_dogs" instance=ExtResource("19_sseh7")]
+[node name="robo_dog5" parent="Monters/robo_dogs" groups=["enemy"] instance=ExtResource("19_sseh7")]
 position = Vector2(1662, -383)
 
 [node name="slimes" type="Label" parent="Monters"]
@@ -917,10 +917,10 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Slime" parent="Monters/slimes" instance=ExtResource("18_jmigi")]
+[node name="Slime" parent="Monters/slimes" groups=["enemy"] instance=ExtResource("18_jmigi")]
 position = Vector2(2863, 449)
 
-[node name="Slime2" parent="Monters/slimes" instance=ExtResource("18_jmigi")]
+[node name="Slime2" parent="Monters/slimes" groups=["enemy"] instance=ExtResource("18_jmigi")]
 position = Vector2(-400, 321)
 
 [node name="TileMap2" type="TileMap" parent="."]
