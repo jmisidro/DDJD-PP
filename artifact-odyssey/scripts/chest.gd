@@ -7,6 +7,7 @@ extends Node2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var game_manager: Node = get_node("/root/Game/GameManager")
 @onready var area_label: Label = $AreaLabel
+@onready var animation_player = $AnimationPlayer
 
 signal chest_opened
 
@@ -67,7 +68,9 @@ func open():
 	if treasure:
 		pop_treasure()
 		
-func pop_treasure():		
+func pop_treasure():
+	animation_player.play("openSound")
+		
 	var tween = get_tree().create_tween()  # Create a tween for animation
 	tween.set_parallel()  # Ensure both animations happen at the same time
 	# Scale from 0 to 1 (makes it grow)

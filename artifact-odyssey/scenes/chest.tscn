@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://5fxiji5t7bdu"]
+[gd_scene load_steps=16 format=3 uid="uid://5fxiji5t7bdu"]
 
 [ext_resource type="Script" path="res://scripts/chest.gd" id="1_epn1v"]
 [ext_resource type="Texture2D" uid="uid://i3qoiv0uacrp" path="res://assets/objects/chests.png" id="1_tvema"]
 [ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="3_wb1tj"]
+[ext_resource type="AudioStream" uid="uid://3x4o8u13ikrh" path="res://assets/sounds/chest.mp3" id="4_3337b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmche"]
 atlas = ExtResource("1_tvema")
@@ -91,6 +92,43 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_cspq5"]
 radius = 52.0
 
+[sub_resource type="Animation" id="Animation_ft7xc"]
+resource_name = "openSound"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OpenSound:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_p42ir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OpenSound:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ldn6m"]
+_data = {
+"RESET": SubResource("Animation_p42ir"),
+"openSound": SubResource("Animation_ft7xc")
+}
+
 [node name="Chest" type="Area2D"]
 script = ExtResource("1_epn1v")
 
@@ -126,6 +164,14 @@ theme_override_font_sizes/font_size = 24
 text = "Press E to open the chest!\""
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3337b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ldn6m")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
