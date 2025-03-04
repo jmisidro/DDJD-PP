@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var shootSpeed = 1.0
+@export var bullets = 8
 
 const BULLET = preload("res://scenes/bullet.tscn")
 
@@ -13,6 +14,7 @@ const BULLET = preload("res://scenes/bullet.tscn")
 var canShoot: bool = true
 var bulletDirection: Vector2 = Vector2(1,0)
 var isLeft: bool = false
+var bullets_shot: int = 0
 
 func _ready() -> void:
 	shoot_speed_timer.wait_time = 1.0 / shootSpeed
@@ -23,6 +25,11 @@ func _ready() -> void:
 
 func shoot():
 	if canShoot:
+		if bullets_shot >= bullets:
+			return
+			
+		bullets_shot += 1
+		print("Ammo: ", bullets - bullets_shot)
 		canShoot = false
 		shoot_speed_timer.start()
 		
