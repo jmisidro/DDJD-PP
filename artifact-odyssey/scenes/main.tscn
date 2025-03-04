@@ -1660,7 +1660,7 @@ position = Vector2(30, -97)
 artifact_texture = ExtResource("29_11wd5")
 
 [node name="Artifact3" parent="Artifacts" instance=ExtResource("28_w6hn1")]
-position = Vector2(-1956, -34)
+position = Vector2(-1954, -34)
 artifact_texture = ExtResource("29_hflpl")
 
 [node name="Artifact2" parent="Artifacts" instance=ExtResource("28_w6hn1")]
