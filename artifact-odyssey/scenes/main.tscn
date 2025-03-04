@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=76 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="3_125kt"]
@@ -26,14 +26,12 @@
 [ext_resource type="PackedScene" uid="uid://b4phxfw5vogex" path="res://scenes/treasure.tscn" id="24_fxtbh"]
 [ext_resource type="PackedScene" uid="uid://dg5maphhwju1k" path="res://scenes/dash.tscn" id="25_jioo5"]
 [ext_resource type="PackedScene" uid="uid://b15rrpwa5ox00" path="res://scenes/double_jump.tscn" id="26_8vqjt"]
-[ext_resource type="PackedScene" uid="uid://cjwp6gi7xhotw" path="res://scenes/spike.tscn" id="27_6j2fu"]
-[ext_resource type="PackedScene" uid="uid://gbcqqbaejkd7" path="res://scenes/artifact.tscn" id="28_w6hn1"]
+[ext_resource type="PackedScene" path="res://scenes/spike.tscn" id="27_6j2fu"]
+[ext_resource type="PackedScene" path="res://scenes/artifact.tscn" id="28_w6hn1"]
 [ext_resource type="Texture2D" uid="uid://dda7vbpvoo536" path="res://assets/artifacts/Icon14_05.png" id="29_11wd5"]
 [ext_resource type="Texture2D" uid="uid://44x422in774i" path="res://assets/artifacts/Icon14_08.png" id="29_e1ao0"]
 [ext_resource type="Texture2D" uid="uid://cpyhcsduowwhw" path="res://assets/artifacts/Icon14_09.png" id="29_hflpl"]
 [ext_resource type="Texture2D" uid="uid://cvx7w74npyoqb" path="res://assets/artifacts/Icon14_15.png" id="30_mu5cx"]
-[ext_resource type="Texture2D" uid="uid://cri1pq21h157h" path="res://assets/artifacts/Icon14_03.png" id="33_lyrgm"]
-[ext_resource type="Texture2D" uid="uid://se28kmgl1mh5" path="res://assets/artifacts/Icon14_39.png" id="34_r202o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybuhl"]
 atlas = ExtResource("6_2lf3s")
@@ -1938,12 +1936,10 @@ treasure = NodePath("../TreasureArtifact")
 [node name="Treasure" parent="Artifacts" instance=ExtResource("24_fxtbh")]
 position = Vector2(3592, 239)
 scale = Vector2(4, 4)
-artifact_texture = ExtResource("33_lyrgm")
 
 [node name="TreasureArtifact" parent="Artifacts" instance=ExtResource("24_fxtbh")]
 position = Vector2(847, 42)
 scale = Vector2(4, 4)
-artifact_texture = ExtResource("34_r202o")
 
 [connection signal="draw" from="Player/Camera2D" to="GameManager" method="_on_camera_2d_draw"]
 [connection signal="body_entered" from="Artifacts/Treasure" to="Artifacts/Treasure" method="_on_body_entered"]

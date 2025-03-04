@@ -11,6 +11,7 @@ extends CharacterBody2D
 
 const JUMP_VELOCITY = -900.0
 const MAX_JUMPS = 2
+var isLeft: bool = false
 var health: float
 var dash_timer: Timer
 var cooldown_timer: Timer
@@ -92,6 +93,7 @@ func _end_dash():
 func _reset_dash():
 	can_dash = true  # Allow dashing again
 
+
 func _physics_process(delta: float) -> void:
 	# Gun
 	if Input.is_action_pressed("attack") and has_gun:
@@ -119,8 +121,6 @@ func _physics_process(delta: float) -> void:
 		jump_count = 1
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	# The last parameter of the move_toward function, changes the drag that exists when a player moves, higher value, immediately stops the player
 	var direction = Input.get_axis("left", "right")  # -1 (left) to 1 (right)
 	
 	# DASH
@@ -131,26 +131,19 @@ func _physics_process(delta: float) -> void:
 		velocity.x = dash_direction * DASH_SPEED
 	elif direction:
 		velocity.x = direction * SPEED
+		isLeft = direction < 0  # Update isLeft only when moving
 	else:
 		velocity.x = move_toward(velocity.x, 0, 25)
 
 	move_and_slide()
-	
 
-	var isLeft = velocity.x < 0 
 	animated_sprite_2d.flip_h = isLeft
 
-	if (!has_gun):
+	if not has_gun:
 		return
 
-	if (isLeft):
-		$Gun.isLeft = true
-		$Gun.get_node("SpriteLeft").visible = true
-		$Gun.get_node("SpriteRight").visible = false
-		gun.setup_direction(Vector2(-1,0))
-	else:
-		$Gun.isLeft = false
-		$Gun.get_node("SpriteLeft").visible = false
-		$Gun.get_node("SpriteRight").visible = true
-		gun.setup_direction(Vector2(1,0))
-		
+	# Update gun direction based on isLeft
+	$Gun.isLeft = isLeft
+	$Gun.get_node("SpriteLeft").visible = isLeft
+	$Gun.get_node("SpriteRight").visible = not isLeft
+	gun.setup_direction(Vector2(-1, 0) if isLeft else Vector2(1, 0))
