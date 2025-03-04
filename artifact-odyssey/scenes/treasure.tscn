@@ -1,13 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4phxfw5vogex"]
+[gd_scene load_steps=7 format=3 uid="uid://b4phxfw5vogex"]
 
-[ext_resource type="Texture2D" uid="uid://cri1pq21h157h" path="res://assets/artifacts/Icon14_03.png" id="1_nltpw"]
 [ext_resource type="AudioStream" uid="uid://c2tgqyrjirhim" path="res://assets/sounds/artifact.mp3" id="2_wxdmq"]
 
 [sub_resource type="GDScript" id="GDScript_535ka"]
-script/source = "extends Area2D
+script/source = "@tool
+extends Area2D
 
 @onready var game_manager = %GameManager
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@export var artifact_texture: Texture:
+	set(value):
+		artifact_texture = value
+		update_texture()
+
+		
+
+
+func _ready():
+	update_texture()
+
+func update_texture():
+	if $Sprite2D:
+		$Sprite2D.texture = artifact_texture
 
 func _on_body_entered(body):
 	game_manager.add_artifact()
@@ -122,7 +136,6 @@ script = SubResource("GDScript_535ka")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_nltpw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jm0fv")
