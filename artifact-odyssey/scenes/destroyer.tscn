@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bewi8n7h8v35r"]
+
+[ext_resource type="Texture2D" uid="uid://2m03xfqmbtqt" path="res://assets/tilesets/tilesetIndustrial.png" id="1_xj3v8"]
+[ext_resource type="PackedScene" uid="uid://cjwp6gi7xhotw" path="res://scenes/spike.tscn" id="2_yk0pl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgubj"]
+size = Vector2(32, 32)
+
+[node name="destroyer" type="AnimatableBody2D"]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xj3v8")
+region_enabled = true
+region_rect = Rect2(256, 96, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bgubj")
+one_way_collision_margin = 0.0
+
+[node name="Spike" parent="." instance=ExtResource("2_yk0pl")]
+position = Vector2(-1.2666e-07, -19)
+scale = Vector2(0.780488, 0.825)
+
+[node name="Spike3" parent="." instance=ExtResource("2_yk0pl")]
+position = Vector2(19.75, 0.284)
+rotation = 1.5708
+scale = Vector2(0.759987, 0.825)
+
+[node name="Spike4" parent="." instance=ExtResource("2_yk0pl")]
+position = Vector2(-19.75, 0)
+rotation = 1.5708
+scale = Vector2(0.759987, 0.825)
+flip_v = true
+
+[node name="Spike2" parent="." instance=ExtResource("2_yk0pl")]
+position = Vector2(0, 19.5)
+scale = Vector2(0.780488, 0.825)
+flip_v = true
