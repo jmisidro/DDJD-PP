@@ -9,6 +9,7 @@ extends Node
 var money = 0
 var sprite_width = 80
 var artifacts = 0
+var traveling_portal  = false
 
 func add_artifact():
 	artifacts += 1
