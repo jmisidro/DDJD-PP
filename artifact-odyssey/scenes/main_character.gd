@@ -8,22 +8,40 @@ extends CharacterBody2D
 @export var INVINCIBILITY_DURATION: float = 6.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var gun: Node2D = $Gun
+@onready var graple: Node2D = $Graple
 
 const JUMP_VELOCITY = -900.0
 const MAX_JUMPS = 2
+const CHAIN_PULL = 100
+
+# Basic
 var isLeft: bool = false
 var health: float
+
+# Dash
 var dash_timer: Timer
 var cooldown_timer: Timer
-var invincibility_timer: Timer
 var is_dashing: bool = false
 var can_dash: bool = false
 var dash_direction: int = 0
-var can_double_jump: bool = false
-var jump_count: int = 0
+
+# Invincibility
+var invincibility_timer: Timer
 var is_invincible: bool = false
 var godmode: bool = false
+
+# Double Jump 
+var can_double_jump: bool = false
+var jump_count: int = 0
+
+# Gun 
 var has_gun: bool = true
+
+# Graple
+var has_graple: bool = true
+var chain_velocity := Vector2(0,0)
+var can_jump = false			# Whether the player used their air-jump
+
 
 func _ready() -> void:
 	health = MAX_HEALTH
@@ -64,6 +82,14 @@ func start_invincibility():
 
 func _end_invincibility():
 	is_invincible = false
+
+func grant_gun_ability():
+	has_gun = true
+	print("Player now has the Gun!")
+	
+func grant_graple_ability():
+	has_graple = true
+	print("Player now has the Graple!")
 	
 func grant_double_jump_ability():
 	can_double_jump = true
@@ -94,10 +120,44 @@ func _reset_dash():
 	can_dash = true  # Allow dashing again
 
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and has_graple:
+		if event.pressed:
+			# We clicked the mouse -> shoot()
+			graple.shoot(event.position - get_viewport().size * 0.5)
+		else:
+			# We released the mouse -> release()
+			graple.release()
+
+
 func _physics_process(delta: float) -> void:
 	# Gun
 	if Input.is_action_pressed("attack") and has_gun:
 		gun.shoot()
+		
+	# Walking
+	var walk = (Input.get_action_strength("right") - Input.get_action_strength("left")) * SPEED
+
+	# Hook physics
+	if graple.hooked:
+		# `to_local(graple.tip_pos).normalized()` is the direction that the chain is pulling
+		chain_velocity = to_local(graple.tip_pos).normalized() * CHAIN_PULL
+		if chain_velocity.y > 0:
+			# Pulling down isn't as strong
+			chain_velocity.y *= 0.55
+		else:
+			# Pulling up is stronger
+			chain_velocity.y *= 1.65
+		if sign(chain_velocity.x) != sign(walk):
+			# if we are trying to walk in a different
+			# direction than the chain is pulling
+			# reduce its pull
+			chain_velocity.x *= 0.7
+	else:
+		# Not hooked -> no chain velocity
+		chain_velocity = Vector2(0,0)
+	velocity += chain_velocity
+
 	
 	# Add the gravity and Animations
 	if not is_on_floor():
