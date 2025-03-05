@@ -19,7 +19,7 @@ var invincibility_timer: Timer
 var is_dashing: bool = false
 var can_dash: bool = false
 var dash_direction: int = 0
-var can_double_jump: bool = true
+var can_double_jump: bool = false
 var jump_count: int = 0
 var is_invincible: bool = false
 var godmode: bool = false
