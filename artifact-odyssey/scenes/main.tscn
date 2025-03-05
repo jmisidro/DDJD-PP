@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=101 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="3_125kt"]
@@ -1346,6 +1346,44 @@ _data = {
 "move": SubResource("Animation_v5bl2")
 }
 
+[sub_resource type="Animation" id="Animation_by1m5"]
+resource_name = "move"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 5, 6, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1220, 588), Vector2(-1220, 888), Vector2(-2500, 888), Vector2(-2500, 588), Vector2(-1220, 588)]
+}
+
+[sub_resource type="Animation" id="Animation_0srb7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1220, 588)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjf3f"]
+_data = {
+"RESET": SubResource("Animation_0srb7"),
+"move": SubResource("Animation_by1m5")
+}
+
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
@@ -2366,6 +2404,15 @@ position = Vector2(-2500, 888)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="destroyer"]
 libraries = {
 "": SubResource("AnimationLibrary_gymfg")
+}
+autoplay = "move"
+
+[node name="destroyer2" parent="." instance=ExtResource("35_bsvhw")]
+position = Vector2(-1220, 588)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="destroyer2"]
+libraries = {
+"": SubResource("AnimationLibrary_qjf3f")
 }
 autoplay = "move"
 
