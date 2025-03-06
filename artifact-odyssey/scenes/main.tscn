@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=100 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="3_125kt"]
@@ -24,18 +24,17 @@
 [ext_resource type="PackedScene" uid="uid://5fxiji5t7bdu" path="res://scenes/chest.tscn" id="21_82vw8"]
 [ext_resource type="PackedScene" uid="uid://dkpxw2a3immem" path="res://scenes/health_pack.tscn" id="22_8i82o"]
 [ext_resource type="PackedScene" uid="uid://b4phxfw5vogex" path="res://scenes/treasure.tscn" id="24_fxtbh"]
+[ext_resource type="PackedScene" uid="uid://mikimx4v4624" path="res://scenes/gun_power_up.tscn" id="25_8ub35"]
 [ext_resource type="PackedScene" uid="uid://dg5maphhwju1k" path="res://scenes/dash.tscn" id="25_jioo5"]
 [ext_resource type="PackedScene" uid="uid://b15rrpwa5ox00" path="res://scenes/double_jump.tscn" id="26_8vqjt"]
-[ext_resource type="PackedScene" uid="uid://cjwp6gi7xhotw" path="res://scenes/spike.tscn" id="27_6j2fu"]
-[ext_resource type="PackedScene" uid="uid://gbcqqbaejkd7" path="res://scenes/artifact.tscn" id="28_w6hn1"]
+[ext_resource type="PackedScene" path="res://scenes/spike.tscn" id="27_6j2fu"]
+[ext_resource type="PackedScene" path="res://scenes/artifact.tscn" id="28_w6hn1"]
 [ext_resource type="Texture2D" uid="uid://dda7vbpvoo536" path="res://assets/artifacts/Icon14_05.png" id="29_11wd5"]
 [ext_resource type="Texture2D" uid="uid://44x422in774i" path="res://assets/artifacts/Icon14_08.png" id="29_e1ao0"]
 [ext_resource type="Texture2D" uid="uid://cpyhcsduowwhw" path="res://assets/artifacts/Icon14_09.png" id="29_hflpl"]
 [ext_resource type="Texture2D" uid="uid://cvx7w74npyoqb" path="res://assets/artifacts/Icon14_15.png" id="30_mu5cx"]
 [ext_resource type="Texture2D" uid="uid://cdr4sy35akltf" path="res://assets/artifacts/Icon14_16.png" id="32_xws42"]
-[ext_resource type="Texture2D" uid="uid://cri1pq21h157h" path="res://assets/artifacts/Icon14_03.png" id="34_k0br3"]
-[ext_resource type="Texture2D" uid="uid://se28kmgl1mh5" path="res://assets/artifacts/Icon14_39.png" id="35_1e6xi"]
-[ext_resource type="PackedScene" uid="uid://bewi8n7h8v35r" path="res://scenes/destroyer.tscn" id="35_bsvhw"]
+[ext_resource type="PackedScene" path="res://scenes/destroyer.tscn" id="35_bsvhw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybuhl"]
 atlas = ExtResource("6_2lf3s")
@@ -1346,6 +1345,21 @@ _data = {
 "move": SubResource("Animation_v5bl2")
 }
 
+[sub_resource type="Animation" id="Animation_0srb7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1220, 588)]
+}
+
 [sub_resource type="Animation" id="Animation_by1m5"]
 resource_name = "move"
 length = 10.0
@@ -1361,21 +1375,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-1220, 588), Vector2(-1220, 888), Vector2(-2500, 888), Vector2(-2500, 588), Vector2(-1220, 588)]
-}
-
-[sub_resource type="Animation" id="Animation_0srb7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1220, 588)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjf3f"]
@@ -2231,6 +2230,7 @@ treasure = NodePath("../Dash")
 
 [node name="Dash" parent="." instance=ExtResource("25_jioo5")]
 position = Vector2(-2312, -121)
+collision_layer = 16
 collision_mask = 2
 
 [node name="Double_Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
@@ -2242,6 +2242,19 @@ treasure = NodePath("../DoubleJump")
 [node name="DoubleJump" parent="." instance=ExtResource("26_8vqjt")]
 position = Vector2(339, -200)
 scale = Vector2(4, 4)
+collision_layer = 16
+collision_mask = 2
+
+[node name="Gun_Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
+position = Vector2(-2424, -901)
+collision_mask = 2
+cost = 10
+treasure = NodePath("../GunPowerUp")
+
+[node name="GunPowerUp" parent="." instance=ExtResource("25_8ub35")]
+position = Vector2(-2372, -944)
+scale = Vector2(4, 4)
+collision_layer = 16
 collision_mask = 2
 
 [node name="HealthPacks" type="Label" parent="."]
@@ -2391,12 +2404,10 @@ treasure = NodePath("../TreasureArtifact")
 [node name="Treasure" parent="Artifacts" instance=ExtResource("24_fxtbh")]
 position = Vector2(3592, 239)
 scale = Vector2(4, 4)
-artifact_texture = ExtResource("34_k0br3")
 
 [node name="TreasureArtifact" parent="Artifacts" instance=ExtResource("24_fxtbh")]
 position = Vector2(847, 42)
 scale = Vector2(4, 4)
-artifact_texture = ExtResource("35_1e6xi")
 
 [node name="destroyer" parent="." instance=ExtResource("35_bsvhw")]
 position = Vector2(-2500, 888)
