@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=101 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="3_125kt"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://mikimx4v4624" path="res://scenes/gun_power_up.tscn" id="25_8ub35"]
 [ext_resource type="PackedScene" uid="uid://dg5maphhwju1k" path="res://scenes/dash.tscn" id="25_jioo5"]
 [ext_resource type="PackedScene" uid="uid://b15rrpwa5ox00" path="res://scenes/double_jump.tscn" id="26_8vqjt"]
+[ext_resource type="PackedScene" uid="uid://caluwqq4377go" path="res://scenes/graple_power_up.tscn" id="26_acc8m"]
 [ext_resource type="PackedScene" path="res://scenes/spike.tscn" id="27_6j2fu"]
 [ext_resource type="PackedScene" path="res://scenes/artifact.tscn" id="28_w6hn1"]
 [ext_resource type="Texture2D" uid="uid://dda7vbpvoo536" path="res://assets/artifacts/Icon14_05.png" id="29_11wd5"]
@@ -2248,11 +2249,23 @@ collision_mask = 2
 [node name="Gun_Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
 position = Vector2(-2424, -901)
 collision_mask = 2
-cost = 10
+cost = 25
 treasure = NodePath("../GunPowerUp")
 
 [node name="GunPowerUp" parent="." instance=ExtResource("25_8ub35")]
 position = Vector2(-2372, -944)
+scale = Vector2(4, 4)
+collision_layer = 16
+collision_mask = 2
+
+[node name="Graple_Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
+position = Vector2(-3096, -888)
+collision_mask = 2
+cost = 30
+treasure = NodePath("../GraplePowerUp")
+
+[node name="GraplePowerUp" parent="." instance=ExtResource("26_acc8m")]
+position = Vector2(-3040, -928)
 scale = Vector2(4, 4)
 collision_layer = 16
 collision_mask = 2

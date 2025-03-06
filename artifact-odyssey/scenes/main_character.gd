@@ -38,7 +38,7 @@ var jump_count: int = 0
 var has_gun: bool = false
 
 # Graple
-var has_graple: bool = true
+var has_graple: bool = false
 var chain_velocity := Vector2(0,0)
 var can_jump = false			# Whether the player used their air-jump
 
