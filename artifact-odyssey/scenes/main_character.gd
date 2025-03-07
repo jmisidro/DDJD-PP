@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var MAX_HEALTH : int = 10
 @export var SPEED: float = 400.0
+@export var  JUMP_VELOCITY: float = -900.0
+@export var FLY_SPEED: float = 300.0
 @export var DASH_SPEED: float = 1000.0
 @export var DASH_DURATION: float = 0.2
 @export var DASH_COOLDOWN: float = 1.5
@@ -10,7 +12,7 @@ extends CharacterBody2D
 @onready var gun: Node2D = $Gun
 @onready var graple: Node2D = $Graple
 
-const JUMP_VELOCITY = -900.0
+# Constants
 const MAX_JUMPS = 2
 const CHAIN_PULL = 100
 
@@ -24,6 +26,10 @@ var cooldown_timer: Timer
 var is_dashing: bool = false
 var can_dash: bool = false
 var dash_direction: int = 0
+
+# Flying
+var can_fly: bool = true
+var flying: bool = false
 
 # Invincibility
 var invincibility_timer: Timer
@@ -98,6 +104,10 @@ func grant_double_jump_ability():
 func grant_dash_ability():
 	can_dash = true
 	print("Player now has the ability do Dash!")
+	
+func grant_flight_ability():
+	can_fly = true
+	print("Player now has the ability to Fly!")
 
 func start_dash(direction):
 	if direction == 0:
@@ -132,8 +142,12 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Gun
-	if Input.is_action_pressed("attack") and has_gun:
+	if has_gun and Input.is_action_pressed("attack"):
 		gun.shoot()
+		
+	# Flying
+	if can_fly and Input.is_action_pressed("flying"):
+		flying = !flying
 		
 	# Walking
 	var walk = (Input.get_action_strength("right") - Input.get_action_strength("left")) * SPEED
@@ -157,11 +171,21 @@ func _physics_process(delta: float) -> void:
 		# Not hooked -> no chain velocity
 		chain_velocity = Vector2(0,0)
 	velocity += chain_velocity
+	
+	var move_vector = Vector2.ZERO
+	
+	# Flying movement
+	if flying:
+		if Input.is_action_pressed("jump"):
+			velocity.y = -FLY_SPEED
+		elif Input.is_action_pressed("down"):
+			velocity.y = FLY_SPEED
 
 	
 	# Add the gravity and Animations
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		if not flying:
+			velocity += get_gravity() * delta
 		if velocity.y < 0:  # Moving upwards
 			animated_sprite_2d.animation = "jumping"
 		else:  # Moving downwards
