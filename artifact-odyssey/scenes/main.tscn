@@ -28,14 +28,14 @@
 [ext_resource type="PackedScene" uid="uid://dg5maphhwju1k" path="res://scenes/dash.tscn" id="25_jioo5"]
 [ext_resource type="PackedScene" uid="uid://b15rrpwa5ox00" path="res://scenes/double_jump.tscn" id="26_8vqjt"]
 [ext_resource type="PackedScene" uid="uid://caluwqq4377go" path="res://scenes/graple_power_up.tscn" id="26_acc8m"]
-[ext_resource type="PackedScene" path="res://scenes/spike.tscn" id="27_6j2fu"]
-[ext_resource type="PackedScene" path="res://scenes/artifact.tscn" id="28_w6hn1"]
+[ext_resource type="PackedScene" uid="uid://cjwp6gi7xhotw" path="res://scenes/spike.tscn" id="27_6j2fu"]
+[ext_resource type="PackedScene" uid="uid://gbcqqbaejkd7" path="res://scenes/artifact.tscn" id="28_w6hn1"]
 [ext_resource type="Texture2D" uid="uid://dda7vbpvoo536" path="res://assets/artifacts/Icon14_05.png" id="29_11wd5"]
 [ext_resource type="Texture2D" uid="uid://44x422in774i" path="res://assets/artifacts/Icon14_08.png" id="29_e1ao0"]
 [ext_resource type="Texture2D" uid="uid://cpyhcsduowwhw" path="res://assets/artifacts/Icon14_09.png" id="29_hflpl"]
 [ext_resource type="Texture2D" uid="uid://cvx7w74npyoqb" path="res://assets/artifacts/Icon14_15.png" id="30_mu5cx"]
 [ext_resource type="Texture2D" uid="uid://cdr4sy35akltf" path="res://assets/artifacts/Icon14_16.png" id="32_xws42"]
-[ext_resource type="PackedScene" path="res://scenes/destroyer.tscn" id="35_bsvhw"]
+[ext_resource type="PackedScene" uid="uid://bewi8n7h8v35r" path="res://scenes/destroyer.tscn" id="35_bsvhw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybuhl"]
 atlas = ExtResource("6_2lf3s")
