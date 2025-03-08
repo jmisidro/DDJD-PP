@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var timer = $Timer
+@onready var game_manager: Node = get_node("/root/Game/GameManager")
 
 func _on_body_entered(body):
 	print("You died. :(")
@@ -8,4 +9,4 @@ func _on_body_entered(body):
 
 
 func _on_timer_timeout():
-	get_tree().reload_current_scene()
+	game_manager.end_game()

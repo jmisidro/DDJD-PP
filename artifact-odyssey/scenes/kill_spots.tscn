@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://60u6imrrww3i"]
+[gd_scene load_steps=2 format=3 uid="uid://c24ut60c04aak"]
 
 [ext_resource type="Script" path="res://scenes/kill_spots.gd" id="1_4a8jp"]
 
