@@ -186,7 +186,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = FLY_SPEED
 
 	# Change velocity drag
-	if (global_position.y < -1000):
+	if (global_position.y < -2100):
 		velocity_drag = 6
 	else:
 		velocity_drag = 1
