@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba2gy584t50ak"]
+[gd_scene load_steps=7 format=3 uid="uid://dyum0r2k2gugi"]
 
-[ext_resource type="Texture2D" uid="uid://d0mpyqbgpudpm" path="res://assets/backgrounds/Background.png" id="1_adebn"]
-[ext_resource type="FontFile" uid="uid://dxim7hxld3n55" path="res://assets/fonts/CyberpunkCraftpixPixel.otf" id="1_doh1x"]
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_h8qcp"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_oxs8s"]
+[ext_resource type="Texture2D" uid="uid://d0mpyqbgpudpm" path="res://assets/backgrounds/Background.png" id="2_vaury"]
+[ext_resource type="FontFile" uid="uid://dxim7hxld3n55" path="res://assets/fonts/CyberpunkCraftpixPixel.otf" id="3_qi1al"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nuais"]
-texture = ExtResource("1_adebn")
+texture = ExtResource("2_vaury")
 modulate_color = Color(0.372251, 0.372251, 0.372251, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy5qe"]
@@ -28,14 +28,15 @@ shadow_color = Color(0, 0, 0, 0.380392)
 shadow_size = 5
 shadow_offset = Vector2(2, 3.5)
 
-[node name="MainMenu" type="Control"]
+[node name="PauseMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_h8qcp")
+script = ExtResource("1_oxs8s")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -53,34 +54,48 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -197.5
-offset_top = -12.5
-offset_right = 197.5
-offset_bottom = 236.5
+offset_left = -197.0
+offset_top = -68.0
+offset_right = 198.0
+offset_bottom = 244.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_pressed_color = Color(0.498039, 0.592157, 0.905882, 1)
 theme_override_colors/font_color = Color(0.8, 0.843137, 0.968627, 1)
-theme_override_fonts/font = ExtResource("1_doh1x")
+theme_override_fonts/font = ExtResource("3_qi1al")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_cy5qe")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_cy5qe")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cy5qe")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cy5qe")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dd4os")
-text = "Start"
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_pressed_color = Color(0.498039, 0.592157, 0.905882, 1)
+theme_override_colors/font_color = Color(0.8, 0.843137, 0.968627, 1)
+theme_override_fonts/font = ExtResource("3_qi1al")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd4os")
+text = "Restart"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_pressed_color = Color(0.498039, 0.592157, 0.905882, 1)
 theme_override_colors/font_color = Color(0.8, 0.843137, 0.968627, 1)
-theme_override_fonts/font = ExtResource("1_doh1x")
+theme_override_fonts/font = ExtResource("3_qi1al")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_cy5qe")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_cy5qe")
@@ -103,7 +118,7 @@ theme_override_colors/font_color = Color(0.800114, 0.842913, 0.969027, 1)
 theme_override_colors/font_shadow_color = Color(0.121569, 0.168627, 0.396078, 1)
 theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/font = ExtResource("1_doh1x")
+theme_override_fonts/font = ExtResource("3_qi1al")
 theme_override_font_sizes/font_size = 90
 text = "Artifact Odyssey"
 horizontal_alignment = 1
@@ -131,5 +146,6 @@ text = "Game developed by José Miguel Isidro and Nuno França"
 horizontal_alignment = 2
 uppercase = true
 
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

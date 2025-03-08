@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=102 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="3_125kt"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="5_3ihga"]
 [ext_resource type="Texture2D" uid="uid://u7tnebgfochm" path="res://assets/objects/heart/heart_b.png" id="6_2lf3s"]
 [ext_resource type="Texture2D" uid="uid://2m03xfqmbtqt" path="res://assets/tilesets/tilesetIndustrial.png" id="6_58qq1"]
+[ext_resource type="PackedScene" uid="uid://dyum0r2k2gugi" path="res://scenes/pause_menu.tscn" id="6_snx23"]
 [ext_resource type="Texture2D" uid="uid://byrtcgk6uo58j" path="res://assets/tilesets/Tileset_basic.png" id="7_blpfc"]
 [ext_resource type="Texture2D" uid="uid://bd148fsk76gj1" path="res://assets/objects/Box7.png" id="8_amjld"]
 [ext_resource type="Texture2D" uid="uid://c7486unt1mrxp" path="res://assets/objects/Ladder1.png" id="9_1l004"]
@@ -1435,6 +1436,10 @@ scale = Vector2(3.3, 3.3)
 sprite_frames = SubResource("SpriteFrames_2bmo3")
 autoplay = "default"
 frame_progress = 0.710728
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_snx23")]
 
 [node name="Monters" type="Label" parent="."]
 offset_right = 40.0
