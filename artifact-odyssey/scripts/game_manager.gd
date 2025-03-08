@@ -1,5 +1,7 @@
 extends Node
 
+@export var NUM_ARTIFACTS: int = 10
+@onready var game_timer: Timer = $"../GameTimer"
 @onready var money_label = $"../Player/Camera2D/moneyLabel"
 @onready var money_2d = $"../Player/Camera2D/money2D"
 @onready var health_label = $"../Player/Camera2D/healthLabel"
@@ -22,6 +24,18 @@ func add_money(qty):
 func remove_money(qty):
 	money -= qty
 	money_label.text = str(money) + "X"
+	
+func won():
+	Global.won = true
+
+func end_game():
+	# Stop the timer
+	Global.game_time = game_timer.elapsed_time
+	game_timer.stop()
+	Global.artifacts = artifacts
+	
+	# Transition to the end game menu
+	get_tree().change_scene_to_file("res://scenes/end_menu.tscn")
 
 func _on_camera_2d_draw():
 	var viewport_size = get_viewport().size
@@ -43,4 +57,7 @@ func _process(delta):
 	if (player.health <= 5):
 		health_2d.speed_scale =  4.0
 		
-	# TODO: End game when the player has caught all the artifacts
+	# End Game
+	if artifacts >= NUM_ARTIFACTS:
+		won()
+		end_game()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=102 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=103 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
+[ext_resource type="Script" path="res://scripts/game_timer.gd" id="2_umt4i"]
 [ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="3_125kt"]
 [ext_resource type="Texture2D" uid="uid://butqv88echrd3" path="res://assets/animated_objects/Money.png" id="4_qjovh"]
 [ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="5_3ihga"]
@@ -29,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://dg5maphhwju1k" path="res://scenes/dash.tscn" id="25_jioo5"]
 [ext_resource type="PackedScene" uid="uid://b15rrpwa5ox00" path="res://scenes/double_jump.tscn" id="26_8vqjt"]
 [ext_resource type="PackedScene" uid="uid://caluwqq4377go" path="res://scenes/graple_power_up.tscn" id="26_acc8m"]
-[ext_resource type="PackedScene" path="res://scenes/spike.tscn" id="27_6j2fu"]
+[ext_resource type="PackedScene" uid="uid://032p8xdin2n2" path="res://scenes/spike.tscn" id="27_6j2fu"]
 [ext_resource type="PackedScene" path="res://scenes/artifact.tscn" id="28_w6hn1"]
 [ext_resource type="Texture2D" uid="uid://dda7vbpvoo536" path="res://assets/artifacts/Icon14_05.png" id="29_11wd5"]
 [ext_resource type="Texture2D" uid="uid://44x422in774i" path="res://assets/artifacts/Icon14_08.png" id="29_e1ao0"]
@@ -1390,6 +1391,10 @@ _data = {
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_itb6s")
+
+[node name="GameTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("2_umt4i")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("3_125kt")]
 z_index = 1

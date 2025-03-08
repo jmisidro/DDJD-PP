@@ -1,0 +1,205 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4mkq3c3kbek0"]
+
+[ext_resource type="Script" path="res://scripts/end_menu.gd" id="1_tpnv6"]
+[ext_resource type="Texture2D" uid="uid://d0mpyqbgpudpm" path="res://assets/backgrounds/Background.png" id="2_nmmlu"]
+[ext_resource type="FontFile" uid="uid://dxim7hxld3n55" path="res://assets/fonts/CyberpunkCraftpixPixel.otf" id="3_rulq7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nuais"]
+texture = ExtResource("2_nmmlu")
+modulate_color = Color(0.372251, 0.372251, 0.372251, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy5qe"]
+bg_color = Color(0.0892221, 0.135829, 0.377479, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.380392)
+shadow_size = 5
+shadow_offset = Vector2(2, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd4os"]
+bg_color = Color(0.286275, 0.376471, 0.74902, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.380392)
+shadow_size = 5
+shadow_offset = Vector2(2, 3.5)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tpnv6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nuais")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -167.0
+offset_top = -305.0
+offset_right = 167.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_pressed_color = Color(0.498039, 0.592157, 0.905882, 1)
+theme_override_colors/font_color = Color(0.8, 0.843137, 0.968627, 1)
+theme_override_fonts/font = ExtResource("3_rulq7")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd4os")
+text = "Play Again"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_pressed_color = Color(0.498039, 0.592157, 0.905882, 1)
+theme_override_colors/font_color = Color(0.8, 0.843137, 0.968627, 1)
+theme_override_fonts/font = ExtResource("3_rulq7")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cy5qe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd4os")
+text = "Quit"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -527.5
+offset_top = 48.0
+offset_right = 527.5
+offset_bottom = 153.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.800114, 0.842913, 0.969027, 1)
+theme_override_colors/font_shadow_color = Color(0.121569, 0.168627, 0.396078, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_rulq7")
+theme_override_font_sizes/font_size = 52
+text = "Artifact Odyssey"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game Over" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -528.0
+offset_top = 176.0
+offset_right = 527.0
+offset_bottom = 281.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.876752, 0.269959, 1)
+theme_override_colors/font_shadow_color = Color(0.360907, 0.0608832, 0.129275, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_rulq7")
+theme_override_font_sizes/font_size = 72
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Winner" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -528.0
+offset_top = 176.0
+offset_right = 527.0
+offset_bottom = 281.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.280763, 0.812635, 0.999999, 1)
+theme_override_colors/font_shadow_color = Color(9.62615e-07, 0.288335, 0.375527, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_rulq7")
+theme_override_font_sizes/font_size = 72
+text = "You win"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Authors" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -622.0
+offset_top = -31.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.843137, 0.968627, 1)
+theme_override_colors/font_shadow_color = Color(0.121569, 0.168627, 0.396078, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 20
+text = "Game developed by José Miguel Isidro and Nuno França"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 68.0
+offset_right = 94.0
+offset_bottom = 102.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_rulq7")
+theme_override_font_sizes/font_size = 32
+text = "Time:"
+
+[node name="ArtifactsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 20.0
+offset_right = 208.0
+offset_bottom = 54.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_rulq7")
+theme_override_font_sizes/font_size = 32
+text = "Artifacts:"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

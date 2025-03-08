@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var DASH_DURATION: float = 0.2
 @export var DASH_COOLDOWN: float = 1.5
 @export var INVINCIBILITY_DURATION: float = 6.0
+@onready var game_manager: Node = %GameManager
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var gun: Node2D = $Gun
 @onready var graple: Node2D = $Graple
@@ -80,7 +81,8 @@ func damage(dmg: int):
 	
 	if health <= 0:
 		print("You died. :(")
-		get_tree().reload_current_scene()
+		#get_tree().reload_current_scene()
+		game_manager.end_game()
 
 func start_invincibility():
 	is_invincible = true
