@@ -49,6 +49,8 @@ var has_graple: bool = false
 var chain_velocity := Vector2(0,0)
 var can_jump = false			# Whether the player used their air-jump
 
+# Velocity Drag
+var velocity_drag = 1
 
 func _ready() -> void:
 	health = MAX_HEALTH
@@ -183,6 +185,11 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_pressed("down"):
 			velocity.y = FLY_SPEED
 
+	# Change velocity drag
+	if (global_position.y < -1000):
+		velocity_drag = 6
+	else:
+		velocity_drag = 1
 	
 	# Add the gravity and Animations
 	if not is_on_floor():
@@ -219,7 +226,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 		isLeft = direction < 0  # Update isLeft only when moving
 	else:
-		velocity.x = move_toward(velocity.x, 0, 25)
+		velocity.x = move_toward(velocity.x, 0, 50/velocity_drag)
 
 	move_and_slide()
 
