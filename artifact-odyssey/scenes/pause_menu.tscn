@@ -1,12 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyum0r2k2gugi"]
+[gd_scene load_steps=6 format=3 uid="uid://dyum0r2k2gugi"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_oxs8s"]
-[ext_resource type="Texture2D" uid="uid://d0mpyqbgpudpm" path="res://assets/backgrounds/Background.png" id="2_vaury"]
 [ext_resource type="FontFile" uid="uid://dxim7hxld3n55" path="res://assets/fonts/CyberpunkCraftpixPixel.otf" id="3_qi1al"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nuais"]
-texture = ExtResource("2_vaury")
-modulate_color = Color(0.372251, 0.372251, 0.372251, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2w6n3"]
+bg_color = Color(0.0667991, 0.099208, 0.255205, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy5qe"]
 bg_color = Color(0.0892221, 0.135829, 0.377479, 1)
@@ -39,13 +37,14 @@ grow_vertical = 2
 script = ExtResource("1_oxs8s")
 
 [node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.529412)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_nuais")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2w6n3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -145,6 +144,34 @@ theme_override_font_sizes/font_size = 20
 text = "Game developed by José Miguel Isidro and Nuno França"
 horizontal_alignment = 2
 uppercase = true
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 68.0
+offset_right = 94.0
+offset_bottom = 102.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_qi1al")
+theme_override_font_sizes/font_size = 32
+text = "Time:"
+
+[node name="ArtifactsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 20.0
+offset_right = 208.0
+offset_bottom = 54.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_qi1al")
+theme_override_font_sizes/font_size = 32
+text = "Artifacts:"
 
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

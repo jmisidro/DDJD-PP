@@ -1,6 +1,18 @@
 extends Control
 
+@onready var game_manager: Node = get_node("/root/Game/GameManager")
+@onready var time_label: Label = $TimeLabel
+@onready var artifacts_label: Label = $ArtifactsLabel
+
+
 func pause():
+	game_manager.pause_game()
+	
+	# Display the game time when the end menu is shown
+	var time = "%.2f" % Global.game_time
+	time_label.text = "Time: " + time + " seconds"
+	artifacts_label.text = "Artifacts: " + str(Global.artifacts)
+	
 	get_tree().paused = true
 	show()
 
@@ -8,8 +20,8 @@ func resume():
 	get_tree().paused = false
 	hide()
 	
-
-func	 _ready() -> void:
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:	
 	hide()
 
 func _process(delta: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://gbcqqbaejkd7"]
+[gd_scene load_steps=7 format=3 uid="uid://dc010705maad1"]
 
 [ext_resource type="Script" path="res://scenes/artifact.gd" id="1_1mt37"]
 [ext_resource type="AudioStream" uid="uid://c2tgqyrjirhim" path="res://assets/sounds/artifact.mp3" id="2_hwjm6"]

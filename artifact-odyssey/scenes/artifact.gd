@@ -1,7 +1,7 @@
 @tool
 extends Area2D
 
-@onready var game_manager = %GameManager
+@onready var game_manager: Node = get_node("/root/Game/GameManager")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var artifact_texture: Texture:
 	set(value):

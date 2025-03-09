@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var MAX_HEALTH : int = 10
 @export var SPEED: float = 400.0
-@export var  JUMP_VELOCITY: float = -900.0
+@export var JUMP_VELOCITY: float = -900.0
 @export var FLY_SPEED: float = 300.0
 @export var DASH_SPEED: float = 1000.0
 @export var DASH_DURATION: float = 0.2
@@ -20,6 +20,7 @@ const CHAIN_PULL = 100
 # Basic
 var isLeft: bool = false
 var health: float
+var can_jump = false			# Whether the player used their air-jump
 
 # Dash
 var dash_timer: Timer
@@ -47,7 +48,6 @@ var has_gun: bool = false
 # Graple
 var has_graple: bool = false
 var chain_velocity := Vector2(0,0)
-var can_jump = false			# Whether the player used their air-jump
 
 # Velocity Drag
 var velocity_drag = 1

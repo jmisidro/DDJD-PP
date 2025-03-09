@@ -27,6 +27,11 @@ func remove_money(qty):
 	
 func won():
 	Global.won = true
+	
+func pause_game():
+	print("paused game")
+	Global.game_time = game_timer.elapsed_time
+	Global.artifacts = artifacts
 
 func end_game():
 	# Stop the timer
