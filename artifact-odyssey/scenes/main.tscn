@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=105 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="Script" path="res://scripts/game_timer.gd" id="2_umt4i"]
@@ -37,7 +37,9 @@
 [ext_resource type="Texture2D" uid="uid://cpyhcsduowwhw" path="res://assets/artifacts/Icon14_09.png" id="29_hflpl"]
 [ext_resource type="Texture2D" uid="uid://cvx7w74npyoqb" path="res://assets/artifacts/Icon14_15.png" id="30_mu5cx"]
 [ext_resource type="Texture2D" uid="uid://cdr4sy35akltf" path="res://assets/artifacts/Icon14_16.png" id="32_xws42"]
-[ext_resource type="PackedScene" path="res://scenes/destroyer.tscn" id="35_bsvhw"]
+[ext_resource type="PackedScene" uid="uid://bewi8n7h8v35r" path="res://scenes/destroyer.tscn" id="35_bsvhw"]
+[ext_resource type="Texture2D" uid="uid://y156abxumxpq" path="res://assets/artifacts/Icon14_37.png" id="38_n13df"]
+[ext_resource type="Texture2D" uid="uid://se28kmgl1mh5" path="res://assets/artifacts/Icon14_39.png" id="39_j2ydf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybuhl"]
 atlas = ExtResource("6_2lf3s")
@@ -2427,10 +2429,12 @@ treasure = NodePath("../TreasureArtifact")
 [node name="Treasure" parent="Artifacts" instance=ExtResource("24_fxtbh")]
 position = Vector2(3592, 239)
 scale = Vector2(4, 4)
+artifact_texture = ExtResource("38_n13df")
 
 [node name="TreasureArtifact" parent="Artifacts" instance=ExtResource("24_fxtbh")]
 position = Vector2(847, 42)
 scale = Vector2(4, 4)
+artifact_texture = ExtResource("39_j2ydf")
 
 [node name="destroyer" parent="." instance=ExtResource("35_bsvhw")]
 position = Vector2(-2500, 888)
