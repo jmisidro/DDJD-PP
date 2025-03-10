@@ -1,0 +1,16 @@
+og position:
+
+x = 63
+y = 183
+
+
+Test snow:
+
+x = 250
+y = -2800
+
+
+New position:
+
+x = 2600
+y = -2630
