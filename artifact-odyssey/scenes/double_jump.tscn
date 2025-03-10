@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b15rrpwa5ox00"]
+[gd_scene load_steps=9 format=3 uid="uid://b15rrpwa5ox00"]
 
 [ext_resource type="Script" path="res://scripts/double_jump.gd" id="1_kb56h"]
 [ext_resource type="Texture2D" uid="uid://nm3jh211bntf" path="res://assets/powerups/double.png" id="2_3d80y"]
 [ext_resource type="AudioStream" uid="uid://beshnsjyo83fh" path="res://assets/sounds/power.mp3" id="3_fvjml"]
+[ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="4_rxt67"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_feugr"]
 radius = 6.0
@@ -124,5 +125,14 @@ stream = ExtResource("3_fvjml")
 libraries = {
 "": SubResource("AnimationLibrary_wcyo1")
 }
+
+[node name="AbilityLabel" type="Label" parent="."]
+offset_left = -120.0
+offset_top = -64.0
+offset_right = 120.0
+offset_bottom = -56.0
+theme_override_fonts/font = ExtResource("4_rxt67")
+theme_override_font_sizes/font_size = 6
+text = "Double Jump Acquired! Press SPACE/UP twice!"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

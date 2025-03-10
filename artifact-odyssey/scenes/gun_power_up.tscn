@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://mikimx4v4624"]
+[gd_scene load_steps=9 format=3 uid="uid://mikimx4v4624"]
 
 [ext_resource type="Script" path="res://scripts/gun_power_up.gd" id="1_iik2o"]
 [ext_resource type="Texture2D" uid="uid://du8j8v53e3tga" path="res://assets/objects/gun.png" id="2_qiffg"]
 [ext_resource type="AudioStream" uid="uid://beshnsjyo83fh" path="res://assets/sounds/power.mp3" id="3_mitbt"]
+[ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="4_qna41"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5lft3"]
 radius = 6.0
@@ -124,5 +125,14 @@ stream = ExtResource("3_mitbt")
 libraries = {
 "": SubResource("AnimationLibrary_wcyo1")
 }
+
+[node name="AbilityLabel" type="Label" parent="."]
+offset_left = -102.0
+offset_top = -62.0
+offset_right = 102.0
+offset_bottom = -55.0
+theme_override_fonts/font = ExtResource("4_qna41")
+theme_override_font_sizes/font_size = 6
+text = "Gun Acquired! Press ENTER to shoot it!"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
