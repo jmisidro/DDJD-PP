@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bewi8n7h8v35r"]
 
 [ext_resource type="Texture2D" uid="uid://2m03xfqmbtqt" path="res://assets/tilesets/tilesetIndustrial.png" id="1_xj3v8"]
-[ext_resource type="PackedScene" uid="uid://cjwp6gi7xhotw" path="res://scenes/spike.tscn" id="2_yk0pl"]
+[ext_resource type="PackedScene" uid="uid://032p8xdin2n2" path="res://scenes/spike.tscn" id="2_yk0pl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgubj"]
 size = Vector2(32, 32)

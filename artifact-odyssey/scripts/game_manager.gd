@@ -7,6 +7,7 @@ extends Node
 @onready var health_label = $"../Player/Camera2D/healthLabel"
 @onready var health_2d = $"../Player/Camera2D/health2D"
 @onready var player = $"../Player"
+@onready var game_over = $gameOver
 
 var money = 0
 var sprite_width = 80

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://032p8xdin2n2"]
 
 [ext_resource type="Texture2D" uid="uid://cbqc6jc365epo" path="res://assets/objects/4 Conjoined Spikes.png" id="1_cdn23"]
-[ext_resource type="PackedScene" path="res://scenes/kill_spots.tscn" id="2_7bg6j"]
+[ext_resource type="PackedScene" uid="uid://c24ut60c04aak" path="res://scenes/kill_spots.tscn" id="2_7bg6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5okqr"]
 size = Vector2(35, 9.23684)

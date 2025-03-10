@@ -1,6 +1,7 @@
-[gd_scene load_steps=110 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=111 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
+[ext_resource type="AudioStream" uid="uid://b3hue1gwpqxy1" path="res://assets/sounds/game-over-arcade-6435.mp3" id="2_bo7vw"]
 [ext_resource type="Script" path="res://scripts/game_timer.gd" id="2_umt4i"]
 [ext_resource type="PackedScene" uid="uid://bfcsp4dv0h0ng" path="res://scenes/main_character.tscn" id="3_125kt"]
 [ext_resource type="Texture2D" uid="uid://butqv88echrd3" path="res://assets/animated_objects/Money.png" id="4_qjovh"]
@@ -1344,6 +1345,7 @@ _data = {
 }
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qo240"]
+distance = -7.0
 
 [sub_resource type="Animation" id="Animation_ytx27"]
 length = 0.001
@@ -1422,13 +1424,16 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyy50"]
-size = Vector2(4907, 50)
+size = Vector2(3800, 50)
 
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_itb6s")
+
+[node name="gameOver" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("2_bo7vw")
 
 [node name="GameTimer" type="Timer" parent="."]
 autostart = true
@@ -2561,7 +2566,7 @@ offset_bottom = 23.0
 position = Vector2(1725, 1407)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzones/KillSpots1"]
-position = Vector2(2456.5, -46)
+position = Vector2(1903, -46)
 shape = SubResource("RectangleShape2D_oyy50")
 
 [connection signal="draw" from="Player/Camera2D" to="GameManager" method="_on_camera_2d_draw"]

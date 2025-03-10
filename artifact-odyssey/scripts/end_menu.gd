@@ -4,6 +4,7 @@ extends Control
 @onready var winner_label: Label = $Winner
 @onready var time_label: Label = $TimeLabel
 @onready var artifacts_label: Label = $ArtifactsLabel
+@onready var game_over_sound = $gameOverSound
 
 	
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +18,7 @@ func _ready() -> void:
 		winner_label.visible = true
 	else:
 		game_over_label.visible = true
-	
+		game_over_sound.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
