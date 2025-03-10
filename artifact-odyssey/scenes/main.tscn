@@ -1452,6 +1452,20 @@ texture = ExtResource("4_qjovh")
 region_enabled = true
 region_rect = Rect2(2.88028, 3.97281, 17.094, 16.3508)
 
+[node name="health2D" type="AnimatedSprite2D" parent="Player/Camera2D"]
+position = Vector2(534.646, -286.777)
+scale = Vector2(3.3, 3.3)
+sprite_frames = SubResource("SpriteFrames_2bmo3")
+autoplay = "default"
+frame_progress = 0.710728
+
+[node name="artifact2D" type="Sprite2D" parent="Player/Camera2D"]
+position = Vector2(-294.457, -286.777)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("29_e1ao0")
+region_enabled = true
+region_rect = Rect2(0.950558, 0.777397, 30.3961, 30.7558)
+
 [node name="moneyLabel" type="Label" parent="Player/Camera2D"]
 offset_left = 286.417
 offset_top = -243.116
@@ -1472,12 +1486,15 @@ theme_override_font_sizes/font_size = 48
 text = "20/20"
 horizontal_alignment = 2
 
-[node name="health2D" type="AnimatedSprite2D" parent="Player/Camera2D"]
-position = Vector2(534.646, -286.777)
-scale = Vector2(3.3, 3.3)
-sprite_frames = SubResource("SpriteFrames_2bmo3")
-autoplay = "default"
-frame_progress = 0.710728
+[node name="artifactLabel" type="Label" parent="Player/Camera2D"]
+offset_left = -571.83
+offset_top = -306.622
+offset_right = -343.83
+offset_bottom = -254.622
+theme_override_fonts/font = ExtResource("5_3ihga")
+theme_override_font_sizes/font_size = 48
+text = "0/10"
+horizontal_alignment = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

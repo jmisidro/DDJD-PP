@@ -8,6 +8,8 @@ extends Node
 @onready var health_2d = $"../Player/Camera2D/health2D"
 @onready var player = $"../Player"
 @onready var game_over = $gameOver
+@onready var artifact_label: Label = $"../Player/Camera2D/artifactLabel"
+@onready var artifact_2d: Sprite2D = $"../Player/Camera2D/artifact2D"
 
 var money = 0
 var sprite_width = 80
@@ -16,6 +18,7 @@ var traveling_portal  = false
 
 func add_artifact():
 	artifacts += 1
+	artifact_label.text = str(artifacts) + "/" + str(NUM_ARTIFACTS)
 	print("Collected an Artifact! Total: ", artifacts)
 
 func add_money(qty):
@@ -53,6 +56,9 @@ func _on_camera_2d_draw():
 	
 	money_label.position = Vector2(screen_x - money_label.size.x - sprite_width, money_label.size.y/2 - screen_y + health_label.size.y*1.15 - 10)
 	money_2d.position = Vector2(screen_x - sprite_width/2, money_label.size.y  - screen_y + health_label.size.y*1.15 - 15)
+	
+	artifact_2d.position = Vector2(-screen_x + 3*artifact_label.size.x/4 + 1.2*sprite_width, artifact_label.size.y - screen_y - 13)
+	artifact_label.position = Vector2(-screen_x, artifact_label.size.y/2 - screen_y-8)
 
 func _process(delta):
 	health_label.text = str(player.health) + "/20"
