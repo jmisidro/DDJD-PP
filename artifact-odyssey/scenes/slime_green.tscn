@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://dpjw5bk5y3y0e"]
+
+[ext_resource type="Script" path="res://scripts/slime.gd" id="1_6uldx"]
+[ext_resource type="Texture2D" uid="uid://cfdvvy0emyh4n" path="res://assets/enemies/slime_green.png" id="2_pt3oi"]
+[ext_resource type="PackedScene" uid="uid://dc30ob46cb8qr" path="res://scenes/health_component.tscn" id="3_bb3y2"]
+[ext_resource type="PackedScene" uid="uid://b84p80tl3pksp" path="res://scenes/enemy_component.tscn" id="4_rlu12"]
+[ext_resource type="AudioStream" uid="uid://ddt6xvfnf0fbm" path="res://assets/sounds/retro-hurt-2-236675.mp3" id="5_cmq16"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csp4e"]
+atlas = ExtResource("2_pt3oi")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oejh2"]
+atlas = ExtResource("2_pt3oi")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpen8"]
+atlas = ExtResource("2_pt3oi")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atff0"]
+atlas = ExtResource("2_pt3oi")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7v0l6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csp4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oejh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpen8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atff0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vbpe"]
+size = Vector2(13.2, 13)
+
+[node name="greenSlime" type="Node2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_6uldx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_7v0l6")
+autoplay = "default"
+frame_progress = 0.524937
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_bb3y2")]
+
+[node name="EnemyComponent" parent="." node_paths=PackedStringArray("health_component") groups=["enemy"] instance=ExtResource("4_rlu12")]
+collision_layer = 4
+collision_mask = 10
+health_component = NodePath("../HealthComponent")
+attack_damage = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyComponent"]
+position = Vector2(-4.76837e-07, -6.5)
+shape = SubResource("RectangleShape2D_1vbpe")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -6.6)
+target_position = Vector2(6.6, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -6.6)
+target_position = Vector2(-6.5, 0)
+
+[node name="PlayerHurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_cmq16")
+
+[connection signal="body_entered" from="EnemyComponent" to="EnemyComponent" method="_on_body_entered"]
