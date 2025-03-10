@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=113 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="AudioStream" uid="uid://b3hue1gwpqxy1" path="res://assets/sounds/game-over-arcade-6435.mp3" id="2_bo7vw"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://y156abxumxpq" path="res://assets/artifacts/Icon14_37.png" id="38_n13df"]
 [ext_resource type="Texture2D" uid="uid://se28kmgl1mh5" path="res://assets/artifacts/Icon14_39.png" id="39_j2ydf"]
 [ext_resource type="PackedScene" uid="uid://c24ut60c04aak" path="res://scenes/kill_spots.tscn" id="41_gq4j1"]
+[ext_resource type="AudioStream" uid="uid://bfpjok8y56a1" path="res://assets/sounds/8bit_soundtrack.mp3" id="44_ebnvf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybuhl"]
 atlas = ExtResource("6_2lf3s")
@@ -2633,6 +2634,11 @@ target_portal = NodePath("../PortalPeter2")
 position = Vector2(7995, 2962)
 collision_mask = 2
 target_portal = NodePath("../PortalPeter")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("44_ebnvf")
+volume_db = -24.0
+autoplay = true
 
 [connection signal="draw" from="Player/Camera2D" to="GameManager" method="_on_camera_2d_draw"]
 [connection signal="body_entered" from="Artifacts/Treasure" to="Artifacts/Treasure" method="_on_body_entered"]
