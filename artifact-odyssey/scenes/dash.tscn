@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg5maphhwju1k"]
+[gd_scene load_steps=9 format=3 uid="uid://dg5maphhwju1k"]
 
 [ext_resource type="Script" path="res://scripts/dash.gd" id="1_vbr23"]
 [ext_resource type="Texture2D" uid="uid://puxxnt3pighd" path="res://assets/powerups/dash.png" id="2_g4rmq"]
 [ext_resource type="AudioStream" uid="uid://beshnsjyo83fh" path="res://assets/sounds/power.mp3" id="3_3q81u"]
+[ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="4_o1u3b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rpcp"]
 radius = 6.0
@@ -126,5 +127,17 @@ stream = ExtResource("3_3q81u")
 libraries = {
 "": SubResource("AnimationLibrary_wcyo1")
 }
+
+[node name="AbilityLabel" type="Label" parent="."]
+texture_filter = 1
+offset_left = -136.5
+offset_top = -50.25
+offset_right = 121.5
+offset_bottom = -37.25
+theme_override_fonts/font = ExtResource("4_o1u3b")
+theme_override_font_sizes/font_size = 6
+text = "Dash Acquired! Press SHIFT to use it!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
