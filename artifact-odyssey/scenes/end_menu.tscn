@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4mkq3c3kbek0"]
+[gd_scene load_steps=9 format=3 uid="uid://d4mkq3c3kbek0"]
 
 [ext_resource type="Script" path="res://scripts/end_menu.gd" id="1_tpnv6"]
 [ext_resource type="Texture2D" uid="uid://d0mpyqbgpudpm" path="res://assets/backgrounds/Background.png" id="2_nmmlu"]
 [ext_resource type="FontFile" uid="uid://dxim7hxld3n55" path="res://assets/fonts/CyberpunkCraftpixPixel.otf" id="3_rulq7"]
 [ext_resource type="AudioStream" uid="uid://b3hue1gwpqxy1" path="res://assets/sounds/game-over-arcade-6435.mp3" id="4_5gxvn"]
+[ext_resource type="AudioStream" uid="uid://c61ll6va2snmg" path="res://assets/sounds/you-win-sequence-1-183948.mp3" id="5_1wsr6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nuais"]
 texture = ExtResource("2_nmmlu")
@@ -205,6 +206,9 @@ text = "Artifacts:"
 [node name="gameOverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_5gxvn")
 autoplay = true
+
+[node name="winnerSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1wsr6")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
