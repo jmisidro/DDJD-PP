@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var gun: Node2D = $Gun
 @onready var graple: Node2D = $Graple
+@onready var jump_audio = $JumpAudio
 
 # Constants
 const MAX_JUMPS = 2
@@ -207,6 +208,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or (can_double_jump and jump_count < MAX_JUMPS)):
 		velocity.y = JUMP_VELOCITY
+		jump_audio.play()
 		jump_count += 1
 
 	# Reset jump count when landing
