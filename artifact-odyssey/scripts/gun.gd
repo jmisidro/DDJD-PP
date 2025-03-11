@@ -5,8 +5,8 @@ extends Node2D
 
 const BULLET = preload("res://scenes/bullet.tscn")
 
-@onready var sprite_left: Sprite2D = $SpriteLeft
-@onready var sprite_right: Sprite2D = $SpriteRight
+@onready var sprite_left: AnimatedSprite2D = $SpriteLeft
+@onready var sprite_right: AnimatedSprite2D = $SpriteRight
 @onready var marker_left: Marker2D = $MarkerLeft
 @onready var marker_right: Marker2D = $MarkerRight
 @onready var shoot_speed_timer = $shootSpeedTimer
@@ -31,6 +31,10 @@ func shoot():
 		bullets_shot += 1
 		print("Ammo: ", bullets - bullets_shot)
 		canShoot = false
+		sprite_left.animation = "fire"
+		sprite_right.animation = "fire"
+		sprite_left.play()
+		sprite_right.play()
 		shoot_speed_timer.start()
 		
 		var bulletNode = BULLET.instantiate()
@@ -43,6 +47,8 @@ func shoot():
 			bulletNode.global_position = marker_right.global_position
 
 func _on_shoot_speed_timer_timeout() -> void:
+	sprite_left.animation = "default"
+	sprite_right.animation = "default"
 	canShoot = true
 
 func setup_direction(direction):

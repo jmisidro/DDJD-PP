@@ -1632,7 +1632,7 @@ script = ExtResource("2_umt4i")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("3_125kt")]
 z_index = 1
-position = Vector2(2600, -2630)
+position = Vector2(3200, -2630)
 scale = Vector2(0.995051, 1.00778)
 collision_layer = 2
 collision_mask = 5

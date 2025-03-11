@@ -35,7 +35,7 @@ var can_dash: bool = false
 var dash_direction: int = 0
 
 # Flying
-var can_fly: bool = true
+var can_fly: bool = false
 var flying: bool = false
 
 # Invincibility
@@ -48,7 +48,7 @@ var can_double_jump: bool = false
 var jump_count: int = 0
 
 # Gun 
-var has_gun: bool = false
+var has_gun: bool = true
 
 # Graple
 var has_graple: bool = false
