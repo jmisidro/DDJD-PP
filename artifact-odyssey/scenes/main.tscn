@@ -3127,6 +3127,26 @@ text = "Collect All Artifacts to Escape the Maze"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SnowTutorial" type="Label" parent="Tutorial labels"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 2148.0
+offset_top = -2258.0
+offset_right = 2551.0
+offset_bottom = -2099.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_3ihga")
+theme_override_font_sizes/font_size = 24
+text = "Look Out! The Floor is Slipery!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [connection signal="draw" from="Player/Camera2D" to="GameManager" method="_on_camera_2d_draw"]
 [connection signal="body_entered" from="Artifacts/Treasure" to="Artifacts/Treasure" method="_on_body_entered"]
 [connection signal="body_entered" from="Artifacts/TreasureArtifact" to="Artifacts/TreasureArtifact" method="_on_body_entered"]
