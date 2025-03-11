@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var MAX_HEALTH : int = 10
 @export var SPEED: float = 400.0
 @export var JUMP_VELOCITY: float = -900.0
+@export var HURT_COOLDOWN: float = 0.3
 @export var FLY_SPEED: float = 300.0
 @export var DASH_SPEED: float = 1500.0
 @export var DASH_DURATION: float = 0.2
@@ -22,6 +23,9 @@ const CHAIN_PULL = 100
 var isLeft: bool = false
 var health: float
 var can_jump = false			# Whether the player used their air-jump
+var playerHit: bool = false
+var hurt_cooldown_timer: Timer
+
 
 # Dash
 var dash_timer: Timer
@@ -55,6 +59,13 @@ var velocity_drag = 1
 
 func _ready() -> void:
 	health = MAX_HEALTH
+	
+	# Initialize Hurt Timer
+	hurt_cooldown_timer = Timer.new()
+	hurt_cooldown_timer.wait_time = HURT_COOLDOWN
+	hurt_cooldown_timer.one_shot = true
+	hurt_cooldown_timer.timeout.connect(_reset_hurt)
+	add_child(hurt_cooldown_timer)
 		
 	# Initialize Dash Timers
 	dash_timer = Timer.new()
@@ -81,11 +92,16 @@ func damage(dmg: int):
 		return
 	
 	health -= dmg
+	playerHit = true
+	hurt_cooldown_timer.start()  # Start cooldown before next hurt animation
 	
 	if health <= 0:
 		print("You died. :(")
-		#get_tree().reload_current_scene()
 		game_manager.end_game()
+		
+
+func _reset_hurt():
+	playerHit = false  # Allow the player to be hurt again
 
 func start_invincibility():
 	is_invincible = true
@@ -204,6 +220,9 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.animation = "running"
 	else:
 		animated_sprite_2d.animation = "idle"
+
+	if playerHit:
+		animated_sprite_2d.animation = "hit"
 		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or (can_double_jump and jump_count < MAX_JUMPS)):
