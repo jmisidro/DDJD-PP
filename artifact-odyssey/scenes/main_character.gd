@@ -48,7 +48,7 @@ var can_double_jump: bool = false
 var jump_count: int = 0
 
 # Gun 
-var has_gun: bool = false
+var has_gun: bool = true
 
 # Graple
 var has_graple: bool = false
