@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dpjw5bk5y3y0e"]
 
-[ext_resource type="Script" path="res://scripts/slime.gd" id="1_6uldx"]
+[ext_resource type="Script" path="res://scenes/slime_green.gd" id="1_jit4c"]
 [ext_resource type="Texture2D" uid="uid://cfdvvy0emyh4n" path="res://assets/enemies/slime_green.png" id="2_pt3oi"]
 [ext_resource type="PackedScene" uid="uid://dc30ob46cb8qr" path="res://scenes/health_component.tscn" id="3_bb3y2"]
 [ext_resource type="PackedScene" uid="uid://b84p80tl3pksp" path="res://scenes/enemy_component.tscn" id="4_rlu12"]
@@ -47,7 +47,7 @@ size = Vector2(13.2, 13)
 
 [node name="greenSlime" type="Node2D"]
 scale = Vector2(5, 5)
-script = ExtResource("1_6uldx")
+script = ExtResource("1_jit4c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
