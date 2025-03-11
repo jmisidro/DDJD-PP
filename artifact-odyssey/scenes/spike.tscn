@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://ddt6xvfnf0fbm" path="res://assets/sounds/retro-hurt-2-236675.mp3" id="3_1smmm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v3im"]
-size = Vector2(35.8744, 8.95549)
+size = Vector2(28.5074, 8.95549)
 
 [node name="Spike" type="Sprite2D"]
 position = Vector2(0.25, -4.75)
@@ -18,7 +18,7 @@ collision_mask = 2
 attack_damage = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyComponent"]
-position = Vector2(-0.0800769, 0.103897)
+position = Vector2(0.400385, 0.103897)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7v3im")
 

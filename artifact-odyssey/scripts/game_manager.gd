@@ -1,6 +1,6 @@
 extends Node
 
-@export var NUM_ARTIFACTS: int = 10
+@export var NUM_ARTIFACTS: int = 11
 @onready var game_timer: Timer = $"../GameTimer"
 @onready var money_label = $"../Player/Camera2D/moneyLabel"
 @onready var money_2d = $"../Player/Camera2D/money2D"
@@ -10,6 +10,8 @@ extends Node
 @onready var game_over = $gameOver
 @onready var artifact_label: Label = $"../Player/Camera2D/artifactLabel"
 @onready var artifact_2d: Sprite2D = $"../Player/Camera2D/artifact2D"
+@onready var right_hud: Sprite2D = $"../Player/Camera2D/rightHUD"
+@onready var left_hud: Sprite2D = $"../Player/Camera2D/leftHUD"
 
 var money = 0
 var sprite_width = 80
@@ -59,6 +61,9 @@ func _on_camera_2d_draw():
 	
 	artifact_2d.position = Vector2(-screen_x + 3*artifact_label.size.x/4 + 1.2*sprite_width, artifact_label.size.y - screen_y - 13)
 	artifact_label.position = Vector2(-screen_x, artifact_label.size.y/2 - screen_y-8)
+	
+	right_hud.position = Vector2(screen_x-165,-screen_y+right_hud.texture.get_height()/4-5)
+	left_hud.position = Vector2(-screen_x+165,-screen_y+right_hud.texture.get_height()/4-5)
 
 func _process(delta):
 	health_label.text = str(player.health) + "/20"
