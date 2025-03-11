@@ -130,12 +130,13 @@ libraries = {
 
 [node name="AbilityLabel" type="Label" parent="."]
 texture_filter = 1
-offset_left = -136.5
-offset_top = -50.25
-offset_right = 121.5
-offset_bottom = -37.25
+offset_left = -112.25
+offset_top = -49.75
+offset_right = 147.75
+offset_bottom = -36.75
+scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("4_o1u3b")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 8
 text = "Dash Acquired! Press SHIFT to use it!"
 horizontal_alignment = 1
 vertical_alignment = 1

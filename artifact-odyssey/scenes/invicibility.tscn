@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://caluwqq4377go"]
+[gd_scene load_steps=9 format=3 uid="uid://dqyvnl26c7a7e"]
 
-[ext_resource type="Script" path="res://scripts/graple_power_up.gd" id="1_nvh2q"]
-[ext_resource type="Texture2D" uid="uid://c5k348sumcckb" path="res://assets/objects/hook.png" id="2_tkv3t"]
-[ext_resource type="AudioStream" uid="uid://beshnsjyo83fh" path="res://assets/sounds/power.mp3" id="3_vncjf"]
-[ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="4_rsk3m"]
+[ext_resource type="Script" path="res://scripts/invicibility.gd" id="1_6cxkq"]
+[ext_resource type="Texture2D" uid="uid://c5k348sumcckb" path="res://assets/objects/hook.png" id="1_xrjcr"]
+[ext_resource type="AudioStream" uid="uid://beshnsjyo83fh" path="res://assets/sounds/power.mp3" id="2_3ss4o"]
+[ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="3_uif20"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5lft3"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bn0sg"]
 radius = 6.0
 
 [sub_resource type="Animation" id="Animation_dq5jf"]
@@ -107,19 +107,19 @@ _data = {
 "pickArtifact": SubResource("Animation_rpoop")
 }
 
-[node name="GraplePowerUp" type="Area2D"]
-script = ExtResource("1_nvh2q")
+[node name="Invicibility" type="Area2D"]
+script = ExtResource("1_6cxkq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_tkv3t")
+texture = ExtResource("1_xrjcr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_5lft3")
+shape = SubResource("CircleShape2D_bn0sg")
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-2, 0)
-stream = ExtResource("3_vncjf")
+stream = ExtResource("2_3ss4o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -127,12 +127,13 @@ libraries = {
 }
 
 [node name="AbilityLabel" type="Label" parent="."]
-offset_left = -124.0
+offset_left = -144.0
 offset_top = -64.0
-offset_right = 124.0
+offset_right = 216.0
 offset_bottom = -56.0
-theme_override_fonts/font = ExtResource("4_rsk3m")
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("3_uif20")
 theme_override_font_sizes/font_size = 8
-text = "Graple Acquired! Use your LEFT CLICK to use it!"
+text = "You are now Invincible for 10s! Make the most of it!"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

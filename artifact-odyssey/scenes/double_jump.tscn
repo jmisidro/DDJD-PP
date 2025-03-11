@@ -127,12 +127,13 @@ libraries = {
 }
 
 [node name="AbilityLabel" type="Label" parent="."]
-offset_left = -120.0
+offset_left = -125.0
 offset_top = -64.0
-offset_right = 120.0
+offset_right = 188.0
 offset_bottom = -56.0
+scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("4_rxt67")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 8
 text = "Double Jump Acquired! Press SPACE/UP twice!"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

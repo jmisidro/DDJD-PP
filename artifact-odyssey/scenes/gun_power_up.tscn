@@ -127,12 +127,13 @@ libraries = {
 }
 
 [node name="AbilityLabel" type="Label" parent="."]
-offset_left = -102.0
-offset_top = -62.0
-offset_right = 102.0
+offset_left = -107.0
+offset_top = -63.0
+offset_right = 162.0
 offset_bottom = -55.0
+scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("4_qna41")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 8
 text = "Gun Acquired! Press ENTER to shoot it!"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
