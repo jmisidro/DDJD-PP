@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=135 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="AudioStream" uid="uid://b3hue1gwpqxy1" path="res://assets/sounds/game-over-arcade-6435.mp3" id="2_bo7vw"]
@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://djm75iniu1eqp" path="res://assets/artifacts/Icon14_27.png" id="42_c2ojl"]
 [ext_resource type="AudioStream" uid="uid://bfpjok8y56a1" path="res://assets/sounds/8bit_soundtrack.mp3" id="44_ebnvf"]
 [ext_resource type="PackedScene" uid="uid://c788pgebtbyxu" path="res://scenes/moving_platform_snow.tscn" id="45_prnc2"]
+[ext_resource type="PackedScene" uid="uid://dqyvnl26c7a7e" path="res://scenes/invicibility.tscn" id="51_6sxbj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybuhl"]
 atlas = ExtResource("6_2lf3s")
@@ -1540,6 +1541,21 @@ _data = {
 "move": SubResource("Animation_by1m5")
 }
 
+[sub_resource type="Animation" id="Animation_5otss"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6464, -2754)]
+}
+
 [sub_resource type="Animation" id="Animation_jfi8o"]
 resource_name = "move"
 length = 3.5
@@ -1557,7 +1573,13 @@ tracks/0/keys = {
 "values": [Vector2(6464, -2754), Vector2(5888, -2754)]
 }
 
-[sub_resource type="Animation" id="Animation_5otss"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dfn20"]
+_data = {
+"RESET": SubResource("Animation_5otss"),
+"move": SubResource("Animation_jfi8o")
+}
+
+[sub_resource type="Animation" id="Animation_ydyrf"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1569,13 +1591,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(6464, -2754)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dfn20"]
-_data = {
-"RESET": SubResource("Animation_5otss"),
-"move": SubResource("Animation_jfi8o")
+"values": [Vector2(6463, -2306)]
 }
 
 [sub_resource type="Animation" id="Animation_vn11b"]
@@ -1593,21 +1609,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(6463, -2306), Vector2(5441, -2306)]
-}
-
-[sub_resource type="Animation" id="Animation_ydyrf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(6463, -2306)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ebn48"]
@@ -2808,53 +2809,6 @@ shape = SubResource("WorldBoundaryShape2D_qo240")
 [node name="Transporter" parent="." instance=ExtResource("13_ujmwp")]
 position = Vector2(1888, 145)
 
-[node name="Dash_Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
-position = Vector2(-2363, -94)
-collision_mask = 2
-cost = 10
-treasure = NodePath("../Dash")
-
-[node name="Dash" parent="." instance=ExtResource("25_jioo5")]
-position = Vector2(-2312, -121)
-collision_layer = 16
-collision_mask = 2
-
-[node name="Double_Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
-position = Vector2(284, -157)
-collision_mask = 2
-cost = 10
-treasure = NodePath("../DoubleJump")
-
-[node name="DoubleJump" parent="." instance=ExtResource("26_8vqjt")]
-position = Vector2(339, -200)
-scale = Vector2(4, 4)
-collision_layer = 16
-collision_mask = 2
-
-[node name="Gun_Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
-position = Vector2(195, -3606)
-collision_mask = 2
-cost = 25
-treasure = NodePath("../GunPowerUp")
-
-[node name="GunPowerUp" parent="." instance=ExtResource("25_8ub35")]
-position = Vector2(247, -3649)
-scale = Vector2(4, 4)
-collision_layer = 16
-collision_mask = 2
-
-[node name="Graple_Chest" parent="." node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
-position = Vector2(5344, -2710)
-collision_mask = 2
-cost = 30
-treasure = NodePath("../GraplePowerUp")
-
-[node name="GraplePowerUp" parent="." instance=ExtResource("26_acc8m")]
-position = Vector2(5400, -2750)
-scale = Vector2(4, 4)
-collision_layer = 16
-collision_mask = 2
-
 [node name="HealthPacks" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
@@ -3384,6 +3338,66 @@ libraries = {
 "": SubResource("AnimationLibrary_ebn48")
 }
 autoplay = "move"
+
+[node name="Abilities" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Dash_Chest" parent="Abilities" node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
+position = Vector2(-2363, -94)
+collision_mask = 2
+cost = 10
+treasure = NodePath("../Dash")
+
+[node name="Dash" parent="Abilities" instance=ExtResource("25_jioo5")]
+position = Vector2(-2312, -121)
+collision_layer = 16
+collision_mask = 2
+
+[node name="Double_Chest" parent="Abilities" node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
+position = Vector2(284, -157)
+collision_mask = 2
+cost = 10
+treasure = NodePath("../DoubleJump")
+
+[node name="DoubleJump" parent="Abilities" instance=ExtResource("26_8vqjt")]
+position = Vector2(339, -200)
+scale = Vector2(4, 4)
+collision_layer = 16
+collision_mask = 2
+
+[node name="Gun_Chest" parent="Abilities" node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
+position = Vector2(195, -3606)
+collision_mask = 2
+cost = 25
+treasure = NodePath("../GunPowerUp")
+
+[node name="GunPowerUp" parent="Abilities" instance=ExtResource("25_8ub35")]
+position = Vector2(247, -3649)
+scale = Vector2(4, 4)
+collision_layer = 16
+collision_mask = 2
+
+[node name="Graple_Chest" parent="Abilities" node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
+position = Vector2(5344, -2710)
+collision_mask = 2
+cost = 30
+treasure = NodePath("../GraplePowerUp")
+
+[node name="GraplePowerUp" parent="Abilities" instance=ExtResource("26_acc8m")]
+position = Vector2(5400, -2750)
+scale = Vector2(4, 4)
+collision_layer = 16
+collision_mask = 2
+
+[node name="Invicibility_Chest" parent="Abilities" node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
+position = Vector2(4968, -2968)
+collision_mask = 2
+treasure = NodePath("../Invicibility")
+
+[node name="Invicibility" parent="Abilities" instance=ExtResource("51_6sxbj")]
+position = Vector2(5024, -2992)
+scale = Vector2(4, 4)
 
 [connection signal="draw" from="Player/Camera2D" to="GameManager" method="_on_camera_2d_draw"]
 [connection signal="body_entered" from="Artifacts/Treasure" to="Artifacts/Treasure" method="_on_body_entered"]

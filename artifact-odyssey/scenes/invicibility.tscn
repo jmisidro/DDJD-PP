@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dqyvnl26c7a7e"]
 
 [ext_resource type="Script" path="res://scripts/invicibility.gd" id="1_6cxkq"]
-[ext_resource type="Texture2D" uid="uid://c5k348sumcckb" path="res://assets/objects/hook.png" id="1_xrjcr"]
 [ext_resource type="AudioStream" uid="uid://beshnsjyo83fh" path="res://assets/sounds/power.mp3" id="2_3ss4o"]
+[ext_resource type="Texture2D" uid="uid://c00agx5e0opxj" path="res://assets/objects/Collectables_Pack.png" id="2_16wrj"]
 [ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="3_uif20"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bn0sg"]
@@ -111,8 +111,11 @@ _data = {
 script = ExtResource("1_6cxkq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_xrjcr")
+texture_filter = 1
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_16wrj")
+region_enabled = true
+region_rect = Rect2(48.2139, 48.2957, 15.0836, 15.1796)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bn0sg")
@@ -127,13 +130,13 @@ libraries = {
 }
 
 [node name="AbilityLabel" type="Label" parent="."]
-offset_left = -144.0
+offset_left = -112.0
 offset_top = -64.0
-offset_right = 216.0
+offset_right = 168.0
 offset_bottom = -56.0
 scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("3_uif20")
 theme_override_font_sizes/font_size = 8
-text = "You are now Invincible for 10s! Make the most of it!"
+text = "Invincible for 10s! Make the most of it!"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
