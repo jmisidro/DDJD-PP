@@ -1,18 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://032p8xdin2n2"]
+[gd_scene load_steps=5 format=3 uid="uid://032p8xdin2n2"]
 
 [ext_resource type="Texture2D" uid="uid://cbqc6jc365epo" path="res://assets/objects/4 Conjoined Spikes.png" id="1_cdn23"]
-[ext_resource type="PackedScene" uid="uid://c24ut60c04aak" path="res://scenes/kill_spots.tscn" id="2_7bg6j"]
+[ext_resource type="PackedScene" uid="uid://b84p80tl3pksp" path="res://scenes/enemy_component.tscn" id="2_fx2k3"]
+[ext_resource type="AudioStream" uid="uid://ddt6xvfnf0fbm" path="res://assets/sounds/retro-hurt-2-236675.mp3" id="3_1smmm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5okqr"]
-size = Vector2(35, 9.23684)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v3im"]
+size = Vector2(35.8744, 8.95549)
 
 [node name="Spike" type="Sprite2D"]
 position = Vector2(0.25, -4.75)
 scale = Vector2(3.122, 3.258)
 texture = ExtResource("1_cdn23")
 
-[node name="KillSpots" parent="." instance=ExtResource("2_7bg6j")]
+[node name="EnemyComponent" parent="." groups=["enemy"] instance=ExtResource("2_fx2k3")]
+collision_layer = 4
+collision_mask = 2
+attack_damage = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillSpots"]
-position = Vector2(-0.246988, -0.118421)
-shape = SubResource("RectangleShape2D_5okqr")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyComponent"]
+position = Vector2(-0.0800769, 0.103897)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_7v3im")
+
+[node name="PlayerHurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1smmm")
+
+[connection signal="body_entered" from="EnemyComponent" to="EnemyComponent" method="_on_body_entered"]
