@@ -13,7 +13,7 @@ extends Node
 @onready var right_hud: Sprite2D = $"../Player/Camera2D/rightHUD"
 @onready var left_hud: Sprite2D = $"../Player/Camera2D/leftHUD"
 
-var money = 0
+var money = 50
 var sprite_width = 80
 var artifacts = 0
 var traveling_portal  = false

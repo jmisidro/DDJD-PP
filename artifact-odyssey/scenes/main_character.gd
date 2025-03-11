@@ -35,7 +35,7 @@ var can_dash: bool = false
 var dash_direction: int = 0
 
 # Flying
-var can_fly: bool = true
+var can_fly: bool = false
 var flying: bool = false
 
 # Invincibility
