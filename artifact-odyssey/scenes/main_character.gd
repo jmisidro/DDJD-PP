@@ -27,10 +27,17 @@ var hurt_cooldown_timer: Timer
 
 # Jumping
 var can_jump = false			# Whether the player used their air-jump
+
+# Jump Buffering
 var jump_buffer_timer: Timer
-var jump_buffer_time: float = 0.15  # Allow jumps within 150ms of pressing the button
+var jump_buffer_time: float = 0.1  # Allow jumps within 100ms of pressing the button
 var jump_buffered: bool = false
 
+# Coyote Time
+var coyote_time_timer: Timer
+var coyote_time: float = 0.1  # Allow jumps for 100ms after leaving the ground
+var can_coyote_jump: bool = false
+var was_on_floor: bool = false
 
 # Dash
 var dash_timer: Timer
@@ -49,7 +56,7 @@ var is_invincible: bool = false
 var godmode: bool = false
 
 # Double Jump 
-var can_double_jump: bool = true
+var can_double_jump: bool = false
 var jump_count: int = 0
 
 # Gun 
@@ -65,13 +72,19 @@ var velocity_drag = 1
 func _ready() -> void:
 	health = MAX_HEALTH
 	
-	# Initialize Jumping Timer
+	# Initialize Jump Buffer Timer
 	jump_buffer_timer = Timer.new()
 	jump_buffer_timer.wait_time = jump_buffer_time
 	jump_buffer_timer.one_shot = true
 	jump_buffer_timer.timeout.connect(_clear_jump_buffer)
 	add_child(jump_buffer_timer)
-
+	
+	# Initialize Jump Coyote Timer
+	coyote_time_timer = Timer.new()
+	coyote_time_timer.wait_time = coyote_time
+	coyote_time_timer.one_shot = true
+	coyote_time_timer.timeout.connect(_end_coyote_time)
+	add_child(coyote_time_timer)
 	
 	# Initialize Hurt Timer
 	hurt_cooldown_timer = Timer.new()
@@ -115,6 +128,9 @@ func damage(dmg: int):
 		
 func _clear_jump_buffer():
 	jump_buffered = false
+	
+func _end_coyote_time():
+	can_coyote_jump = false
 
 func _reset_hurt():
 	playerHit = false  # Allow the player to be hurt again
@@ -245,15 +261,27 @@ func _physics_process(delta: float) -> void:
 		jump_buffered = true
 		jump_buffer_timer.start()
 
-	if (jump_buffered and is_on_floor()) or (Input.is_action_just_pressed("jump") and (can_double_jump and jump_count < MAX_JUMPS)):
+	# Check if the player just left the ground
+	if was_on_floor and not is_on_floor():
+		can_coyote_jump = true
+		coyote_time_timer.start()
+
+	# Reset coyote time if the player lands
+	if is_on_floor():
+		can_coyote_jump = false
+		coyote_time_timer.stop()
+		jump_count = 1  # Reset jump count when landing
+
+	# Allow jumping if within coyote time or if on the ground
+	if (jump_buffered and (is_on_floor() or can_coyote_jump)) or (Input.is_action_just_pressed("jump") and (is_on_floor() or can_coyote_jump or (can_double_jump and jump_count < MAX_JUMPS))):
 		velocity.y = JUMP_VELOCITY
 		jump_audio.play()
 		jump_count += 1
-		jump_buffered = false  # Reset buffered jump
+		jump_buffered = false
+		can_coyote_jump = false  # Jumping consumes coyote time
 
-	# Reset jump count when landing
-	if is_on_floor():
-		jump_count = 1
+	was_on_floor = is_on_floor()  # Store floor state for next frame
+
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("left", "right")  # -1 (left) to 1 (right)
