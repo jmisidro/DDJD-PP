@@ -14,7 +14,8 @@ extends CharacterBody2D
 @onready var gun: Node2D = $Gun
 @onready var graple: Node2D = $Graple
 @onready var jump_audio = $JumpAudio
-
+@onready var ammo_label = $Camera2D/ammoLabel
+@onready var ammo_sprite = $Camera2D/ammo2D
 # Constants
 const MAX_JUMPS = 2
 const CHAIN_PULL = 100
@@ -56,7 +57,7 @@ var is_invincible: bool = false
 var godmode: bool = false
 
 # Double Jump 
-var can_double_jump: bool = true
+var can_double_jump: bool = false
 var jump_count: int = 0
 
 # Gun 
@@ -66,11 +67,28 @@ var has_gun: bool = false
 var has_graple: bool = false
 var chain_velocity := Vector2(0,0)
 
+# Change to activate all abilities
+var test_mode: bool = true
+
+# Function to activate test mode
+func activate_test_mode(mode: bool):
+	if(mode):
+		has_gun = true
+		ammo_label.visible = true
+		ammo_sprite.visible = true
+		has_graple = true
+		can_double_jump = true
+		can_dash = true
+		can_fly = true
+		
 # Velocity Drag
 var velocity_drag = 1
 
 func _ready() -> void:
 	health = MAX_HEALTH
+	
+	#Activate test mode
+	activate_test_mode(test_mode)
 	
 	# Initialize Jump Buffer Timer
 	jump_buffer_timer = Timer.new()
@@ -144,6 +162,8 @@ func _end_invincibility():
 
 func grant_gun_ability():
 	has_gun = true
+	ammo_label.visible = true
+	ammo_sprite.visible = true
 	print("Player now has the Gun!")
 	
 func grant_graple_ability():
@@ -198,6 +218,9 @@ func _physics_process(delta: float) -> void:
 	if has_gun and Input.is_action_pressed("attack"):
 		gun.shoot()
 		
+		#Update text ammo
+		ammo_label.text=str(gun.bullets-gun.bullets_shot) +"/"+str(gun.bullets)
+
 	# Flying
 	if can_fly and Input.is_action_pressed("flying"):
 		flying = !flying

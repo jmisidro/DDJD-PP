@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=138 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="AudioStream" uid="uid://b3hue1gwpqxy1" path="res://assets/sounds/game-over-arcade-6435.mp3" id="2_bo7vw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://byrtcgk6uo58j" path="res://assets/tilesets/Tileset_basic.png" id="7_blpfc"]
 [ext_resource type="Texture2D" uid="uid://bd148fsk76gj1" path="res://assets/objects/Box7.png" id="8_amjld"]
 [ext_resource type="Texture2D" uid="uid://c7486unt1mrxp" path="res://assets/objects/Ladder1.png" id="9_1l004"]
+[ext_resource type="Texture2D" uid="uid://bv3dcsc0i5k65" path="res://assets/objects/Amo6.png" id="9_lt0wf"]
 [ext_resource type="Texture2D" uid="uid://bvjiwfa75ul4w" path="res://assets/objects/Ladder2.png" id="10_2u1jx"]
 [ext_resource type="PackedScene" uid="uid://bq5n2n84t5aej" path="res://scenes/peter_south.tscn" id="11_d8jhi"]
 [ext_resource type="PackedScene" uid="uid://dpjw5bk5y3y0e" path="res://scenes/slime_green.tscn" id="11_hycej"]
@@ -1681,6 +1682,14 @@ texture = ExtResource("29_e1ao0")
 region_enabled = true
 region_rect = Rect2(0.950558, 0.777397, 30.3961, 30.7558)
 
+[node name="ammo2D" type="Sprite2D" parent="Player/Camera2D"]
+visible = false
+position = Vector2(-294.457, -221.286)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("9_lt0wf")
+region_enabled = true
+region_rect = Rect2(0.950558, 0.777397, 30.3961, 30.7558)
+
 [node name="moneyLabel" type="Label" parent="Player/Camera2D"]
 offset_left = 286.417
 offset_top = -243.116
@@ -1709,6 +1718,17 @@ offset_bottom = -254.622
 theme_override_fonts/font = ExtResource("5_3ihga")
 theme_override_font_sizes/font_size = 48
 text = "0/11"
+horizontal_alignment = 2
+
+[node name="ammoLabel" type="Label" parent="Player/Camera2D"]
+visible = false
+offset_left = -571.83
+offset_top = -247.085
+offset_right = -343.83
+offset_bottom = -195.085
+theme_override_fonts/font = ExtResource("5_3ihga")
+theme_override_font_sizes/font_size = 48
+text = "8/8"
 horizontal_alignment = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -1868,11 +1888,6 @@ scale = Vector2(4, 4)
 [node name="Money63" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
 texture_filter = 1
 position = Vector2(-545, 609)
-scale = Vector2(4, 4)
-
-[node name="Money64" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
-texture_filter = 1
-position = Vector2(-673, 610)
 scale = Vector2(4, 4)
 
 [node name="Money78" parent="MoneyPickUps" instance=ExtResource("12_3k8n4")]
@@ -2814,39 +2829,48 @@ shape = SubResource("WorldBoundaryShape2D_qo240")
 [node name="Transporter" parent="." instance=ExtResource("13_ujmwp")]
 position = Vector2(1888, 145)
 
-[node name="HealthPacks" type="Label" parent="."]
+[node name="ConsumablePacks" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="HealthPack" parent="HealthPacks" instance=ExtResource("22_8i82o")]
+[node name="HealthPack" parent="ConsumablePacks" instance=ExtResource("22_8i82o")]
 position = Vector2(1824, 420)
 
-[node name="HealthPack5" parent="HealthPacks" instance=ExtResource("22_8i82o")]
+[node name="HealthPack5" parent="ConsumablePacks" instance=ExtResource("22_8i82o")]
 position = Vector2(-928, 610)
 
-[node name="HealthPack4" parent="HealthPacks" instance=ExtResource("22_8i82o")]
+[node name="HealthPack4" parent="ConsumablePacks" instance=ExtResource("22_8i82o")]
 position = Vector2(223, -91)
 
-[node name="HealthPack6" parent="HealthPacks" instance=ExtResource("22_8i82o")]
+[node name="HealthPack6" parent="ConsumablePacks" instance=ExtResource("22_8i82o")]
 position = Vector2(2400, -4189)
 
-[node name="HealthPack9" parent="HealthPacks" instance=ExtResource("22_8i82o")]
+[node name="HealthPack9" parent="ConsumablePacks" instance=ExtResource("22_8i82o")]
 position = Vector2(2575, -2525)
 
-[node name="HealthPack7" parent="HealthPacks" instance=ExtResource("22_8i82o")]
+[node name="HealthPack7" parent="ConsumablePacks" instance=ExtResource("22_8i82o")]
 position = Vector2(6367, -3487)
 
-[node name="HealthPack8" parent="HealthPacks" instance=ExtResource("22_8i82o")]
+[node name="HealthPack8" parent="ConsumablePacks" instance=ExtResource("22_8i82o")]
 position = Vector2(4895, -3806)
 
-[node name="HealthPack2" parent="HealthPacks" instance=ExtResource("22_8i82o")]
+[node name="HealthPack2" parent="ConsumablePacks" instance=ExtResource("22_8i82o")]
 position = Vector2(1502, -349)
 
-[node name="HealthPack3" parent="HealthPacks" instance=ExtResource("22_8i82o")]
+[node name="HealthPack3" parent="ConsumablePacks" instance=ExtResource("22_8i82o")]
 position = Vector2(-162, 292)
 
-[node name="Area2D" parent="HealthPacks" instance=ExtResource("29_dl1w6")]
-position = Vector2(3033, -2541)
+[node name="AmmoPack" parent="ConsumablePacks" instance=ExtResource("29_dl1w6")]
+position = Vector2(3033, -2526)
+
+[node name="AmmoPack2" parent="ConsumablePacks" instance=ExtResource("29_dl1w6")]
+position = Vector2(3167, -4254)
+
+[node name="AmmoPack3" parent="ConsumablePacks" instance=ExtResource("29_dl1w6")]
+position = Vector2(-675, 607)
+
+[node name="AmmoPack4" parent="ConsumablePacks" instance=ExtResource("29_dl1w6")]
+position = Vector2(3230, 1187)
 
 [node name="Platforms" type="Label" parent="."]
 offset_right = 40.0

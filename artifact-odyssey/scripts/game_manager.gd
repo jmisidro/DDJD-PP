@@ -12,6 +12,8 @@ extends Node
 @onready var artifact_2d: Sprite2D = $"../Player/Camera2D/artifact2D"
 @onready var right_hud: Sprite2D = $"../Player/Camera2D/rightHUD"
 @onready var left_hud: Sprite2D = $"../Player/Camera2D/leftHUD"
+@onready var ammo_2d = $"../Player/Camera2D/ammo2D"
+@onready var ammo_label = $"../Player/Camera2D/ammoLabel"
 
 var money = 50
 var sprite_width = 80
@@ -61,6 +63,9 @@ func _on_camera_2d_draw():
 	
 	artifact_2d.position = Vector2(-screen_x + 3*artifact_label.size.x/4 + 1.2*sprite_width, artifact_label.size.y - screen_y - 13)
 	artifact_label.position = Vector2(-screen_x, artifact_label.size.y/2 - screen_y-8)
+	
+	ammo_2d.position = Vector2(-screen_x + 3*artifact_label.size.x/4 + 1.2*sprite_width, artifact_label.size.y - screen_y + artifact_label.size.y)
+	ammo_label.position = Vector2(-screen_x, artifact_label.size.y/2 + artifact_label.size.y - screen_y+5)
 	
 	right_hud.position = Vector2(screen_x-165,-screen_y+right_hud.texture.get_height()/4-5)
 	left_hud.position = Vector2(-screen_x+165,-screen_y+right_hud.texture.get_height()/4-5)
