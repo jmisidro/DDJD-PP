@@ -1,12 +1,18 @@
-[gd_scene load_steps=29 format=3 uid="uid://bq5n2n84t5aej"]
+[gd_scene load_steps=39 format=3 uid="uid://bq5n2n84t5aej"]
 
+[ext_resource type="Script" path="res://scripts/peter_south.gd" id="1_o1jgb"]
 [ext_resource type="Texture2D" uid="uid://dy4sptjnbcnlh" path="res://assets/enemies/peter_south/Cyborg_death.png" id="1_x78ry"]
 [ext_resource type="Texture2D" uid="uid://dopqrpd0n25h4" path="res://assets/enemies/peter_south/Cyborg_idle.png" id="2_u1aos"]
 [ext_resource type="Texture2D" uid="uid://cii3hj7gb8urj" path="res://assets/enemies/peter_south/Cyborg_hurt.png" id="3_3mdqi"]
 [ext_resource type="Texture2D" uid="uid://b4kcdefxbjklm" path="res://assets/enemies/peter_south/Cyborg_run.png" id="4_ttgyv"]
-[ext_resource type="PackedScene" uid="uid://dc30ob46cb8qr" path="res://scenes/health_component.tscn" id="5_2wt0w"]
-[ext_resource type="PackedScene" uid="uid://b1vtba3veksny" path="res://scenes/hitbox_component.tscn" id="6_we2fj"]
+[ext_resource type="Texture2D" uid="uid://do238ae4vt4ya" path="res://assets/enemies/peter_south/Cyborg_attack3.png" id="5_8ypyf"]
 [ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="7_1r376"]
+[ext_resource type="Script" path="res://scripts/peter_south_hitbox.gd" id="7_wgmyj"]
+[ext_resource type="Texture2D" uid="uid://bccljjurtsvly" path="res://assets/enemies/peter_south/gun.png" id="10_n11wk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phcrt"]
+radius = 32.0
+height = 112.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcfbn"]
 atlas = ExtResource("1_x78ry")
@@ -47,6 +53,38 @@ region = Rect2(96, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nf4np"]
 atlas = ExtResource("2_u1aos")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtdmg"]
+atlas = ExtResource("5_8ypyf")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nhfr"]
+atlas = ExtResource("5_8ypyf")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dokek"]
+atlas = ExtResource("5_8ypyf")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if57r"]
+atlas = ExtResource("5_8ypyf")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cxxg"]
+atlas = ExtResource("5_8ypyf")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc0ao"]
+atlas = ExtResource("5_8ypyf")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8laq"]
+atlas = ExtResource("5_8ypyf")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81kbg"]
+atlas = ExtResource("5_8ypyf")
+region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e1mye"]
 atlas = ExtResource("3_3mdqi")
@@ -124,6 +162,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_dtdmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nhfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dokek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if57r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cxxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc0ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8laq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81kbg")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_e1mye")
 }, {
 "duration": 1.0,
@@ -155,49 +222,104 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtdmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nhfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dokek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if57r")
+}],
+"loop": false,
+"name": &"shooting",
+"speed": 5.0
 }]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phcrt"]
-radius = 40.0
-height = 172.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3w3em"]
 bg_color = Color(0, 0, 0, 0.443137)
 shadow_size = 3
 shadow_offset = Vector2(1, 2)
 
-[node name="RigidBody2D" type="RigidBody2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-16, 88)
-scale = Vector2(5.86458, 5.86458)
-sprite_frames = SubResource("SpriteFrames_gginr")
-autoplay = "default"
-frame_progress = 0.0124797
-flip_h = true
-
-[node name="HealthComponent" parent="." instance=ExtResource("5_2wt0w")]
+[node name="RigidBody2D" type="RigidBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_o1jgb")
 MAX_HEALTH = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(48, 128)
+position = Vector2(0, 163)
 shape = SubResource("CapsuleShape2D_phcrt")
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_we2fj")]
-collision_layer = 4
-collision_mask = 8
-health_component = NodePath("../HealthComponent")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(9.99999, 136)
+scale = Vector2(3.76562, 3.76562)
+sprite_frames = SubResource("SpriteFrames_gginr")
+animation = &"death"
+autoplay = "default"
+offset = Vector2(10, 0)
+flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(48, 128)
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+script = ExtResource("7_wgmyj")
+
+[node name="RayCastPlayerLeft" type="RayCast2D" parent="Area2D"]
+position = Vector2(0, 153.4)
+scale = Vector2(15, 100)
+target_position = Vector2(-100, 0)
+collision_mask = 2
+
+[node name="RayCastPlayerRight" type="RayCast2D" parent="Area2D"]
+position = Vector2(0, 153.4)
+scale = Vector2(15, 100)
+target_position = Vector2(100, 0)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 163)
 shape = SubResource("CapsuleShape2D_phcrt")
 
 [node name="PeterSouth" type="Label" parent="."]
-offset_left = -31.0
-offset_right = 133.0
-offset_bottom = 16.0
+offset_left = -32.0
+offset_top = 64.0
+offset_right = 132.0
+offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("7_1r376")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_3w3em")
 text = "Peter South"
+
+[node name="Gun" type="Node2D" parent="."]
+
+[node name="SpriteLeft" type="Sprite2D" parent="Gun"]
+position = Vector2(-48, 152)
+scale = Vector2(2.79546, 2.79546)
+texture = ExtResource("10_n11wk")
+flip_h = true
+
+[node name="MarkerLeft" type="Marker2D" parent="Gun"]
+texture_filter = 1
+position = Vector2(-96, 144)
+rotation = 3.14159
+scale = Vector2(0.87931, 1)
+
+[node name="SpriteRight" type="Sprite2D" parent="Gun"]
+position = Vector2(48, 152)
+scale = Vector2(2.79546, 2.79546)
+texture = ExtResource("10_n11wk")
+
+[node name="MarkerRight" type="Marker2D" parent="Gun"]
+texture_filter = 1
+position = Vector2(97, 144)
+rotation = 3.14159
+scale = Vector2(0.87931, 1)
+
+[node name="shootSpeedTimer" type="Timer" parent="Gun"]
+
+[connection signal="timeout" from="Gun/shootSpeedTimer" to="." method="_on_shoot_speed_timer_timeout"]
