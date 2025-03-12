@@ -56,11 +56,11 @@ var is_invincible: bool = false
 var godmode: bool = false
 
 # Double Jump 
-var can_double_jump: bool = false
+var can_double_jump: bool = true
 var jump_count: int = 0
 
 # Gun 
-var has_gun: bool = true
+var has_gun: bool = false
 
 # Graple
 var has_graple: bool = false
@@ -256,31 +256,37 @@ func _physics_process(delta: float) -> void:
 	if playerHit:
 		animated_sprite_2d.animation = "hit"
 		
-	# Handle jump.
+	# Handle jump input buffering
 	if Input.is_action_just_pressed("jump"):
 		jump_buffered = true
 		jump_buffer_timer.start()
 
-	# Check if the player just left the ground
+	# Check if the player just left the ground (coyote time)
 	if was_on_floor and not is_on_floor():
 		can_coyote_jump = true
 		coyote_time_timer.start()
 
-	# Reset coyote time if the player lands
+	# Reset coyote time and jump count if the player lands
 	if is_on_floor():
 		can_coyote_jump = false
 		coyote_time_timer.stop()
-		jump_count = 1  # Reset jump count when landing
+		jump_count = 0  # Allow both normal and double jump
 
-	# Allow jumping if within coyote time or if on the ground
-	if (jump_buffered and (is_on_floor() or can_coyote_jump)) or (Input.is_action_just_pressed("jump") and (is_on_floor() or can_coyote_jump or (can_double_jump and jump_count < MAX_JUMPS))):
-		velocity.y = JUMP_VELOCITY
-		jump_audio.play()
-		jump_count += 1
-		jump_buffered = false
-		can_coyote_jump = false  # Jumping consumes coyote time
+	# Handle jumping (normal, coyote, and double jump)
+	if jump_buffered:
+		if is_on_floor() or can_coyote_jump:
+			velocity.y = JUMP_VELOCITY
+			jump_audio.play()
+			jump_count = 1  # First jump used
+			jump_buffered = false
+			can_coyote_jump = false  # Consume coyote jump
+		elif can_double_jump and jump_count < MAX_JUMPS:  # Allow double jump
+			velocity.y = JUMP_VELOCITY
+			jump_audio.play()
+			jump_count += 1  # Use second jump
+			jump_buffered = false  # Reset jump buffer
 
-	was_on_floor = is_on_floor()  # Store floor state for next frame
+	was_on_floor = is_on_floor()  # Store previous ground state
 
 
 	# Get the input direction and handle the movement/deceleration.
