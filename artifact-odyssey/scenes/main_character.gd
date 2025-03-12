@@ -22,9 +22,14 @@ const CHAIN_PULL = 100
 # Basic
 var isLeft: bool = false
 var health: float
-var can_jump = false			# Whether the player used their air-jump
 var playerHit: bool = false
 var hurt_cooldown_timer: Timer
+
+# Jumping
+var can_jump = false			# Whether the player used their air-jump
+var jump_buffer_timer: Timer
+var jump_buffer_time: float = 0.15  # Allow jumps within 150ms of pressing the button
+var jump_buffered: bool = false
 
 
 # Dash
@@ -44,7 +49,7 @@ var is_invincible: bool = false
 var godmode: bool = false
 
 # Double Jump 
-var can_double_jump: bool = false
+var can_double_jump: bool = true
 var jump_count: int = 0
 
 # Gun 
@@ -59,6 +64,14 @@ var velocity_drag = 1
 
 func _ready() -> void:
 	health = MAX_HEALTH
+	
+	# Initialize Jumping Timer
+	jump_buffer_timer = Timer.new()
+	jump_buffer_timer.wait_time = jump_buffer_time
+	jump_buffer_timer.one_shot = true
+	jump_buffer_timer.timeout.connect(_clear_jump_buffer)
+	add_child(jump_buffer_timer)
+
 	
 	# Initialize Hurt Timer
 	hurt_cooldown_timer = Timer.new()
@@ -98,7 +111,10 @@ func damage(dmg: int):
 	if health <= 0:
 		print("You died. :(")
 		game_manager.end_game()
+
 		
+func _clear_jump_buffer():
+	jump_buffered = false
 
 func _reset_hurt():
 	playerHit = false  # Allow the player to be hurt again
@@ -225,10 +241,15 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.animation = "hit"
 		
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or (can_double_jump and jump_count < MAX_JUMPS)):
+	if Input.is_action_just_pressed("jump"):
+		jump_buffered = true
+		jump_buffer_timer.start()
+
+	if (jump_buffered and is_on_floor()) or (Input.is_action_just_pressed("jump") and (can_double_jump and jump_count < MAX_JUMPS)):
 		velocity.y = JUMP_VELOCITY
 		jump_audio.play()
 		jump_count += 1
+		jump_buffered = false  # Reset buffered jump
 
 	# Reset jump count when landing
 	if is_on_floor():

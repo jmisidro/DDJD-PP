@@ -36,7 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://032p8xdin2n2" path="res://scenes/spike.tscn" id="27_6j2fu"]
 [ext_resource type="PackedScene" uid="uid://dc010705maad1" path="res://scenes/artifact.tscn" id="28_w6hn1"]
 [ext_resource type="Texture2D" uid="uid://dda7vbpvoo536" path="res://assets/artifacts/Icon14_05.png" id="29_11wd5"]
-[ext_resource type="PackedScene" uid="uid://bawymav4b435g" path="res://scenes/ammo.tscn" id="29_dl1w6"]
+[ext_resource type="PackedScene" path="res://scenes/ammo.tscn" id="29_dl1w6"]
 [ext_resource type="Texture2D" uid="uid://44x422in774i" path="res://assets/artifacts/Icon14_08.png" id="29_e1ao0"]
 [ext_resource type="Texture2D" uid="uid://cpyhcsduowwhw" path="res://assets/artifacts/Icon14_09.png" id="29_hflpl"]
 [ext_resource type="Texture2D" uid="uid://cvx7w74npyoqb" path="res://assets/artifacts/Icon14_15.png" id="30_mu5cx"]
@@ -3403,14 +3403,16 @@ scale = Vector2(4, 4)
 collision_layer = 16
 collision_mask = 2
 
-[node name="Invicibility_Chest" parent="Abilities" node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
+[node name="Invincibility_Chest" parent="Abilities" node_paths=PackedStringArray("treasure") instance=ExtResource("21_82vw8")]
 position = Vector2(4968, -2968)
 collision_mask = 2
-treasure = NodePath("../Invicibility")
+treasure = NodePath("../Invincibility")
 
-[node name="Invicibility" parent="Abilities" instance=ExtResource("51_6sxbj")]
+[node name="Invincibility" parent="Abilities" instance=ExtResource("51_6sxbj")]
 position = Vector2(5024, -2992)
 scale = Vector2(4, 4)
+collision_layer = 16
+collision_mask = 2
 
 [connection signal="draw" from="Player/Camera2D" to="GameManager" method="_on_camera_2d_draw"]
 [connection signal="body_entered" from="Artifacts/Treasure" to="Artifacts/Treasure" method="_on_body_entered"]
