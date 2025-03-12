@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=137 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="AudioStream" uid="uid://b3hue1gwpqxy1" path="res://assets/sounds/game-over-arcade-6435.mp3" id="2_bo7vw"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bd148fsk76gj1" path="res://assets/objects/Box7.png" id="8_amjld"]
 [ext_resource type="Texture2D" uid="uid://c7486unt1mrxp" path="res://assets/objects/Ladder1.png" id="9_1l004"]
 [ext_resource type="Texture2D" uid="uid://bvjiwfa75ul4w" path="res://assets/objects/Ladder2.png" id="10_2u1jx"]
+[ext_resource type="PackedScene" uid="uid://bq5n2n84t5aej" path="res://scenes/peter_south.tscn" id="11_d8jhi"]
 [ext_resource type="PackedScene" uid="uid://dpjw5bk5y3y0e" path="res://scenes/slime_green.tscn" id="11_hycej"]
 [ext_resource type="Texture2D" uid="uid://cikw8gs7ofprg" path="res://assets/objects/Ladder3.png" id="11_njvqg"]
 [ext_resource type="PackedScene" uid="uid://durreva13rhwh" path="res://scenes/money.tscn" id="12_3k8n4"]
@@ -36,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://032p8xdin2n2" path="res://scenes/spike.tscn" id="27_6j2fu"]
 [ext_resource type="PackedScene" uid="uid://dc010705maad1" path="res://scenes/artifact.tscn" id="28_w6hn1"]
 [ext_resource type="Texture2D" uid="uid://dda7vbpvoo536" path="res://assets/artifacts/Icon14_05.png" id="29_11wd5"]
-[ext_resource type="PackedScene" path="res://scenes/ammo.tscn" id="29_dl1w6"]
+[ext_resource type="PackedScene" uid="uid://crwltph4ewpwl" path="res://scenes/ammo.tscn" id="29_dl1w6"]
 [ext_resource type="Texture2D" uid="uid://44x422in774i" path="res://assets/artifacts/Icon14_08.png" id="29_e1ao0"]
 [ext_resource type="Texture2D" uid="uid://cpyhcsduowwhw" path="res://assets/artifacts/Icon14_09.png" id="29_hflpl"]
 [ext_resource type="Texture2D" uid="uid://cvx7w74npyoqb" path="res://assets/artifacts/Icon14_15.png" id="30_mu5cx"]
@@ -1717,6 +1718,9 @@ horizontal_alignment = 2
 [node name="Monters" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="PeterSouth" parent="Monters" instance=ExtResource("11_d8jhi")]
+position = Vector2(10024, 2856)
 
 [node name="robo_dogs" type="Label" parent="Monters"]
 layout_mode = 0

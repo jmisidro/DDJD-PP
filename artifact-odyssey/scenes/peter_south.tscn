@@ -1,0 +1,203 @@
+[gd_scene load_steps=29 format=3 uid="uid://bq5n2n84t5aej"]
+
+[ext_resource type="Texture2D" uid="uid://dy4sptjnbcnlh" path="res://assets/enemies/peter_south/Cyborg_death.png" id="1_x78ry"]
+[ext_resource type="Texture2D" uid="uid://dopqrpd0n25h4" path="res://assets/enemies/peter_south/Cyborg_idle.png" id="2_u1aos"]
+[ext_resource type="Texture2D" uid="uid://cii3hj7gb8urj" path="res://assets/enemies/peter_south/Cyborg_hurt.png" id="3_3mdqi"]
+[ext_resource type="Texture2D" uid="uid://b4kcdefxbjklm" path="res://assets/enemies/peter_south/Cyborg_run.png" id="4_ttgyv"]
+[ext_resource type="PackedScene" uid="uid://dc30ob46cb8qr" path="res://scenes/health_component.tscn" id="5_2wt0w"]
+[ext_resource type="PackedScene" uid="uid://b1vtba3veksny" path="res://scenes/hitbox_component.tscn" id="6_we2fj"]
+[ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="7_1r376"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcfbn"]
+atlas = ExtResource("1_x78ry")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmjiv"]
+atlas = ExtResource("1_x78ry")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmi2b"]
+atlas = ExtResource("1_x78ry")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh0ie"]
+atlas = ExtResource("1_x78ry")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8ocn"]
+atlas = ExtResource("1_x78ry")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jh0a"]
+atlas = ExtResource("1_x78ry")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lucfc"]
+atlas = ExtResource("2_u1aos")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_338d3"]
+atlas = ExtResource("2_u1aos")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0r1v"]
+atlas = ExtResource("2_u1aos")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf4np"]
+atlas = ExtResource("2_u1aos")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1mye"]
+atlas = ExtResource("3_3mdqi")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpfnw"]
+atlas = ExtResource("3_3mdqi")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qui32"]
+atlas = ExtResource("4_ttgyv")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c708"]
+atlas = ExtResource("4_ttgyv")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u17gu"]
+atlas = ExtResource("4_ttgyv")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63b1p"]
+atlas = ExtResource("4_ttgyv")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c33u"]
+atlas = ExtResource("4_ttgyv")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud5e4"]
+atlas = ExtResource("4_ttgyv")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gginr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcfbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmjiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmi2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh0ie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8ocn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jh0a")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lucfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_338d3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0r1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nf4np")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1mye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpfnw")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qui32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c708")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u17gu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63b1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c33u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud5e4")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phcrt"]
+radius = 40.0
+height = 172.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3w3em"]
+bg_color = Color(0, 0, 0, 0.443137)
+shadow_size = 3
+shadow_offset = Vector2(1, 2)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-16, 88)
+scale = Vector2(5.86458, 5.86458)
+sprite_frames = SubResource("SpriteFrames_gginr")
+autoplay = "default"
+frame_progress = 0.0124797
+flip_h = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_2wt0w")]
+MAX_HEALTH = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(48, 128)
+shape = SubResource("CapsuleShape2D_phcrt")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_we2fj")]
+collision_layer = 4
+collision_mask = 8
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(48, 128)
+shape = SubResource("CapsuleShape2D_phcrt")
+
+[node name="PeterSouth" type="Label" parent="."]
+offset_left = -31.0
+offset_right = 133.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("7_1r376")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_3w3em")
+text = "Peter South"
