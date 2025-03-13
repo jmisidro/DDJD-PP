@@ -2,11 +2,10 @@ extends CharacterBody2D
 
 const BULLET = preload("res://scenes/enemy_bullet.tscn")
 
-@export var patrol_distance: float = 100.0
-@export var speed: float = 50.0
-@export var jump_force: float = -200.0
-@export var gravity: float = 500.0
-@export var detection_range: float = 200.0
+@export var PATROL_DISTANCE: float = 400.0
+@export var SPEED: float = 500.0
+@export var JUMP_VELOCITY: float = -900.0
+@export var DETECTION_RANGE: float = 400.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -79,7 +78,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	# Apply gravity
-	velocity.y += gravity * delta
+	velocity += get_gravity() * delta
 	
 	var player_detected = false
 	var player_position = null
@@ -103,18 +102,18 @@ func _physics_process(delta: float) -> void:
 		shoot(shoot_direction)
 
 	# Enemy Movement Logic
-	if player_detected and global_position.distance_to(player_position) < detection_range:
+	if player_detected and global_position.distance_to(player_position) < DETECTION_RANGE:
 		# Chase player if detected
 		var chase_direction = sign(player_position.x - global_position.x)
-		velocity.x = chase_direction * speed
+		velocity.x = chase_direction * SPEED
 		isLeft = (chase_direction < 0)  # Correctly set facing direction
 	else:
 		# Patrolling when player is not detected
-		if global_position.x >= starting_position.x + patrol_distance:
+		if global_position.x >= starting_position.x + PATROL_DISTANCE:
 			direction = -1
-		elif global_position.x <= starting_position.x - patrol_distance:
+		elif global_position.x <= starting_position.x - PATROL_DISTANCE:
 			direction = 1
-		velocity.x = direction * speed  # Apply patrol movement
+		velocity.x = direction * SPEED  # Apply patrol movement
 
 	move_and_slide()
 
@@ -123,7 +122,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_jump_timer_timeout() -> void:
 	if not is_dead and is_on_floor():
-		velocity.y = jump_force  # Jumping
+		velocity.y = JUMP_VELOCITY  # Jumping
 	jump_timer.wait_time = randf_range(2.0, 4.0)
 	jump_timer.start()
 
