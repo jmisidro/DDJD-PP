@@ -250,7 +250,7 @@ shadow_offset = Vector2(1, 2)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_o1jgb")
-MAX_HEALTH = 30
+MAX_HEALTH = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 163)
@@ -271,13 +271,13 @@ script = ExtResource("7_wgmyj")
 
 [node name="RayCastPlayerLeft" type="RayCast2D" parent="Area2D"]
 position = Vector2(0, 153.4)
-scale = Vector2(15, 100)
+scale = Vector2(12, 100)
 target_position = Vector2(-100, 0)
 collision_mask = 2
 
 [node name="RayCastPlayerRight" type="RayCast2D" parent="Area2D"]
 position = Vector2(0, 153.4)
-scale = Vector2(15, 100)
+scale = Vector2(12, 100)
 target_position = Vector2(100, 0)
 collision_mask = 2
 

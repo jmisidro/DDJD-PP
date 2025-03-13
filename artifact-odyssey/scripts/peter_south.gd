@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-const BULLET = preload("res://scenes/bullet.tscn")
+const BULLET = preload("res://scenes/enemy_bullet.tscn")
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
