@@ -61,7 +61,7 @@ var can_double_jump: bool = false
 var jump_count: int = 0
 
 # Gun 
-var has_gun: bool = true
+var has_gun: bool = false
 
 # Graple
 var has_graple: bool = false
@@ -159,6 +159,11 @@ func start_invincibility():
 
 func _end_invincibility():
 	is_invincible = false
+	
+
+func grant_godmode():
+	godmode = true
+	print("Player now has Godmode!")
 
 func grant_gun_ability():
 	has_gun = true

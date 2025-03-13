@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bq5n2n84t5aej"]
+[gd_scene load_steps=46 format=3 uid="uid://bq5n2n84t5aej"]
 
 [ext_resource type="Script" path="res://scripts/peter_south.gd" id="1_o1jgb"]
 [ext_resource type="Texture2D" uid="uid://dy4sptjnbcnlh" path="res://assets/enemies/peter_south/Cyborg_death.png" id="1_x78ry"]
@@ -8,7 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://do238ae4vt4ya" path="res://assets/enemies/peter_south/Cyborg_attack3.png" id="5_8ypyf"]
 [ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="7_1r376"]
 [ext_resource type="Script" path="res://scripts/peter_south_hitbox.gd" id="7_wgmyj"]
+[ext_resource type="Script" path="res://scripts/minix.gd" id="10_4cx4f"]
 [ext_resource type="Texture2D" uid="uid://bccljjurtsvly" path="res://assets/enemies/peter_south/gun.png" id="10_n11wk"]
+[ext_resource type="Texture2D" uid="uid://bab1u6r1ulspk" path="res://assets/powerups/minix.png" id="11_v3nig"]
+[ext_resource type="AudioStream" uid="uid://beshnsjyo83fh" path="res://assets/sounds/power.mp3" id="12_5jvdo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phcrt"]
 radius = 32.0
@@ -246,6 +249,108 @@ bg_color = Color(0, 0, 0, 0.443137)
 shadow_size = 3
 shadow_offset = Vector2(1, 2)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5btpj"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_dq5jf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PickupSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rpoop"]
+resource_name = "pickArtifact"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PickupSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.53333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcyo1"]
+_data = {
+"RESET": SubResource("Animation_dq5jf"),
+"pickArtifact": SubResource("Animation_rpoop")
+}
+
 [node name="RigidBody2D" type="RigidBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 3
@@ -322,4 +427,39 @@ scale = Vector2(0.87931, 1)
 
 [node name="shootSpeedTimer" type="Timer" parent="Gun"]
 
+[node name="Minix" type="Area2D" parent="."]
+position = Vector2(0, 64)
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("10_4cx4f")
+
+[node name="Sprite2D" type="Sprite2D" parent="Minix"]
+position = Vector2(1.78814e-07, 0)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("11_v3nig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Minix"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_5btpj")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="Minix"]
+position = Vector2(-2, 0)
+stream = ExtResource("12_5jvdo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Minix"]
+libraries = {
+"": SubResource("AnimationLibrary_wcyo1")
+}
+
+[node name="AbilityLabel" type="Label" parent="Minix"]
+offset_left = -96.0
+offset_top = -63.0
+offset_right = 144.0
+offset_bottom = -54.0
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("7_1r376")
+theme_override_font_sizes/font_size = 8
+text = "Godmode Acquired! You cannot die!"
+
 [connection signal="timeout" from="Gun/shootSpeedTimer" to="." method="_on_shoot_speed_timer_timeout"]
+[connection signal="body_entered" from="Minix" to="Minix" method="_on_body_entered"]

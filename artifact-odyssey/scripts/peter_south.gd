@@ -12,6 +12,7 @@ const BULLET = preload("res://scenes/enemy_bullet.tscn")
 @onready var sprite_right: Sprite2D = $Gun/SpriteRight
 @onready var marker_left: Marker2D = $Gun/MarkerLeft
 @onready var marker_right: Marker2D = $Gun/MarkerRight
+@onready var minix: Area2D = $Minix
 
 @export var shootSpeed = 1.0
 @export var MAX_HEALTH := 10
@@ -54,13 +55,15 @@ func die():
 	
 	animated_sprite_2d.animation = "death"
 	animated_sprite_2d.play()
-	
+		
 	death_timer.start()  # Start the timer to remove the enemy
 
 func _on_death_timer_timeout():
-	print("Death animation finished, deleting enemy...")
 	freeze = true  # Stop all physics interactions
 	collision_shape_2d.set_deferred("disabled", true)  # Disable collision properly
+	
+	minix.pop_treasure() # Drop Minix Book
+
 
 
 func _process(delta: float) -> void:
