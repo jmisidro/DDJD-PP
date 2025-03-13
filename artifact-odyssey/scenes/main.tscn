@@ -1544,6 +1544,21 @@ _data = {
 "move": SubResource("Animation_by1m5")
 }
 
+[sub_resource type="Animation" id="Animation_v3dg7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3549, -3073)]
+}
+
 [sub_resource type="Animation" id="Animation_g4e15"]
 resource_name = "move"
 length = 4.0
@@ -1559,21 +1574,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(3549, -3073), Vector2(4412, -3073)]
-}
-
-[sub_resource type="Animation" id="Animation_v3dg7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3549, -3073)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kjnbg"]
@@ -3656,15 +3656,35 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 2148.0
-offset_top = -2258.0
-offset_right = 2551.0
-offset_bottom = -2099.0
+offset_left = 1908.0
+offset_top = -2327.0
+offset_right = 2535.0
+offset_bottom = -2147.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("5_3ihga")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 40
 text = "Look Out! The Floor is Slipery!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="EasterEgg" type="Label" parent="Tutorial labels"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 5548.0
+offset_top = 969.0
+offset_right = 6756.0
+offset_bottom = 1149.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_3ihga")
+theme_override_font_sizes/font_size = 40
+text = "\"I am proud of you\" - Peter Dinis"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
