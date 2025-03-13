@@ -1,6 +1,6 @@
 extends Node
 
-@export var NUM_ARTIFACTS: int = 11
+@export var NUM_ARTIFACTS: int = 12
 @onready var game_timer: Timer = $"../GameTimer"
 @onready var money_label = $"../Player/Camera2D/moneyLabel"
 @onready var money_2d = $"../Player/Camera2D/money2D"

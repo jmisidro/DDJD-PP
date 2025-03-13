@@ -137,6 +137,6 @@ offset_bottom = -56.0
 scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("3_uif20")
 theme_override_font_sizes/font_size = 8
-text = "Invincible for 10s! Make the most of it!"
+text = "Invincible for 20s! Make the most of it!"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
