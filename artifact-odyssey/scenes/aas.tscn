@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dk5enq0cct4mp"]
+[gd_scene load_steps=18 format=3 uid="uid://dk5enq0cct4mp"]
 
 [ext_resource type="FontFile" uid="uid://own5eqtnktgd" path="res://PixelOperator8-Bold.ttf" id="1_5ucvh"]
 [ext_resource type="Texture2D" uid="uid://d2xc7t7wi6wfv" path="res://assets/characters/AAS/Idle.png" id="1_7r7cy"]
@@ -91,6 +91,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfwfp"]
 radius = 52.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_plflr"]
+bg_color = Color(0, 0, 0, 0.443137)
+shadow_size = 3
+shadow_offset = Vector2(1, 2)
+
 [node name="AAS" type="Area2D"]
 script = ExtResource("1_qivrr")
 
@@ -106,6 +111,24 @@ flip_h = true
 texture_filter = 1
 position = Vector2(50, 65)
 shape = SubResource("CircleShape2D_gfwfp")
+
+[node name="AAS" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -32.0
+offset_right = 88.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_5ucvh")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_plflr")
+text = "AAS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AreaLabel" type="Label" parent="."]
 anchors_preset = 7
