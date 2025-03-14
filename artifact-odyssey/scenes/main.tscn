@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=143 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="AudioStream" uid="uid://b3hue1gwpqxy1" path="res://assets/sounds/game-over-arcade-6435.mp3" id="2_bo7vw"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://cikw8gs7ofprg" path="res://assets/objects/Ladder3.png" id="11_njvqg"]
 [ext_resource type="PackedScene" uid="uid://durreva13rhwh" path="res://scenes/money.tscn" id="12_3k8n4"]
 [ext_resource type="Texture2D" uid="uid://dj57cdn34dm6p" path="res://assets/tilesets/pico 8 tiles.png" id="12_quw8f"]
-[ext_resource type="PackedScene" uid="uid://rhol8v26sw35" path="res://scenes/transporter.tscn" id="13_ujmwp"]
 [ext_resource type="PackedScene" uid="uid://c0f7y6icxprbe" path="res://scenes/platform.tscn" id="14_i8cjr"]
 [ext_resource type="PackedScene" uid="uid://ck5yn5eb4q3ik" path="res://scenes/moving_platform.tscn" id="15_tbjmr"]
 [ext_resource type="PackedScene" uid="uid://bpalentg7042k" path="res://scenes/attack.tscn" id="16_5e0s5"]
@@ -3008,9 +3007,6 @@ script = ExtResource("18_mtery")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_qo240")
-
-[node name="Transporter" parent="." instance=ExtResource("13_ujmwp")]
-position = Vector2(1888, 145)
 
 [node name="ConsumablePacks" type="Label" parent="."]
 offset_right = 40.0
