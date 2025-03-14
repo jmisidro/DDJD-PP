@@ -79,7 +79,7 @@ func activate_test_mode(mode: bool):
 		has_graple = true
 		can_double_jump = true
 		can_dash = true
-		can_fly = true
+		can_fly = false
 		
 # Velocity Drag
 var velocity_drag = 1
@@ -227,7 +227,7 @@ func _physics_process(delta: float) -> void:
 		ammo_label.text=str(gun.bullets-gun.bullets_shot) +"/"+str(gun.bullets)
 
 	# Flying
-	if can_fly and Input.is_action_pressed("flying"):
+	if can_fly and Input.is_action_just_pressed("flying"):
 		flying = !flying
 		
 	# Walking
@@ -285,12 +285,12 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.animation = "hit"
 		
 	# Handle jump input buffering
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and !flying:
 		jump_buffered = true
 		jump_buffer_timer.start()
 
 	# Check if the player just left the ground (coyote time)
-	if was_on_floor and not is_on_floor():
+	if was_on_floor and not is_on_floor() and !flying:
 		can_coyote_jump = true
 		coyote_time_timer.start()
 
