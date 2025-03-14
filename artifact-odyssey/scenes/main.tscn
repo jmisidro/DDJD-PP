@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://drvwhohxdlrrw"]
+[gd_scene load_steps=145 format=3 uid="uid://drvwhohxdlrrw"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_itb6s"]
 [ext_resource type="AudioStream" uid="uid://b3hue1gwpqxy1" path="res://assets/sounds/game-over-arcade-6435.mp3" id="2_bo7vw"]
@@ -55,6 +55,7 @@
 [ext_resource type="AudioStream" uid="uid://bfpjok8y56a1" path="res://assets/sounds/8bit_soundtrack.mp3" id="44_ebnvf"]
 [ext_resource type="PackedScene" uid="uid://c788pgebtbyxu" path="res://scenes/moving_platform_snow.tscn" id="45_prnc2"]
 [ext_resource type="PackedScene" uid="uid://dqyvnl26c7a7e" path="res://scenes/invicibility.tscn" id="51_6sxbj"]
+[ext_resource type="PackedScene" uid="uid://dk5enq0cct4mp" path="res://scenes/aas.tscn" id="56_ly7l8"]
 [ext_resource type="PackedScene" uid="uid://l0cjnqgn8d7y" path="res://scenes/bigode.tscn" id="56_pmpfb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybuhl"]
@@ -3677,10 +3678,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 5548.0
-offset_top = 969.0
-offset_right = 6756.0
-offset_bottom = 1149.0
+offset_left = 4476.0
+offset_top = 1129.0
+offset_right = 5684.0
+offset_bottom = 1309.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("5_3ihga")
@@ -3806,8 +3807,13 @@ scale = Vector2(4, 4)
 collision_layer = 16
 collision_mask = 2
 
+[node name="AAS" parent="Abilities" node_paths=PackedStringArray("treasure") instance=ExtResource("56_ly7l8")]
+position = Vector2(6112, 712)
+collision_mask = 2
+treasure = NodePath("../Bigode")
+
 [node name="Bigode" parent="Abilities" instance=ExtResource("56_pmpfb")]
-position = Vector2(6168, 728)
+position = Vector2(6168, 640)
 scale = Vector2(4, 4)
 collision_layer = 16
 collision_mask = 2
