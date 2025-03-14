@@ -1,9 +1,10 @@
-[gd_scene load_steps=57 format=3 uid="uid://bfcsp4dv0h0ng"]
+[gd_scene load_steps=58 format=3 uid="uid://bfcsp4dv0h0ng"]
 
 [ext_resource type="Script" path="res://scenes/main_character.gd" id="1_e6jhr"]
 [ext_resource type="Texture2D" uid="uid://c2ubmudbprkwc" path="res://assets/characters/1/Jump.png" id="1_rfr8h"]
 [ext_resource type="Texture2D" uid="uid://cgv1tysyj4bd4" path="res://assets/characters/1/Fall.png" id="2_g2bud"]
 [ext_resource type="Texture2D" uid="uid://o4qxfe7j8u35" path="res://assets/characters/1/Idle.png" id="2_nwcyl"]
+[ext_resource type="Texture2D" uid="uid://nswh7lq8lj2r" path="res://assets/powerups/bigode.png" id="2_uv1w8"]
 [ext_resource type="Texture2D" uid="uid://dkn1sac3km1kg" path="res://assets/characters/1/Dashing.png" id="2_yse4u"]
 [ext_resource type="Texture2D" uid="uid://cbqdb52jeaux4" path="res://assets/characters/1/Hit.png" id="4_aybcj"]
 [ext_resource type="Texture2D" uid="uid://clrfsohy14sp7" path="res://assets/characters/1/Run.png" id="5_46svq"]
@@ -354,6 +355,11 @@ size = Vector2(65, 96)
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_e6jhr")
 MAX_HEALTH = 20
+
+[node name="Bigode" type="Sprite2D" parent="."]
+position = Vector2(54, 104)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_uv1w8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

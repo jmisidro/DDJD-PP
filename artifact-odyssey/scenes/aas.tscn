@@ -99,7 +99,7 @@ position = Vector2(8.00001, 8)
 scale = Vector2(5.08333, 5.08333)
 sprite_frames = SubResource("SpriteFrames_ya8ra")
 autoplay = "default"
-frame_progress = 0.833575
+frame_progress = 0.350005
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

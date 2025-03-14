@@ -16,6 +16,8 @@ extends CharacterBody2D
 @onready var jump_audio = $JumpAudio
 @onready var ammo_label = $Camera2D/ammoLabel
 @onready var ammo_sprite = $Camera2D/ammo2D
+@onready var bigode_sprite: Sprite2D = $Bigode
+
 # Constants
 const MAX_JUMPS = 2
 const CHAIN_PULL = 100
@@ -86,6 +88,9 @@ var velocity_drag = 1
 
 func _ready() -> void:
 	health = MAX_HEALTH
+	
+	# Hide Bigode (wings)
+	bigode_sprite.visible = false
 	
 	#Activate test mode
 	activate_test_mode(test_mode)
@@ -184,6 +189,8 @@ func grant_dash_ability():
 	print("Player now has the ability do Dash!")
 	
 func grant_flight_ability():
+	# Show Bigode (wings)
+	bigode_sprite.visible = true
 	can_fly = true
 	print("Player now has the ability to Fly!")
 
