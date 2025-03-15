@@ -15,7 +15,7 @@ extends Node
 @onready var ammo_2d = $"../Player/Camera2D/ammo2D"
 @onready var ammo_label = $"../Player/Camera2D/ammoLabel"
 
-var money = 50
+var money = 0
 var sprite_width = 80
 var artifacts = 0
 var traveling_portal  = false

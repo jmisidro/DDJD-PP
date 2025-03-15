@@ -70,7 +70,7 @@ var has_graple: bool = false
 var chain_velocity := Vector2(0,0)
 
 # Change to activate all abilities
-var test_mode: bool = true
+var test_mode: bool = false
 
 # Function to activate test mode
 func activate_test_mode(mode: bool):
