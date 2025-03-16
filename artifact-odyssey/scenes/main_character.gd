@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var gun: Node2D = $Gun
 @onready var graple: Node2D = $Graple
 @onready var jump_audio = $JumpAudio
+@onready var dash_audio = $DashAudio
 @onready var ammo_label = $Camera2D/ammoLabel
 @onready var ammo_sprite = $Camera2D/ammo2D
 @onready var bigode_sprite: Sprite2D = $Bigode
@@ -70,7 +71,7 @@ var has_graple: bool = false
 var chain_velocity := Vector2(0,0)
 
 # Change to activate all abilities
-var test_mode: bool = false
+var test_mode: bool = true
 
 # Function to activate test mode
 func activate_test_mode(mode: bool):
@@ -209,6 +210,7 @@ func start_dash(direction):
 	
 	# Play dash animation if you have one
 	animated_sprite_2d.animation = "dashing"
+	dash_audio.play()
 	
 	can_dash = false
 

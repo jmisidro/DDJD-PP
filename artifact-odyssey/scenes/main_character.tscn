@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bfcsp4dv0h0ng"]
+[gd_scene load_steps=59 format=3 uid="uid://bfcsp4dv0h0ng"]
 
 [ext_resource type="Script" path="res://scenes/main_character.gd" id="1_e6jhr"]
 [ext_resource type="Texture2D" uid="uid://c2ubmudbprkwc" path="res://assets/characters/1/Jump.png" id="1_rfr8h"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dvxnbr5xiyvwu" path="res://scenes/gun.tscn" id="8_sqavl"]
 [ext_resource type="PackedScene" uid="uid://b0bhv50ekq1cm" path="res://scenes/graple.tscn" id="9_kwnap"]
 [ext_resource type="AudioStream" uid="uid://cwa8vttsgluct" path="res://assets/sounds/jump.wav" id="10_hhk1n"]
+[ext_resource type="AudioStream" uid="uid://cc7tt1mxee2u5" path="res://assets/sounds/dash.mp3" id="13_5b5in"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gb8j8"]
 atlas = ExtResource("2_yse4u")
@@ -393,3 +394,6 @@ scale = Vector2(0.5, 0.5)
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_hhk1n")
 volume_db = -5.0
+
+[node name="DashAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_5b5in")
