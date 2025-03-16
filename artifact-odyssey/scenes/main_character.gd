@@ -137,7 +137,6 @@ func _ready() -> void:
 	add_child(invincibility_timer)
 	
 func invincible() -> bool:
-	print("is player invincible: ", is_invincible or godmode)
 	return is_invincible or godmode
 	
 
@@ -285,13 +284,25 @@ func _physics_process(delta: float) -> void:
 		if not flying:
 			velocity += get_gravity() * delta
 		if velocity.y < 0:  # Moving upwards
-			animated_sprite_2d.animation = "jumping"
+			if invincible():
+				animated_sprite_2d.animation = "jump_invincible"
+			else:
+				animated_sprite_2d.animation = "jumping"
 		else:  # Moving downwards
-			animated_sprite_2d.animation = "falling"
+			if invincible():
+				animated_sprite_2d.animation = "fall_invincible"
+			else:
+				animated_sprite_2d.animation = "falling"
 	elif abs(velocity.x) > 1:
-		animated_sprite_2d.animation = "running"
+		if invincible():
+			animated_sprite_2d.animation = "run_invincible"
+		else:
+			animated_sprite_2d.animation = "running"
 	else:
-		animated_sprite_2d.animation = "idle"
+		if invincible():
+			animated_sprite_2d.animation = "invincible"
+		else:
+			animated_sprite_2d.animation = "idle"
 
 	if playerHit:
 		animated_sprite_2d.animation = "hit"
