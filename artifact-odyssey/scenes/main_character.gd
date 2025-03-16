@@ -135,6 +135,11 @@ func _ready() -> void:
 	invincibility_timer.one_shot = true
 	invincibility_timer.timeout.connect(_end_invincibility)
 	add_child(invincibility_timer)
+	
+func invincible() -> bool:
+	print("is player invincible: ", is_invincible or godmode)
+	return is_invincible or godmode
+	
 
 func damage(dmg: int):
 	if is_invincible or godmode:

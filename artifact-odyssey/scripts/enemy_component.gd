@@ -14,5 +14,6 @@ func damage(dmg: int):
 func _on_body_entered(body):
 	if body.name == "Player":
 		body.damage(attack_damage)
-		player_hurt.play()
-		print("damaged player for ", attack_damage)
+		if !body.invincible():
+			player_hurt.play()
+			print("damaged player for ", attack_damage)

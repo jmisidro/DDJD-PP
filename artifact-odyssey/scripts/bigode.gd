@@ -13,6 +13,6 @@ func _on_body_entered(body):
 	# Show the label
 	ability_label.visible = true
 
-	# Hide it after 5 seconds
-	await get_tree().create_timer(5.0).timeout
+	# Hide it after 10 seconds
+	await get_tree().create_timer(10.0).timeout
 	ability_label.visible = false
