@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpjw5bk5y3y0e"]
+[gd_scene load_steps=13 format=3 uid="uid://dpjw5bk5y3y0e"]
 
 [ext_resource type="Script" path="res://scenes/slime_green.gd" id="1_jit4c"]
 [ext_resource type="Texture2D" uid="uid://cfdvvy0emyh4n" path="res://assets/enemies/slime_green.png" id="2_pt3oi"]
 [ext_resource type="PackedScene" uid="uid://dc30ob46cb8qr" path="res://scenes/health_component.tscn" id="3_bb3y2"]
 [ext_resource type="PackedScene" uid="uid://b84p80tl3pksp" path="res://scenes/enemy_component.tscn" id="4_rlu12"]
 [ext_resource type="AudioStream" uid="uid://ddt6xvfnf0fbm" path="res://assets/sounds/retro-hurt-2-236675.mp3" id="5_cmq16"]
+[ext_resource type="AudioStream" uid="uid://chp5k2div5uao" path="res://assets/sounds/slime.mp3" id="6_cvlih"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_csp4e"]
 atlas = ExtResource("2_pt3oi")
@@ -77,5 +78,11 @@ target_position = Vector2(-6.5, 0)
 
 [node name="PlayerHurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_cmq16")
+
+[node name="SlimeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_cvlih")
+autoplay = true
+max_distance = 400.0
+attenuation = 0.5
 
 [connection signal="body_entered" from="EnemyComponent" to="EnemyComponent" method="_on_body_entered"]
