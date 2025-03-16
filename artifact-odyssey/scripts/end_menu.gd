@@ -7,12 +7,17 @@ extends Control
 @onready var game_over_sound = $gameOverSound
 @onready var winner_sound = $winnerSound
 
+func format_time(seconds: int) -> String:
+	var minutes = seconds / 60
+	var remaining_seconds = seconds % 60
+	return str(minutes) + " min " + str(remaining_seconds) + " sec "
+
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
 	# Display the game time when the end menu is shown
 	var time = "%.2f" % Global.game_time
-	time_label.text = "Time: " + time + " seconds"
+	time_label.text = "Time: " + format_time(int(time))
 	artifacts_label.text = "Artifacts: " + str(Global.artifacts)
 	
 	if Global.won:

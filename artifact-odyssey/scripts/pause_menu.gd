@@ -4,13 +4,17 @@ extends Control
 @onready var time_label: Label = $TimeLabel
 @onready var artifacts_label: Label = $ArtifactsLabel
 
+func format_time(seconds: int) -> String:
+	var minutes = seconds / 60
+	var remaining_seconds = seconds % 60
+	return str(minutes) + " min " + str(remaining_seconds) + " sec "
 
 func pause():
 	game_manager.pause_game()
 	
 	# Display the game time when the end menu is shown
 	var time = "%.2f" % Global.game_time
-	time_label.text = "Time: " + time + " seconds"
+	time_label.text = "Time: " + format_time(int(time))
 	artifacts_label.text = "Artifacts: " + str(Global.artifacts)
 	
 	get_tree().paused = true
