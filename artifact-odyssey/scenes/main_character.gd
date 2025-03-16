@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var gun: Node2D = $Gun
 @onready var graple: Node2D = $Graple
 @onready var jump_audio = $JumpAudio
+@onready var grapple_audio = $GrappleAudio
 @onready var dash_audio = $DashAudio
 @onready var ammo_label = $Camera2D/ammoLabel
 @onready var ammo_sprite = $Camera2D/ammo2D
@@ -226,6 +227,7 @@ func _input(event: InputEvent) -> void:
 		if event.pressed:
 			# We clicked the mouse -> shoot()
 			graple.shoot(event.position - get_viewport().size * 0.5)
+			grapple_audio.play()
 		else:
 			# We released the mouse -> release()
 			graple.release()
