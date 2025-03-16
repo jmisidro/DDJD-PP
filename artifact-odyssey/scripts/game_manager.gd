@@ -14,11 +14,21 @@ extends Node
 @onready var left_hud: Sprite2D = $"../Player/Camera2D/leftHUD"
 @onready var ammo_2d = $"../Player/Camera2D/ammo2D"
 @onready var ammo_label = $"../Player/Camera2D/ammoLabel"
+@onready var game_theme = $"../GameTheme"
+@onready var boss_fight = $"../BossFight"
 
 var money = 0
 var sprite_width = 80
 var artifacts = 0
 var traveling_portal  = false
+
+# Define boss area
+var x1 = 7960
+var y1 = 1975
+var x2 = 10500
+var y2 = 3120
+
+var in_boss_area = false
 
 func add_artifact():
 	artifacts += 1
@@ -78,6 +88,21 @@ func _process(delta):
 		health_2d.speed_scale =  2.0
 	if (player.health <= 5):
 		health_2d.speed_scale =  4.0
+	
+	var player_pos = player.global_position
+	var inside_area = player_pos.x > x1 and player_pos.x < x2 and player_pos.y > y1 and player_pos.y < y2
+
+	if inside_area and not in_boss_area:
+		# Player enters boss area
+		in_boss_area = true
+		game_theme.stop()
+		boss_fight.play()
+		
+	elif not inside_area and in_boss_area:
+		# Player leaves boss area
+		in_boss_area = false
+		boss_fight.stop()
+		game_theme.play()
 		
 	# End Game
 	if artifacts >= NUM_ARTIFACTS:

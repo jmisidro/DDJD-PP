@@ -10,6 +10,7 @@ const BULLET = preload("res://scenes/bullet.tscn")
 @onready var marker_left: Marker2D = $MarkerLeft
 @onready var marker_right: Marker2D = $MarkerRight
 @onready var shoot_speed_timer = $shootSpeedTimer
+@onready var gun_shot_audio = $GunShotAudio
 
 var canShoot: bool = true
 var bulletDirection: Vector2 = Vector2(1,0)
@@ -36,6 +37,7 @@ func shoot():
 		sprite_left.play()
 		sprite_right.play()
 		shoot_speed_timer.start()
+		gun_shot_audio.play()
 		
 		var bulletNode = BULLET.instantiate()
 

@@ -19,6 +19,8 @@ const BULLET = preload("res://scenes/enemy_bullet.tscn")
 @onready var marker_right: Marker2D = $Gun/MarkerRight
 @onready var minix: Area2D = $Minix
 @onready var jump_timer: Timer = $JumpTimer
+@onready var gun_shot_audio = $Gun/GunShotAudio
+@onready var jump_sound = $JumpSound
 
 @export var shootSpeed = 1.0
 @export var MAX_HEALTH := 10
@@ -123,6 +125,7 @@ func _physics_process(delta: float) -> void:
 func _on_jump_timer_timeout() -> void:
 	if not is_dead and is_on_floor():
 		velocity.y = JUMP_VELOCITY  # Jumping
+		jump_sound.play()
 	jump_timer.wait_time = randf_range(2.0, 4.0)
 	jump_timer.start()
 
@@ -135,7 +138,8 @@ func shoot(direction: Vector2):
 	
 	animated_sprite_2d.animation = "shooting"
 	shoot_speed_timer.start()
-
+	gun_shot_audio.play()
+	
 	var bulletNode = BULLET.instantiate()
 	bulletNode.set_direction(direction)
 	get_tree().root.add_child(bulletNode)

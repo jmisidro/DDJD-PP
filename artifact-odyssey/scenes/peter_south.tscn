@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bq5n2n84t5aej"]
+[gd_scene load_steps=48 format=3 uid="uid://bq5n2n84t5aej"]
 
 [ext_resource type="Script" path="res://scripts/peter_south.gd" id="1_o1jgb"]
 [ext_resource type="Texture2D" uid="uid://dy4sptjnbcnlh" path="res://assets/enemies/peter_south/Cyborg_death.png" id="1_x78ry"]
@@ -10,8 +10,10 @@
 [ext_resource type="Script" path="res://scripts/peter_south_hitbox.gd" id="7_wgmyj"]
 [ext_resource type="Script" path="res://scripts/minix.gd" id="10_4cx4f"]
 [ext_resource type="Texture2D" uid="uid://bccljjurtsvly" path="res://assets/enemies/peter_south/gun.png" id="10_n11wk"]
+[ext_resource type="AudioStream" uid="uid://cihtxtvj0jc5d" path="res://assets/sounds/laser-gun-81720.mp3" id="10_qf1io"]
 [ext_resource type="Texture2D" uid="uid://bab1u6r1ulspk" path="res://assets/powerups/minix.png" id="11_v3nig"]
 [ext_resource type="AudioStream" uid="uid://beshnsjyo83fh" path="res://assets/sounds/power.mp3" id="12_5jvdo"]
+[ext_resource type="AudioStream" uid="uid://d5lcsdj7n4rg" path="res://assets/sounds/JumpPeter.wav" id="14_xoos2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phcrt"]
 radius = 32.0
@@ -427,6 +429,9 @@ scale = Vector2(0.87931, 1)
 
 [node name="shootSpeedTimer" type="Timer" parent="Gun"]
 
+[node name="GunShotAudio" type="AudioStreamPlayer2D" parent="Gun"]
+stream = ExtResource("10_qf1io")
+
 [node name="Minix" type="Area2D" parent="."]
 position = Vector2(0, 64)
 collision_layer = 16
@@ -460,6 +465,10 @@ scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("7_1r376")
 theme_override_font_sizes/font_size = 8
 text = "Godmode Acquired! You cannot die!"
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_xoos2")
+volume_db = -6.533
 
 [connection signal="timeout" from="Gun/shootSpeedTimer" to="." method="_on_shoot_speed_timer_timeout"]
 [connection signal="body_entered" from="Minix" to="Minix" method="_on_body_entered"]

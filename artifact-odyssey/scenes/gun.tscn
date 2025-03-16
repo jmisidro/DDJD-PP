@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://dvxnbr5xiyvwu"]
+[gd_scene load_steps=24 format=3 uid="uid://dvxnbr5xiyvwu"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_oi6ah"]
+[ext_resource type="AudioStream" uid="uid://878v1r4p1saw" path="res://assets/sounds/submachine-gun-79846.mp3" id="3_87oaq"]
 [ext_resource type="Texture2D" uid="uid://dkg42a8b2x6hs" path="res://assets/objects/fn_509_reload_sprite_sheet.png" id="3_xtbcd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7slal"]
@@ -184,5 +185,9 @@ texture_filter = 1
 position = Vector2(131, 93)
 
 [node name="shootSpeedTimer" type="Timer" parent="."]
+
+[node name="GunShotAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_87oaq")
+volume_db = -10.0
 
 [connection signal="timeout" from="shootSpeedTimer" to="." method="_on_shoot_speed_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://bfcsp4dv0h0ng"]
+[gd_scene load_steps=88 format=3 uid="uid://bfcsp4dv0h0ng"]
 
 [ext_resource type="Script" path="res://scenes/main_character.gd" id="1_e6jhr"]
 [ext_resource type="Texture2D" uid="uid://c2ubmudbprkwc" path="res://assets/characters/1/Jump.png" id="1_rfr8h"]
