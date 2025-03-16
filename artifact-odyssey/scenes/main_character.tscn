@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://bfcsp4dv0h0ng"]
+[gd_scene load_steps=87 format=3 uid="uid://bfcsp4dv0h0ng"]
 
 [ext_resource type="Script" path="res://scenes/main_character.gd" id="1_e6jhr"]
 [ext_resource type="Texture2D" uid="uid://c2ubmudbprkwc" path="res://assets/characters/1/Jump.png" id="1_rfr8h"]
@@ -6,11 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://o4qxfe7j8u35" path="res://assets/characters/1/Idle.png" id="2_nwcyl"]
 [ext_resource type="Texture2D" uid="uid://nswh7lq8lj2r" path="res://assets/powerups/bigode.png" id="2_uv1w8"]
 [ext_resource type="Texture2D" uid="uid://dkn1sac3km1kg" path="res://assets/characters/1/Dashing.png" id="2_yse4u"]
+[ext_resource type="Texture2D" uid="uid://ciurlrfnqb8nd" path="res://assets/characters/1/Fall_invincible.png" id="4_5ts04"]
 [ext_resource type="Texture2D" uid="uid://cbqdb52jeaux4" path="res://assets/characters/1/Hit.png" id="4_aybcj"]
 [ext_resource type="Texture2D" uid="uid://clrfsohy14sp7" path="res://assets/characters/1/Run.png" id="5_46svq"]
 [ext_resource type="PackedScene" uid="uid://b1vtba3veksny" path="res://scenes/hitbox_component.tscn" id="7_c4rlj"]
+[ext_resource type="Texture2D" uid="uid://cyq3dksxi5swn" path="res://assets/characters/1/Invincible.png" id="7_wom4t"]
 [ext_resource type="PackedScene" uid="uid://dvxnbr5xiyvwu" path="res://scenes/gun.tscn" id="8_sqavl"]
+[ext_resource type="Texture2D" uid="uid://bco07g5ev08hf" path="res://assets/characters/1/Run_invincible.png" id="9_fsjjo"]
 [ext_resource type="PackedScene" uid="uid://b0bhv50ekq1cm" path="res://scenes/graple.tscn" id="9_kwnap"]
+[ext_resource type="Texture2D" uid="uid://dbrweoufjm8cj" path="res://assets/characters/1/Jump_invincible.png" id="9_uokyb"]
 [ext_resource type="AudioStream" uid="uid://cwa8vttsgluct" path="res://assets/sounds/jump.wav" id="10_hhk1n"]
 [ext_resource type="AudioStream" uid="uid://cc7tt1mxee2u5" path="res://assets/sounds/dash.mp3" id="13_5b5in"]
 
@@ -61,6 +65,10 @@ region = Rect2(310, 0, 31, 31)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghjer"]
 atlas = ExtResource("2_yse4u")
 region = Rect2(341, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tb7yk"]
+atlas = ExtResource("4_5ts04")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_du3fv"]
 atlas = ExtResource("4_aybcj")
@@ -133,6 +141,102 @@ region = Rect2(288, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gcj6p"]
 atlas = ExtResource("2_nwcyl")
 region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diyff"]
+atlas = ExtResource("7_wom4t")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lk4g"]
+atlas = ExtResource("7_wom4t")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_028ms"]
+atlas = ExtResource("7_wom4t")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k62rn"]
+atlas = ExtResource("7_wom4t")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3xgf"]
+atlas = ExtResource("7_wom4t")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nipo5"]
+atlas = ExtResource("7_wom4t")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n5lc"]
+atlas = ExtResource("7_wom4t")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20xy1"]
+atlas = ExtResource("7_wom4t")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwjtf"]
+atlas = ExtResource("7_wom4t")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mym4"]
+atlas = ExtResource("7_wom4t")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbih1"]
+atlas = ExtResource("7_wom4t")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u3m3"]
+atlas = ExtResource("9_uokyb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6usjl"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmntf"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbpr0"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpwh3"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2si4w"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh3j5"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m2a7"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whmcb"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la2bs"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg5tu"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnphx"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdps0"]
+atlas = ExtResource("9_fsjjo")
+region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k13wc"]
 atlas = ExtResource("5_46svq")
@@ -227,6 +331,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_tb7yk")
+}],
+"loop": true,
+"name": &"fall_invincible",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_g2bud")
 }],
 "loop": true,
@@ -299,11 +411,98 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_diyff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lk4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_028ms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k62rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3xgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nipo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n5lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20xy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwjtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mym4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbih1")
+}],
+"loop": true,
+"name": &"invincible",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u3m3")
+}],
+"loop": true,
+"name": &"jump_invincible",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_rfr8h")
 }],
 "loop": true,
 "name": &"jumping",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6usjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmntf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbpr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpwh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2si4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rh3j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m2a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whmcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_la2bs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg5tu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnphx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdps0")
+}],
+"loop": true,
+"name": &"run_invincible",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -367,10 +566,8 @@ texture_filter = 1
 position = Vector2(51, 66)
 scale = Vector2(3.15624, 4.14257)
 sprite_frames = SubResource("SpriteFrames_o8x87")
-animation = &"hit"
+animation = &"jump_invincible"
 autoplay = "idle"
-frame = 6
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(49.25, 84)
