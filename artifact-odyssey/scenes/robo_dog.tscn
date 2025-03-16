@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ch5cjyndugxdb"]
+[gd_scene load_steps=21 format=3 uid="uid://ch5cjyndugxdb"]
 
 [ext_resource type="Script" path="res://scenes/robo_dog.gd" id="1_0a1w1"]
 [ext_resource type="Texture2D" uid="uid://csrujaccwyljg" path="res://assets/enemies/robodob/idle.png" id="1_uipac"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dc30ob46cb8qr" path="res://scenes/health_component.tscn" id="4_jdmri"]
 [ext_resource type="PackedScene" uid="uid://b84p80tl3pksp" path="res://scenes/enemy_component.tscn" id="5_tugy4"]
 [ext_resource type="AudioStream" uid="uid://ddt6xvfnf0fbm" path="res://assets/sounds/retro-hurt-2-236675.mp3" id="6_1w6mq"]
+[ext_resource type="AudioStream" uid="uid://cd26ehnojqqvl" path="res://assets/sounds/688244__newlocknew__robtmvmt_robot-stepsservoclattering-of-the-joints-of-the-legs_em.mp3" id="7_0tv1t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n53fk"]
 atlas = ExtResource("1_uipac")
@@ -173,5 +174,19 @@ target_position = Vector2(0, 14)
 
 [node name="PlayerHurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_1w6mq")
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_0tv1t")
+volume_db = -6.0
+pitch_scale = 2.0
+max_distance = 400.0
+attenuation = 0.5
+
+[node name="SprintSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_0tv1t")
+volume_db = -6.0
+pitch_scale = 3.0
+max_distance = 400.0
+attenuation = 0.5
 
 [connection signal="body_entered" from="EnemyComponent" to="EnemyComponent" method="_on_body_entered"]
