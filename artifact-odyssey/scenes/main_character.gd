@@ -91,6 +91,11 @@ var velocity_drag = 1
 func _ready() -> void:
 	health = MAX_HEALTH
 	
+	# Initialize Global Vars
+	Global.game_time = 0.0
+	Global.artifacts = 0
+	Global.won = false
+	
 	# Hide Bigode (wings)
 	bigode_sprite.visible = false
 	
