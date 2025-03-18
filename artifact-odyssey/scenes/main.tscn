@@ -1763,9 +1763,6 @@ position = Vector2(777, -2685)
 [node name="robo_dog4" parent="Monters/robo_dogs" groups=["enemy"] instance=ExtResource("19_sseh7")]
 position = Vector2(916, 385)
 
-[node name="robo_dog14" parent="Monters/robo_dogs" groups=["enemy"] instance=ExtResource("19_sseh7")]
-position = Vector2(-12551, 898)
-
 [node name="robo_dog13" parent="Monters/robo_dogs" groups=["enemy"] instance=ExtResource("19_sseh7")]
 position = Vector2(1357, -4221)
 

@@ -2,6 +2,7 @@ extends Node2D
 
 @export var shootSpeed = 1.0
 @export var bullets = 8
+@export var reloadTime = 1.0
 
 const BULLET = preload("res://scenes/bullet.tscn")
 
@@ -16,6 +17,8 @@ var canShoot: bool = true
 var bulletDirection: Vector2 = Vector2(1,0)
 var isLeft: bool = false
 var bullets_shot: int = 0
+var isReloading: bool = false
+var reload_timer: Timer
 
 func _ready() -> void:
 	shoot_speed_timer.wait_time = 1.0 / shootSpeed
@@ -23,9 +26,19 @@ func _ready() -> void:
 	# Gun is not visible
 	sprite_left.visible = false
 	sprite_right.visible = false
+	
+	# Initialize Jump Buffer Timer
+	reload_timer = Timer.new()
+	reload_timer.wait_time = reloadTime
+	reload_timer.one_shot = true
+	reload_timer.timeout.connect(_clear_reload_timer)
+	add_child(reload_timer)
+	
+func _clear_reload_timer():
+	isReloading = false
 
 func shoot():
-	if canShoot:
+	if canShoot and !isReloading:
 		if bullets_shot >= bullets:
 			return
 			
@@ -47,6 +60,14 @@ func shoot():
 			bulletNode.global_position = marker_left.global_position
 		else:
 			bulletNode.global_position = marker_right.global_position
+
+func reload():
+	isReloading = true
+	sprite_left.animation = "reload"
+	sprite_right.animation = "reload"
+	sprite_left.play()
+	sprite_right.play()
+	reload_timer.start()
 
 func _on_shoot_speed_timer_timeout() -> void:
 	sprite_left.animation = "default"

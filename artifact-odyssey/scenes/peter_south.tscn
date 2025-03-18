@@ -393,6 +393,7 @@ position = Vector2(0, 163)
 shape = SubResource("CapsuleShape2D_phcrt")
 
 [node name="PeterSouth" type="Label" parent="."]
+z_index = 10
 offset_left = -32.0
 offset_top = 64.0
 offset_right = 132.0
@@ -457,6 +458,7 @@ libraries = {
 }
 
 [node name="AbilityLabel" type="Label" parent="Minix"]
+z_index = 10
 offset_left = -96.0
 offset_top = -63.0
 offset_right = 144.0

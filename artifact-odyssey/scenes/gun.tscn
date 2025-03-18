@@ -152,7 +152,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"reload",
-"speed": 5.0
+"speed": 20.0
 }]
 
 [node name="Gun" type="Node2D"]
@@ -163,7 +163,6 @@ texture_filter = 1
 position = Vector2(3, 95)
 scale = Vector2(0.591797, 0.591797)
 sprite_frames = SubResource("SpriteFrames_eo6kx")
-animation = &"fire"
 autoplay = "default"
 flip_h = true
 

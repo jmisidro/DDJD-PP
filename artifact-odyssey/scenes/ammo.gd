@@ -11,10 +11,7 @@ func _on_body_entered(body):
 			body.ammo_label.text=str(body.gun.bullets-body.gun.bullets_shot) +"/"+str(body.gun.bullets)
 			
 			#Animate the reload
-			#body.gun.sprite_left.animation = "reload"
-			#body.gun.sprite_right.animation = "reload"
-			#body.gun.sprite_left.play()
-			#body.gun.sprite_right.play()
+			body.gun.reload()
 			
 			print("Restored ammo to 8")
 			animation_player.play("ammo")
