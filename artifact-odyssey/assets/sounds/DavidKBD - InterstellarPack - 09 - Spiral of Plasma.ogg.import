@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bhka3pm844xqr"
+path="res://.godot/imported/DavidKBD - InterstellarPack - 09 - Spiral of Plasma.ogg-d61f9d16377fd52710ff6611be90777c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/DavidKBD - InterstellarPack - 09 - Spiral of Plasma.ogg"
+dest_files=["res://.godot/imported/DavidKBD - InterstellarPack - 09 - Spiral of Plasma.ogg-d61f9d16377fd52710ff6611be90777c.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

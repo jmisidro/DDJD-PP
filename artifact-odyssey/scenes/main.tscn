@@ -53,10 +53,10 @@
 [ext_resource type="PackedScene" uid="uid://c24ut60c04aak" path="res://scenes/kill_spots.tscn" id="41_gq4j1"]
 [ext_resource type="Texture2D" uid="uid://binkia2dd882b" path="res://assets/artifacts/Icon14_20.png" id="41_n3mm7"]
 [ext_resource type="Texture2D" uid="uid://djm75iniu1eqp" path="res://assets/artifacts/Icon14_27.png" id="42_c2ojl"]
-[ext_resource type="AudioStream" uid="uid://bfpjok8y56a1" path="res://assets/sounds/8bit_soundtrack.mp3" id="44_ebnvf"]
 [ext_resource type="PackedScene" uid="uid://c788pgebtbyxu" path="res://scenes/moving_platform_snow.tscn" id="45_prnc2"]
+[ext_resource type="AudioStream" uid="uid://bhka3pm844xqr" path="res://assets/sounds/DavidKBD - InterstellarPack - 09 - Spiral of Plasma.ogg" id="50_3n6wg"]
 [ext_resource type="PackedScene" uid="uid://dqyvnl26c7a7e" path="res://scenes/invicibility.tscn" id="51_6sxbj"]
-[ext_resource type="AudioStream" uid="uid://p0ptjasu2tv7" path="res://assets/sounds/bossFightTemp.mp3" id="51_hex7r"]
+[ext_resource type="AudioStream" uid="uid://bd3jm4a7q54gv" path="res://assets/sounds/bossFight.wav" id="51_s4osg"]
 [ext_resource type="PackedScene" uid="uid://dk5enq0cct4mp" path="res://scenes/aas.tscn" id="56_ly7l8"]
 [ext_resource type="PackedScene" uid="uid://l0cjnqgn8d7y" path="res://scenes/bigode.tscn" id="56_pmpfb"]
 
@@ -3674,12 +3674,12 @@ collision_mask = 2
 target_portal = NodePath("../PortalInvincibility")
 
 [node name="GameTheme" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("44_ebnvf")
-volume_db = -24.0
+stream = ExtResource("50_3n6wg")
+volume_db = -25.0
 autoplay = true
 
 [node name="BossFight" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("51_hex7r")
+stream = ExtResource("51_s4osg")
 volume_db = -20.0
 
 [node name="Tutorial labels" type="Label" parent="."]
