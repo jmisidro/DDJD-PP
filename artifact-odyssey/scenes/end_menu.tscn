@@ -205,7 +205,6 @@ text = "Artifacts:"
 
 [node name="gameOverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_5gxvn")
-autoplay = true
 
 [node name="winnerSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_1wsr6")
