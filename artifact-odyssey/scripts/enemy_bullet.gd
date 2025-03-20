@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed: int = 700
 @export var damage: int = 10
+@onready var animation_player = $AnimationPlayer
 
 var direction: Vector2
 
@@ -20,4 +21,6 @@ func _physics_process(delta):
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		body.damage(damage)
-	queue_free()
+		animation_player.play("shot_player_hurt")
+	else:
+		queue_free()

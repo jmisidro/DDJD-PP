@@ -1,9 +1,109 @@
-[gd_scene load_steps=4 format=3 uid="uid://d367cey2fslsm"]
+[gd_scene load_steps=8 format=3 uid="uid://d367cey2fslsm"]
 
 [ext_resource type="Script" path="res://scripts/enemy_bullet.gd" id="1_gidya"]
 [ext_resource type="Texture2D" uid="uid://bsi2v3mwxnukv" path="res://assets/objects/enemy_bullet.png" id="2_k7ar4"]
+[ext_resource type="AudioStream" uid="uid://ddt6xvfnf0fbm" path="res://assets/sounds/retro-hurt-2-236675.mp3" id="3_6pt01"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivfd7"]
+
+[sub_resource type="Animation" id="Animation_ialin"]
+resource_name = "shot_player_hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHurt:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4ysq2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHurt:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pgx40"]
+_data = {
+"RESET": SubResource("Animation_4ysq2"),
+"shot_player_hurt": SubResource("Animation_ialin")
+}
 
 [node name="EnemyBullet" type="Area2D"]
 collision_layer = 8
@@ -21,5 +121,13 @@ position = Vector2(-1, 0)
 rotation = 1.5708
 scale = Vector2(0.5, 1)
 shape = SubResource("CapsuleShape2D_ivfd7")
+
+[node name="PlayerHurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6pt01")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pgx40")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
